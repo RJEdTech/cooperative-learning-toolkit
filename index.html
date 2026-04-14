@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cooperative Learning Toolkit</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f0f1a;color:#eee;min-height:100vh}
+.wrap{max-width:900px;margin:0 auto;padding:20px 16px}
+.hdr{text-align:center;margin-bottom:24px;padding-top:8px}
+.hdr .pre{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:#555;margin-bottom:4px}
+.hdr h1{font-size:28px;font-weight:800;background:linear-gradient(135deg,#C11430,#D4243B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2}
+.hdr .sub{font-size:12px;color:#666;margin-top:6px;line-height:1.5;max-width:600px;margin-left:auto;margin-right:auto}
+.tabs{display:flex;gap:4px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
+.tab{padding:7px 18px;border-radius:8px;border:1px solid transparent;cursor:pointer;font-size:12px;font-weight:700;font-family:inherit;background:rgba(255,255,255,.04);color:#888;transition:all .15s}
+.tab.a{background:rgba(193,20,48,.15);color:#C11430;border-color:rgba(193,20,48,.3)}
+.tab:hover{background:rgba(255,255,255,.06)}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;margin-bottom:12px;transition:all .15s}
+.card:hover{border-color:rgba(255,255,255,.15)}
+.card-open{background:rgba(193,20,48,.04);border-color:rgba(193,20,48,.2)}
+.needs{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px}
+.need-btn{padding:18px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);cursor:pointer;text-align:left;transition:all .15s;font-family:inherit}
+.need-btn:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.2)}
+.need-btn .icon{font-size:24px;margin-bottom:6px}
+.need-btn .label{font-size:13px;font-weight:700;color:#eee}
+.need-btn .desc{font-size:11px;color:#888;margin-top:3px;line-height:1.4}
+.s-card{cursor:pointer}
+.s-hdr{display:flex;justify-content:space-between;align-items:flex-start}
+.s-name{font-size:16px;font-weight:700;color:#eee}
+.s-badges{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0}
+.badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.3px}
+.b-group{background:rgba(255,255,255,.06);color:#999}
+.b-diff{background:rgba(255,255,255,.04);color:#777}
+.b-move{background:rgba(52,152,219,.12);color:#3498db}
+.b-time{background:rgba(46,204,113,.1);color:#2ecc71}
+.b-engine{background:rgba(155,89,182,.12);color:#9b59b6;font-style:italic}
+.b-bloom{background:rgba(230,126,34,.12);color:#e67e22}
+.b-dok{background:rgba(52,73,94,.2);color:#95a5a6}
+.s-how{font-size:13px;color:#bbb;line-height:1.6;margin:8px 0}
+.s-best{font-size:11px;color:#888}
+.steps{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}
+.step-label{font-size:10px;font-weight:700;color:#C11430;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.step{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.step-num{width:24px;height:24px;border-radius:6px;background:rgba(193,20,48,.15);color:#C11430;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
+.step-text{font-size:12px;color:#ccc;line-height:1.6}
+.tip-box{margin-top:10px;padding:10px 14px;border-radius:8px;background:rgba(255,255,255,.03);border-left:3px solid rgba(193,20,48,.3)}
+.tip-box .tip-label{font-size:10px;font-weight:700;color:#C11430;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.tip-box p{font-size:12px;color:#999;line-height:1.5}
+.example-box{margin-top:8px;padding:10px 14px;border-radius:8px;background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.08)}
+.example-box .ex-label{font-size:10px;font-weight:700;color:#2ecc71;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.example-box p{font-size:12px;color:#999;line-height:1.5;font-style:italic}
+.gs-section{margin-bottom:24px}
+.gs-title{font-size:15px;font-weight:700;color:#eee;margin-bottom:8px}
+.gs-text{font-size:13px;color:#bbb;line-height:1.7}
+.pies-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:12px 0}
+.pies-card{padding:14px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
+.pies-letter{font-size:22px;font-weight:800;color:#C11430;margin-bottom:4px}
+.pies-name{font-size:13px;font-weight:700;color:#eee;margin-bottom:4px}
+.pies-q{font-size:11px;color:#888;font-style:italic;margin-bottom:4px}
+.pies-desc{font-size:11px;color:#999;line-height:1.5}
+.gambit-section{margin-bottom:16px}
+.gambit-type{font-size:13px;font-weight:700;color:#eee;margin-bottom:6px}
+.gambit{font-size:12px;color:#999;padding:4px 0 4px 14px;border-left:2px solid rgba(193,20,48,.2);margin-bottom:4px}
+.search-wrap{margin-bottom:16px}
+.search-wrap input{width:100%;padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.3);color:#eee;font-size:14px;font-family:inherit;outline:none}
+.search-wrap input::placeholder{color:#555}
+.search-wrap input:focus{border-color:rgba(193,20,48,.3)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.filters select{padding:6px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.3);color:#eee;font-size:12px;font-family:inherit;outline:none}
+.count{font-size:11px;color:#555;margin-bottom:10px}
+.ftr{text-align:center;margin-top:30px;padding:16px 0;font-size:10px;color:#444;border-top:1px solid rgba(255,255,255,.04)}
+.ftr a{color:#C11430;text-decoration:none}
+.arrow{display:inline-block;font-size:12px;color:#666;transition:transform .2s;margin-left:6px}
+.arrow.open{transform:rotate(90deg)}
+.back-btn{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:transparent;color:#888;cursor:pointer;font-size:11px;font-weight:600;font-family:inherit;margin-bottom:12px}
+.back-btn:hover{background:rgba(255,255,255,.04)}
+
+/* Engine diagram */
+.engine-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:16px 0}
+.engine-card{padding:16px;border-radius:12px;border:1px solid rgba(155,89,182,.2);background:rgba(155,89,182,.04)}
+.engine-card h3{font-size:14px;color:#9b59b6;margin-bottom:2px}
+.engine-card .pattern{font-size:18px;letter-spacing:4px;color:#eee;margin:6px 0;font-family:monospace}
+.engine-card p{font-size:12px;color:#999;line-height:1.5}
+.mode-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:12px}
+.mode-table th{text-align:left;padding:6px 10px;font-size:10px;font-weight:700;color:#C11430;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid rgba(255,255,255,.08)}
+.mode-table td{padding:6px 10px;color:#bbb;border-bottom:1px solid rgba(255,255,255,.04)}
+.mode-table td:first-child{color:#9b59b6;font-weight:600}
+
+/* Light mode */
+body.light{background:#fafafa;color:#1a1a1a}
+body.light .hdr .pre{color:#999}
+body.light .hdr h1{background:linear-gradient(135deg,#C11430,#8a0e22);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+body.light .hdr .sub{color:#888}
+body.light .tab{background:rgba(0,0,0,.03);color:#888}
+body.light .tab.a{background:rgba(193,20,48,.08);color:#C11430;border-color:rgba(193,20,48,.2)}
+body.light .card{background:rgba(0,0,0,.02);border-color:rgba(0,0,0,.08)}
+body.light .card:hover{border-color:rgba(0,0,0,.15)}
+body.light .card-open{background:rgba(193,20,48,.03);border-color:rgba(193,20,48,.15)}
+body.light .need-btn{background:rgba(0,0,0,.02);border-color:rgba(0,0,0,.08)}
+body.light .need-btn:hover{background:rgba(0,0,0,.04)}
+body.light .need-btn .label{color:#1a1a1a}
+body.light .need-btn .desc{color:#888}
+body.light .s-name{color:#1a1a1a}
+body.light .s-how{color:#444}
+body.light .s-best{color:#888}
+body.light .step-text{color:#333}
+body.light .tip-box{background:rgba(0,0,0,.02)}
+body.light .tip-box p{color:#666}
+body.light .example-box{background:rgba(0,0,0,.01);border-color:rgba(0,0,0,.08)}
+body.light .example-box p{color:#666}
+body.light .pies-card{background:rgba(0,0,0,.02);border-color:rgba(0,0,0,.06)}
+body.light .pies-name{color:#1a1a1a}
+body.light .gs-text{color:#444}
+body.light .gs-title{color:#1a1a1a}
+body.light .gambit{color:#666}
+body.light .search-wrap input{background:rgba(0,0,0,.03);border-color:rgba(0,0,0,.1);color:#1a1a1a}
+body.light .filters select{background:rgba(0,0,0,.03);border-color:rgba(0,0,0,.1);color:#1a1a1a}
+body.light .ftr{color:#bbb;border-color:rgba(0,0,0,.06)}
+body.light .b-group{background:rgba(0,0,0,.05);color:#666}
+body.light .engine-card{background:rgba(155,89,182,.03);border-color:rgba(155,89,182,.12)}
+body.light .mode-table td{color:#444}
+body.light .mode-table th{border-color:rgba(0,0,0,.08)}
+body.light .mode-table td{border-color:rgba(0,0,0,.04)}
+.theme-toggle{position:fixed;top:12px;right:12px;padding:6px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.3);color:#888;cursor:pointer;font-size:11px;font-weight:600;font-family:inherit;z-index:10}
+body.light .theme-toggle{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1);color:#888}
+@media(max-width:500px){.needs{grid-template-columns:1fr 1fr}.need-btn{padding:12px}.need-btn .icon{font-size:20px}.hdr h1{font-size:22px}.pies-grid{grid-template-columns:1fr}.engine-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeBtn">☀ Light</button>
+<div class="wrap" id="app"></div>
+<script>
+(function(){
+/* ================================================================
+   STRUCTURE DATA — all original names, no trademarked terms
+   Each structure is tagged with its underlying "engine"
+   ================================================================ */
+var S=[
+// ---- VOLLEY (pair, back-and-forth) ----
+{name:"Ping-Pong Share",engine:"Volley + Verbal",need:"review",group:"Pairs",time:"3–5 min",diff:"Beginner",bloom:["Remember","Understand"],dok:[1,2],move:false,
+ how:"Partners take turns giving quick verbal responses, alternating back and forth like a ping-pong rally — one idea each, rapid-fire.",
+ best:"Brainstorming, reviewing, listing, vocabulary recall",
+ steps:["Teacher poses a question or topic.","Partner A gives one short response.","Partner B gives one short response.","Continue alternating until time is called."],
+ tips:"Keep responses to one word or one sentence. Speed is the point — this isn't a discussion, it's a rapid recall exercise. Use a visible timer to maintain energy.",
+ example:"'Ping-Pong Share with your partner: name causes of the American Revolution. One each, back and forth, 60 seconds. Go!'"},
+
+{name:"Listen & Switch",engine:"Volley + Timed",need:"discuss",group:"Pairs",time:"4–6 min",diff:"Beginner",bloom:["Understand","Analyze"],dok:[2,3],move:false,
+ how:"Partner A speaks for a set time while Partner B listens without interrupting. Then they switch roles — B speaks, A listens.",
+ best:"Sharing opinions, reflecting on learning, processing new content",
+ steps:["Teacher poses a question and gives 10–15 seconds of silent think time.","Partner A shares for the designated time (e.g., 60 seconds). Partner B only listens.","B may briefly paraphrase: 'So you're saying…'","Partners switch: B speaks, A listens for the same amount of time."],
+ tips:"The non-speaking partner's job is to listen, not prepare their own response. Teach active listening: eye contact, nodding, no interrupting. Every student gets a guaranteed audience.",
+ example:"'Think about what surprised you most in today's reading. Partner A, you have one minute. Partner B, just listen. Then you'll switch.'"},
+
+{name:"Partner Coach",engine:"Volley + Coach",need:"practice",group:"Pairs",time:"10–15 min",diff:"Beginner",bloom:["Apply"],dok:[2],move:false,
+ how:"Partner A solves a problem while thinking aloud. Partner B watches, coaches, and encourages — but does NOT solve. Then they switch.",
+ best:"Math practice, skill drills, writing mechanics, procedures",
+ steps:["Partners sit side by side with one problem set between them.","Partner A solves problem 1, thinking aloud.","Partner B watches, coaches if needed, and praises when correct.","Partners switch: B solves problem 2 while A coaches.","Alternate for each problem."],
+ tips:"The coach must NOT solve the problem or give the answer — they give hints and encouragement. Teach coaching language: 'Check that step again' or 'What would you try next?' instead of 'That's wrong — it's 42.'",
+ example:"'Partner Coach these equations. A solves while B coaches. Then switch. Coaches: help, don't solve.'"},
+
+{name:"Explain & Record",engine:"Volley + Dictate",need:"practice",group:"Pairs",time:"10–15 min",diff:"Intermediate",bloom:["Understand","Apply"],dok:[2,3],move:false,
+ how:"The Explainer talks through a solution step by step. The Recorder writes down exactly what's dictated — nothing more. Then they switch roles.",
+ best:"Math procedures, lab reports, writing processes, step-by-step skills",
+ steps:["Partner A is the Explainer. Partner B is the Recorder.","Explainer describes step 1 of the solution. Recorder writes it.","Explainer continues through each step. Recorder writes and may ask clarifying questions only.","Switch roles for the next problem."],
+ tips:"The Recorder should not solve ahead. This forces the Explainer to articulate their thinking precisely, which deepens understanding for both. If the Recorder is confused, the explanation wasn't clear enough — that's the learning.",
+ example:"'Explainer: talk your Recorder through solving this equation, step by step. Recorder: write only what you hear. If it doesn't make sense, say so.'"},
+
+{name:"Blind Match",engine:"Volley + Describe",need:"discuss",group:"Pairs",time:"10–15 min",diff:"Intermediate",bloom:["Apply","Analyze"],dok:[2,3],move:false,
+ how:"Partners sit with a barrier between them. One describes an arrangement or image; the other recreates it without seeing the original.",
+ best:"Communication skills, precise vocabulary, spatial reasoning, listening",
+ steps:["Partners sit facing each other with a barrier (folder, binder) between them.","Partner A has an arrangement (shapes, grid, diagram) and describes it using words only.","Partner B listens and tries to recreate the arrangement without seeing it.","Remove the barrier and compare. Discuss what worked and what didn't."],
+ tips:"Students quickly discover that vague language fails. 'Put it over there' doesn't work — they must use precise vocabulary. One of the best structures for developing domain-specific language.",
+ example:"'Arrange 5 shapes on your grid. Now describe exactly where each one goes so your partner can match yours without seeing it. Use math vocabulary: rows, columns, coordinates.'"},
+
+// ---- GO-AROUND (team of 4, sequential) ----
+{name:"Go-Around Share",engine:"Go-Around + Verbal",need:"review",group:"Team",time:"5–8 min",diff:"Beginner",bloom:["Remember","Understand"],dok:[1,2],move:false,
+ how:"Team members take turns sharing verbally, one at a time in sequence. Each person contributes one idea per turn.",
+ best:"Generating ideas, reviewing content, ensuring equal voice",
+ steps:["Teacher poses a question or prompt.","Student 1 shares one idea.","Student 2 shares a different idea.","Continue around the team. Multiple rounds as needed."],
+ tips:"Set a clear direction (clockwise). One idea per turn, no repeats. The structure guarantees airtime for quieter students — that's the whole point.",
+ example:"'Go-Around: each person shares one thing you learned about cell division. Go around twice.'"},
+
+{name:"Pass the Pen",engine:"Go-Around + Written",need:"review",group:"Team",time:"5–10 min",diff:"Beginner",bloom:["Remember","Understand"],dok:[1,2],move:false,
+ how:"One paper and one pen rotate around the team. Each student writes one response, then passes to the next person.",
+ best:"Brainstorming lists, collaborative writing, generating ideas on paper",
+ steps:["One paper and one pen per team. Teacher poses a prompt.","Student 1 writes one response and passes the paper clockwise.","Student 2 writes a different response and passes.","Continue until time is called or ideas run out."],
+ tips:"The written version of Go-Around Share. Use it when you want a physical product, or when noise is a concern. Students can read previous responses to avoid repeats.",
+ example:"'Pass the Pen: list as many geometric shapes as your team can. One per person, then pass.'"},
+
+{name:"All Write, All Pass",engine:"Go-Around + Simultaneous Written",need:"review",group:"Team",time:"5–8 min",diff:"Beginner",bloom:["Remember","Understand"],dok:[1,2],move:false,
+ how:"Every student starts with their own paper. Everyone writes one response simultaneously, then all four papers pass at once.",
+ best:"High-volume brainstorming, warm-ups, generating ideas fast",
+ steps:["Each student gets their own piece of paper.","Teacher gives a prompt. Everyone writes one response simultaneously.","On the signal, all papers pass clockwise.","Read what's there, add a new response. Pass again.","Continue until time is called."],
+ tips:"This is 4× faster than Pass the Pen because all students write at the same time. Great for warm-ups or when you need volume. Ideas compound as students read and build on each other's thinking.",
+ example:"'Everyone has a paper. Write one synonym for \"happy.\" Pass clockwise. Read what's there, add a new one. Keep going.'"},
+
+{name:"Share & Record",engine:"Go-Around + All-Write",need:"review",group:"Team",time:"5–8 min",diff:"Beginner",bloom:["Remember","Understand"],dok:[1,2],move:false,
+ how:"Team members take turns sharing verbally in sequence — but all students write every response on their own paper.",
+ best:"Review with built-in note-taking, ensuring everyone has a written record",
+ steps:["Each student has their own paper. Teacher poses a question.","Student 1 shares one idea aloud.","All teammates write that idea on their own paper.","Student 2 shares a new idea. Everyone writes it down.","Continue around the team."],
+ tips:"This combines Go-Around Share with individual note-taking. Every student leaves with a complete written record, not just the person who happened to write on the team paper.",
+ example:"'Share & Record: each person shares one cause of WWI. Everyone writes each cause on your own sheet. You'll all need this for the essay tomorrow.'"},
+
+{name:"Write First, Then Share",engine:"Go-Around + Think-Write",need:"think",group:"Team",time:"6–10 min",diff:"Beginner",bloom:["Understand","Analyze"],dok:[2,3],move:false,
+ how:"Teacher poses a question. Students think and write individually first. Then they share what they wrote using a Go-Around.",
+ best:"Deep thinking before sharing, individual accountability, preventing groupthink",
+ steps:["Teacher asks a question and gives think time.","Students write their response independently — no talking.","When time is up, each teammate shares what they wrote in a Go-Around.","Team discusses or compiles the best ideas."],
+ tips:"The silent writing step is critical. Without it, faster processors dominate and others adopt their ideas. Writing first gives every student time to form their own thinking before being influenced by the group.",
+ example:"'Write your answer to this question silently: what is the theme of this story? Then we'll go around and share.'"},
+
+// ---- ACCOUNTABILITY STRUCTURES ----
+{name:"Heads Up",engine:"Team + Random Call",need:"review",group:"Team",time:"5–8 min",diff:"Beginner",bloom:["Remember","Understand"],dok:[1,2],move:false,
+ how:"Teacher poses a question. Teams discuss. Teacher calls a random number (1–4). That student must answer for the entire team.",
+ best:"Checking understanding, building accountability, test review",
+ steps:["Students number off 1–4 within their team.","Teacher poses a question.","Teams put their heads together to discuss and make sure ALL members can answer.","Teacher randomly calls a number. That student stands and answers for the team."],
+ tips:"The power is in step 3: teams must prepare every member because they don't know who'll be called. This creates genuine interdependence — if one person doesn't understand, the whole team is accountable.",
+ example:"'Heads together: what's the formula for the area of a circle? Make sure everyone can explain it. I'm about to call a number.'"},
+
+{name:"Reveal Together",engine:"Team + Simultaneous Show",need:"review",group:"Team",time:"8–12 min",diff:"Beginner",bloom:["Remember","Apply"],dok:[1,2],move:false,
+ how:"A captain reads a question. Everyone writes their answer independently and face-down. Captain says 'Reveal!' — all answers flip up at once for comparison.",
+ best:"Mastery checks, accountability, quiz review",
+ steps:["The captain reads or reveals a question.","All teammates write their answer independently and face-down (no peeking).","Captain calls 'Reveal!' — everyone shows their answer simultaneously.","If all match: celebrate. If answers differ: the team discusses and tutors.","Captainship rotates to the next student."],
+ tips:"The face-down writing prevents copying and guarantees individual accountability. The simultaneous reveal creates a moment of genuine peer feedback.",
+ example:"'Captain reads the definition. Everyone writes the word face-down. No peeking. When you hear Reveal, flip!'"},
+
+{name:"Deal & Roles",engine:"Team + Rotating Roles",need:"review",group:"Team",time:"10–15 min",diff:"Intermediate",bloom:["Remember","Understand"],dok:[1,2],move:false,
+ how:"A card-game style review where teammates rotate through four roles: Dealer, Reader, Responder, and Coach. Roles shift each round.",
+ best:"Question review, comprehension checks, test prep",
+ steps:["Student 1 fans the question cards and says 'Pick one.'","Student 2 picks and reads the question aloud.","Student 3 answers.","Student 4 checks the answer — coaches if wrong, praises if right.","All roles rotate clockwise for the next question."],
+ tips:"Make role cards for each seat so students don't forget. The Coach role is key: Student 4 doesn't just say 'wrong' — they help the Responder get there. Teach coaching, not judging.",
+ example:"'Use your Chapter 5 cards. Student 1 is the Dealer. Roles rotate each round. Coaches: if the answer is wrong, help — don't just give it away.'"},
+
+// ---- MIX STRUCTURES (whole class, movement) ----
+{name:"Stand & Find",engine:"Mix + Pair",need:"community",group:"Class",time:"5–8 min",diff:"Beginner",bloom:["Understand"],dok:[1,2],move:true,
+ how:"Students stand up, raise a hand, and find a partner. They discuss a prompt, then raise their hand again to find someone new.",
+ best:"Quick mixing, movement breaks, sharing ideas with varied classmates",
+ steps:["Teacher says 'Stand up, hand up, find a partner!'","Students stand, raise a hand, and pair with someone (hands go down when paired).","Teacher gives a prompt. Partners discuss.","When done, both raise hands and find new partners. Repeat with a new prompt."],
+ tips:"The simplest mixing structure and a great one to start with. The raised hand is a visual signal that someone still needs a partner. Use between chunks of direct instruction as an energizer.",
+ example:"'Stand up, hand up, find a partner! Tell them: what's one question you still have about today's lesson?'"},
+
+{name:"Mingle & Discuss",engine:"Mix + Music",need:"community",group:"Class",time:"5–8 min",diff:"Beginner",bloom:["Understand"],dok:[1,2],move:true,
+ how:"Students walk around to music. When it stops, they pair with the nearest person and discuss a teacher prompt.",
+ best:"Classbuilding, movement, mixing across social groups",
+ steps:["Teacher plays music (or says 'Mingle!'). Students walk around the room.","Teacher stops the music (or says 'Pair!'). Students pair with the nearest person.","Teacher gives a prompt. Partners discuss.","Music starts again. Repeat with new prompts."],
+ tips:"Great for the first days of school. Start with low-risk prompts ('Favorite food?') and gradually build to academic content. The randomness of the pairing breaks up social cliques.",
+ example:"'Mingle around the room. When the music stops, pair up and discuss: what is one thing you already know about photosynthesis?'"},
+
+{name:"Freeze & Group",engine:"Mix + Number Group",need:"community",group:"Class",time:"5–8 min",diff:"Beginner",bloom:["Remember","Understand"],dok:[1,2],move:true,
+ how:"Students walk around. Teacher calls 'Freeze!' and a number. Students quickly form groups of that size and discuss a prompt.",
+ best:"Energizing, classbuilding, quick content review with movement",
+ steps:["Students mix around the room.","Teacher calls 'Freeze!' then a number (e.g., '3!').","Students quickly form groups of that number.","Teacher gives a discussion prompt. Groups discuss.","Repeat with a different number and prompt."],
+ tips:"If someone is left out, they join the nearest group — no one sits out. Tie the number to content: 'Group into the number of states of matter!' (3). Fun and academic at once.",
+ example:"'Walk around. Freeze! Group into 4! Discuss: what's one strategy for solving word problems?'"},
+
+{name:"Card Swap",engine:"Mix + Quiz + Trade",need:"review",group:"Class",time:"8–12 min",diff:"Beginner",bloom:["Remember"],dok:[1],move:true,
+ how:"Each student carries a question card. They find a partner, quiz each other using their cards, trade cards, and find a new partner.",
+ best:"Vocabulary, facts, flashcard-style review, test prep",
+ steps:["Give each student a card (question on front, answer on back).","Students stand, find a partner.","Partner A quizzes B using their card. Coaches if needed. Then B quizzes A.","Partners trade cards, find new partners. Repeat 5–8 times."],
+ tips:"Pre-teach the coaching step: if your partner doesn't know, give a hint before giving the answer. Each trade means a new question and a new partner — the variety keeps energy high.",
+ example:"'Everyone take a vocab card. Stand up, pair up, quiz each other, trade cards, find someone new. Try to see at least 6 different cards.'"},
+
+{name:"Double Ring",engine:"Mix + Concentric Circles",need:"community",group:"Class",time:"8–12 min",diff:"Beginner",bloom:["Remember","Understand"],dok:[1,2],move:true,
+ how:"Half the class forms an inner circle facing out; the other half forms an outer circle facing in. Partners discuss, then the outer ring rotates.",
+ best:"Review, classbuilding, rapid practice with many partners",
+ steps:["Half the class forms an inner circle facing outward. The other half forms an outer circle facing inward.","Each student faces a partner.","Teacher poses a question. Partners discuss briefly (30–60 seconds).","Teacher says 'Rotate.' Outer circle moves one or more spots clockwise.","New partners, new question. Repeat."],
+ tips:"Students interact with many classmates quickly — great for the first weeks of school. Short responses work best. If your room is too small for circles, form two parallel lines facing each other.",
+ example:"'Inner circle faces out, outer circle faces in. Share: what did you learn about ecosystems today? Outer circle, rotate two spots.'"},
+
+{name:"Corner Choice",engine:"Mix + Self-Select",need:"community",group:"Class",time:"8–12 min",diff:"Beginner",bloom:["Evaluate"],dok:[2,3],move:true,
+ how:"Teacher assigns a choice to each corner of the room. Students go to the corner matching their preference and discuss with others there.",
+ best:"Sharing preferences, opinion-forming, movement, low-risk mixing",
+ steps:["Teacher posts or announces a choice for each corner (e.g., four seasons, four genres).","Students move to their chosen corner.","In corners, students discuss why they made that choice (use Ping-Pong Share or Go-Around).","Optional: each corner shares their reasoning with the whole class."],
+ tips:"Use for genuine preferences where there's no 'right' answer. Can be purely fun ('Favorite season?') or academic ('Which character made the best decision?'). Avoid choices where one option is obviously correct.",
+ example:"'Four corners: Action, Comedy, Drama, Documentary. Go to the corner for your favorite genre. Once there, go-around: why?'"},
+
+{name:"Opinion Line",engine:"Mix + Continuum",need:"think",group:"Class",time:"8–12 min",diff:"Beginner",bloom:["Analyze","Evaluate"],dok:[3],move:true,
+ how:"Teacher makes a statement. Students position themselves along a line from 'Strongly Agree' to 'Strongly Disagree' and discuss with their neighbors.",
+ best:"Opinion-forming, perspective-taking, critical thinking, pre-reading activation",
+ steps:["Teacher reads a debatable statement.","Students position themselves on an imaginary line: one end = Strongly Agree, the other = Strongly Disagree.","Students discuss with the person next to them: 'Why are you standing here?'","Optional: fold the line so people at opposite ends face each other and share."],
+ tips:"The folding step is powerful — students with opposite views must listen to each other respectfully. Use before a reading to activate prior beliefs, then again after to see if positions shift.",
+ example:"'Statement: Technology makes people less creative. Find your spot. Talk to your neighbor about why you're there.'"},
+
+{name:"Expert Hunt",engine:"Mix + Peer Teach",need:"community",group:"Class",time:"10–15 min",diff:"Beginner",bloom:["Understand","Apply"],dok:[2],move:true,
+ how:"Students circulate with a worksheet. They find classmates who can help them answer specific questions, learn from each person, and get a signature.",
+ best:"Content review, classbuilding, getting to know who knows what",
+ steps:["Give each student a grid with questions or tasks.","Students move around the room and find a partner.","The partner helps them answer ONE question, explains the reasoning, and signs that box.","Student finds a new partner for the next question. Can't use the same person twice."],
+ tips:"Dual-purpose: academic content + social connection. For classbuilding: 'Find someone who speaks more than one language.' For content: 'Find someone who can explain osmosis.' Each person becomes a resource.",
+ example:"'Find someone who can explain the difference between mitosis and meiosis. They explain, you write, they sign. Then find someone new for the next question.'"},
+
+{name:"Find the Expert",engine:"Mix + Sage Circle",need:"review",group:"Class",time:"8–12 min",diff:"Intermediate",bloom:["Understand","Apply"],dok:[2],move:true,
+ how:"Teacher asks who knows the answer. 'Experts' stand and spread out. Other students go circle an expert to learn. Then return to teams and compare notes.",
+ best:"Peer teaching, leveraging student knowledge, review",
+ steps:["Teacher poses a question and asks who is confident they know the answer.","Experts raise hands, then stand and spread around the room.","Remaining students go stand near an expert (not from their own team).","Expert teaches. Students listen and take notes.","Students return to their teams and share what they learned."],
+ tips:"This leverages peers as teachers — students often explain things differently than the teacher, which helps classmates who were confused. Make sure multiple experts are available so groups stay small.",
+ example:"'Who can explain how to balance a chemical equation? Experts, stand and spread out. Everyone else, go circle an expert — not from your own team.'"},
+
+// ---- ACCOUNTABILITY + CHECKING ----
+{name:"Pair & Verify",engine:"Team + Pair Check",need:"practice",group:"Team",time:"10–15 min",diff:"Beginner",bloom:["Apply"],dok:[2],move:false,
+ how:"Within a team, pairs use Partner Coach for two problems. After every two, the pair checks answers with the other pair on their team.",
+ best:"Math practice, drills, any skill with verifiable correct answers",
+ steps:["Team of 4 splits into two pairs.","Each pair uses Partner Coach for problems 1 and 2.","After two problems, pairs compare answers with the other pair.","If answers match: celebrate and continue. If not: work together to resolve.","Continue with the next set."],
+ tips:"The cross-check step prevents pairs from going down the wrong path for an entire worksheet. It's a built-in error-correction loop. Teach students to re-solve collaboratively when answers differ, not just argue.",
+ example:"'Partner Coach problems 1 and 2, then check with the other pair. If you agree, high-five and keep going.'"},
+
+{name:"Teach-Back Puzzle",engine:"Expert + Teach",need:"think",group:"Team",time:"30–45 min",diff:"Advanced",bloom:["Analyze","Evaluate"],dok:[3,4],move:true,
+ how:"Content is divided into 4 parts. Each team member masters one part, meets with experts on the same part, then returns to teach their team.",
+ best:"Complex reading, research, dividing large amounts of content",
+ steps:["Divide content into 4 parts. Assign each team member one part.","Students read and study their part individually.","Expert groups form: all students studying the same part meet to deepen understanding.","Students return to their home teams and teach their part. Teammates take notes."],
+ tips:"Don't use this until students are comfortable with simpler structures. The expert group step is essential — without it, students may teach inaccurate content. Provide graphic organizers.",
+ example:"'Each person becomes the expert on one amendment. Expert groups meet for 10 minutes, then you'll teach your team.'"},
+
+// ---- SHARING / PRESENTATION ----
+{name:"Gallery Walk Feedback",engine:"Team + Station Rotate",need:"share",group:"Team",time:"15–20 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:true,
+ how:"Each team posts their work at a station. Teams rotate to other stations and leave written feedback on each team's work.",
+ best:"Peer feedback, project review, written critique",
+ steps:["Each team posts their work (poster, project, writing) at a station.","Teams rotate clockwise to the next station.","At each station, the team reviews the work and writes constructive feedback.","After visiting all stations, teams return to their own work and read the feedback."],
+ tips:"Provide sentence starters: 'One strength is…' 'A question we have is…' 'You might consider…' Set a timer for each rotation (3–4 min). Teams travel together as a unit.",
+ example:"'Your poster stays here. Rotate clockwise. At each stop, write one compliment and one suggestion on the feedback sheet.'"},
+
+{name:"Stand & Report",engine:"Team + Class Share",need:"share",group:"Team",time:"8–12 min",diff:"Beginner",bloom:["Understand"],dok:[2],move:true,
+ how:"Teams stand with a list of ideas. Teacher picks one student to share an idea. Other teams check it off or add it. Teams sit when all their ideas have been shared.",
+ best:"Compiling class-wide lists without repetition, sharing team thinking",
+ steps:["Teams generate a list (using Pass the Pen or brainstorming).","All teams stand.","Teacher selects a student from one team to share one idea.","Other teams check off that idea if they have it, or add it.","Next team shares a different idea. Teams sit when their list is covered."],
+ tips:"Ensures unique ideas get airtime without repetition. Great for compiling a complete class list from separate team brainstorms.",
+ example:"'Stand with your team's list of character traits. Share one trait when called. Other teams: check it off if you have it. Sit when all your ideas are shared.'"},
+
+{name:"Ambassador Visit",engine:"Team + Cross-Share",need:"share",group:"Team",time:"8–10 min",diff:"Beginner",bloom:["Understand","Analyze"],dok:[2],move:true,
+ how:"One team member visits a nearby team as an ambassador — sharing their team's ideas or gathering the other team's thinking — then returns to report.",
+ best:"Quick cross-team pollination, gathering diverse perspectives",
+ steps:["Teams finish a discussion or activity.","Teacher designates which student number visits (e.g., 'Student 3, visit!').","That student goes to a nearby team and shares or gathers ideas (2 minutes).","Ambassador returns and reports findings to their home team."],
+ tips:"Quick and low-risk compared to a full Gallery Walk. The ambassador represents the team's collective thinking, not just their own opinion.",
+ example:"'Student 3, visit the team behind you. Share your top two reasons. Listen to theirs. Two minutes, then come back and report.'"},
+
+{name:"Scout & Report",engine:"Team + Rove + Gather",need:"share",group:"Team",time:"8–10 min",diff:"Beginner",bloom:["Understand","Analyze"],dok:[2],move:true,
+ how:"A 'scout' visits 2–3 other teams specifically to gather ideas (not to share their own), then brings them back to the home team.",
+ best:"Gathering diverse ideas, broadening team perspective",
+ steps:["Teams complete a discussion or generate ideas.","One teammate is designated the Scout.","Scout visits 2–3 other teams, listens, and takes notes.","Scout returns and shares findings. Team integrates the new ideas."],
+ tips:"Unlike Ambassador Visit (where you share your team's ideas out), the Scout's job is intelligence gathering — go learn what other teams are thinking and bring it back.",
+ example:"'Scouts, visit two teams. Find out their best solution to the engineering challenge. Take notes. Three minutes.'"},
+
+// ---- DECISION MAKING ----
+{name:"Budget Vote",engine:"Team + Weighted Choice",need:"decide",group:"Team",time:"5–8 min",diff:"Intermediate",bloom:["Evaluate"],dok:[3],move:false,
+ how:"Each team member distributes an imaginary dollar (100 cents) across options. Totals reveal the team's weighted priorities.",
+ best:"Prioritizing, democratic decisions where strength of preference matters",
+ steps:["Team has a list of options to choose from (from brainstorming).","Each student gets an imaginary dollar (100 cents) to allocate across options.","Students distribute their money — all on one option or spread across many.","Team tallies totals. Highest total = the team's top priority."],
+ tips:"More nuanced than simple voting because it captures strength of preference. Someone who feels strongly can put 80 cents on one option. Prevents tyranny of the majority.",
+ example:"'We brainstormed 6 project topics. Distribute your dollar across them. Put it all on one, or spread it. Let's see where the team lands.'"},
+
+{name:"Agree & Write",engine:"Go-Around + Consensus",need:"decide",group:"Team",time:"10–15 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
+ how:"Like Pass the Pen, but teammates must show agreement (thumbs up) before each person writes. Nothing gets recorded without consensus.",
+ best:"Collaborative answers, study guides, any product where accuracy matters",
+ steps:["Teacher poses a question. Student 1 proposes an answer.","All teammates show thumbs up or down.","Consensus: Student 1 writes the answer and passes. No consensus: team discusses until they agree.","Student 2 proposes the next answer. Repeat."],
+ tips:"Slower than Pass the Pen but produces higher-quality, agreed-upon answers. Teaches students that strong teams don't just go with the first idea — they evaluate together.",
+ example:"'Agree & Write the steps of the scientific method. Propose one step at a time. Thumbs up from everyone before it gets written.'"},
+
+// ---- TEAMBUILDING ----
+{name:"Spot the Bluff",engine:"Team + 2-Truths",need:"team",group:"Team",time:"10–15 min",diff:"Beginner",bloom:["Analyze","Evaluate"],dok:[2,3],move:false,
+ how:"Each student writes three statements — two true and one false. Teammates read all three and try to identify the bluff.",
+ best:"Teambuilding, getting to know each other, critical thinking",
+ steps:["Each student writes three statements: two true, one false. Make the false one believable.","Student 1 reads all three aloud.","Teammates discuss and guess which is the bluff.","Student 1 reveals the answer. Repeat for all teammates."],
+ tips:"Start with personal statements for teambuilding. Later, use with academic content: 'Write three facts about photosynthesis — two true, one false.' Works both ways.",
+ example:"'Write three statements about your summer. Two true, one bluff. Make the bluff believable. Your team will try to catch you.'"},
+
+{name:"Hot Seat Interview",engine:"Team + Rotate Interview",need:"team",group:"Team",time:"10–15 min",diff:"Beginner",bloom:["Understand"],dok:[2],move:false,
+ how:"One teammate sits in the 'hot seat' and gets interviewed by the other three. Rotate until everyone has been in the hot seat.",
+ best:"Teambuilding, start of semester, getting to know teammates deeply",
+ steps:["Student 1 is in the hot seat.","Teammates 2, 3, 4 take turns asking questions.","After 2–3 minutes, rotate: Student 2 takes the hot seat.","Continue until all four have been interviewed."],
+ tips:"Provide a bank of possible questions, mixing fun and academic. Students choose which to ask. Builds team identity and trust quickly — especially valuable in the first two weeks.",
+ example:"'Person 1, you're in the hot seat. Team, you have 2 minutes to learn about them. Use the question cards if you need ideas.'"},
+
+{name:"Interview Relay",engine:"Team + Pair-Interview-Share",need:"discuss",group:"Team",time:"10–12 min",diff:"Beginner",bloom:["Understand","Analyze"],dok:[2,3],move:false,
+ how:"Partner A interviews B. Switch. Then each person shares what their PARTNER said (not their own response) in a team Go-Around.",
+ best:"Active listening, perspective-sharing, paraphrasing practice",
+ steps:["Team splits into pairs (shoulder partners).","Partner A interviews Partner B for 1–2 minutes.","Switch: B interviews A.","Team reconvenes. Each person shares what their partner said (not their own response)."],
+ tips:"The third step is what makes this special: students must share their partner's views, not their own. This forces active listening and builds paraphrasing skills. It's also less intimidating than sharing your own opinion.",
+ example:"'Interview your partner: what career interests you and why? 90 seconds each. Then tell the team what your partner said — not what you said.'"},
+
+// ---- THINKING ----
+{name:"Reflect-Discuss-Share",engine:"Individual + Pair + Class",need:"think",group:"Pairs",time:"3–5 min",diff:"Beginner",bloom:["Understand","Analyze"],dok:[2,3],move:false,
+ how:"Students think independently, discuss with a partner, then selected pairs share with the class. Three distinct phases.",
+ best:"Processing new information, reflection, quick comprehension checks",
+ steps:["Teacher poses a question and says 'Reflect.' Students think silently (15–30 seconds).","Teacher says 'Discuss.' Students turn to a partner and talk.","Teacher says 'Share.' A few pairs share with the class."],
+ tips:"The reflect step is non-negotiable — don't skip it. Without silent processing time, fast thinkers dominate the pair conversation and slower thinkers just agree. Having students write during reflect time strengthens accountability.",
+ example:"'Reflect on why the author chose this setting. 20 seconds of silence… Now discuss with your partner.'"},
+
+{name:"Silent Storm",engine:"Team + Silent Brainstorm",need:"think",group:"Team",time:"5–8 min",diff:"Beginner",bloom:["Remember","Understand"],dok:[1,2],move:false,
+ how:"Students silently write ideas on slips of paper — one idea per slip — and toss them into the center of the table. No talking until time is called.",
+ best:"Generating volume of ideas, equalizing voice, pre-discussion",
+ steps:["Give each student several sticky notes or slips of paper.","Teacher poses a question or topic.","Students silently write one idea per slip and toss each into the center.","No talking during writing. Continue until time is called.","Team reviews, sorts, and discusses all the ideas."],
+ tips:"Silence is the point: introverts get equal access. Fast writers generate more slips, but every person's ideas have equal visual weight in the pile. Follow with Budget Vote or another decision structure to prioritize.",
+ example:"'Silent Storm: what are possible causes of climate change? One idea per sticky. No talking, just write and toss. Go until I say stop.'"},
+
+{name:"Compare & Combine",engine:"Pair + Pair + Team",need:"think",group:"Team",time:"10–15 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
+ how:"First, pairs generate a list. Then the two pairs within a team compare lists and combine them, adding new ideas as a team of four.",
+ best:"Deepening thinking, seeing multiple perspectives, extending ideas",
+ steps:["Within the team, form pairs. Each pair brainstorms a list on the given topic.","After a set time, pairs share their lists with each other.","Team discusses: what's the same? What's different?","Team generates additional ideas that neither pair had."],
+ tips:"The 'additional ideas' step is key — the comparison often sparks new thinking that neither pair would have reached alone. It models how collaboration produces more than the sum of its parts.",
+ example:"'Pairs: list possible themes in this novel. 3 minutes. Then compare with your other pair. What did they think of that you didn't? Can you add even more?'"},
+
+{name:"Table Hop",engine:"Team + Station Rotate",need:"review",group:"Class",time:"10–15 min",diff:"Beginner",bloom:["Understand","Analyze"],dok:[2],move:true,
+ how:"Teams rotate to different tables/stations. At each station, they discuss a new prompt or review posted content as a team.",
+ best:"Reviewing multiple topics, structured station rotation, movement",
+ steps:["Post different questions or content at each table/station.","Teams start at their home station and discuss the content.","Teacher calls 'Hop!' Teams rotate clockwise to the next station.","At the new station, teams discuss the new content.","Continue until teams have visited all (or enough) stations."],
+ tips:"Unlike Gallery Walk Feedback (where teams write on others' work), here they're discussing teacher-posted content at each station. Think of it as a structured tour through the material.",
+ example:"'Each table has a different era. Discuss the key events for 3 minutes. When I say Hop, rotate clockwise.'"},
+
+{name:"Problem Swap",engine:"Team + Create + Exchange",need:"review",group:"Team",time:"15–20 min",diff:"Intermediate",bloom:["Apply","Create"],dok:[3],move:false,
+ how:"Teams create a problem and solve it. They pass their problem (without the answer) to another team, who solves it and checks against the original solution.",
+ best:"Test review, higher-order thinking through problem creation, self-checking",
+ steps:["Each team creates a problem and writes it on a card (answer on the back).","Teams pass their card to the next team.","Receiving team solves the problem independently.","They flip the card to check. If answers differ, teams discuss the discrepancy."],
+ tips:"Creating the problem is often harder than solving one — it engages higher-order thinking. It's also self-checking, which saves grading time. Students take more ownership of problems they created.",
+ example:"'Create a word problem using fractions. Write the answer on back. Pass to the team on your right. Solve theirs, then check.'"},
+
+// ---- NEW ORIGINAL STRUCTURES ----
+{name:"Perspective Swap",engine:"Pair + Role Reversal",need:"think",group:"Pairs",time:"8–12 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3,4],move:false,
+ how:"Partners each argue for a position. Midway through, they swap positions and must argue the opposite side — even if they disagree with it.",
+ best:"Critical thinking, empathy, understanding both sides, debate prep",
+ steps:["Teacher poses a debatable question with two clear sides.","Partner A argues Side 1. Partner B argues Side 2. (2 minutes each.)","Teacher says 'Swap!' Partners must now argue the opposite position.","After both rounds, partners discuss: what was hardest about arguing the other side?"],
+ tips:"This is not about winning — it's about understanding. The debrief question is the most important step. Students consistently report that arguing the other side deepened their understanding.",
+ example:"'A argues that social media helps democracy. B argues it hurts democracy. Two minutes each. Then swap sides and argue the opposite. Go.'"},
+
+{name:"Snowball Build",engine:"Individual → Pair → Team → Class",need:"think",group:"Class",time:"15–20 min",diff:"Intermediate",bloom:["Analyze","Evaluate","Create"],dok:[3,4],move:false,
+ how:"Start alone with an idea. Pair up and merge ideas. Then combine pairs into teams of 4 and merge again. Each round, the idea grows.",
+ best:"Building consensus, refining ideas, collaborative problem-solving",
+ steps:["Individual: each student writes their best answer or idea (2 min).","Pair: share with a partner and create a combined, improved version (3 min).","Team of 4: pairs share and create the team's best version (4 min).","Optional: teams share with the class. Each round, the idea gets stronger."],
+ tips:"The progression matters: individual thinking prevents groupthink; pair discussion tests ideas against another perspective; team synthesis produces the strongest version. Each step narrows and refines.",
+ example:"'Write your thesis statement alone. Then merge with your partner into one stronger thesis. Then merge with the other pair. By the end, your team has the best version of four minds.'"},
+
+{name:"Role Rotate Discussion",engine:"Team + Assigned Roles",need:"discuss",group:"Team",time:"12–18 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
+ how:"Each teammate gets a discussion role (Questioner, Connector, Challenger, Summarizer). After one round of discussion, roles rotate.",
+ best:"Structured academic discussion, developing specific discussion skills",
+ steps:["Assign roles: Questioner (asks probing questions), Connector (links to prior learning or other subjects), Challenger (plays devil's advocate), Summarizer (captures key points).","Teacher poses a discussion topic. Each person contributes from their role.","After one round, roles rotate clockwise.","Continue for 2–3 rotations so everyone practices each role."],
+ tips:"This teaches students that good discussion requires different thinking moves, not just sharing opinions. The Challenger role is especially powerful — it gives students permission to push back respectfully.",
+ example:"'Topic: Should the voting age be lowered to 16? Questioner, start us off. Connector, how does this relate to what we've studied? Challenger, what's the strongest counterargument? Summarizer, capture our key points.'"},
+
+{name:"Teach-Back Pairs",engine:"Pair + Reciprocal Teaching",need:"review",group:"Pairs",time:"8–12 min",diff:"Beginner",bloom:["Understand","Analyze"],dok:[2,3],move:false,
+ how:"Partners each study different material. Then each teaches the other what they learned. Both end up knowing both pieces of content.",
+ best:"Dividing reading, reciprocal teaching, doubling content coverage",
+ steps:["Assign each partner different content (e.g., Partner A reads page 1, Partner B reads page 2).","Both study their section silently (3–5 min).","Partner A teaches their content to B (2–3 min). B takes notes and asks questions.","Partner B teaches their content to A. A takes notes and asks questions."],
+ tips:"A simpler, faster version of Teach-Back Puzzle (which uses teams of 4). Use this when you want to split just two pieces of content. The teaching step is where the real learning happens — teaching forces clarity.",
+ example:"'A reads Section 1, B reads Section 2. Three minutes to study. Then teach each other. Both of you need to know both sections for the quiz.'"},
+
+{name:"Fishbowl Focus",engine:"Inner Group + Outer Observers",need:"discuss",group:"Class",time:"12–18 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3,4],move:true,
+ how:"A small group discusses in the center of the room while the rest of the class observes silently from the outside. Then roles swap.",
+ best:"Modeling discussion skills, deep discussion, observation and feedback",
+ steps:["4–6 students sit in a circle in the center (the fishbowl). Everyone else sits in a larger circle around them.","Inner group discusses a prompt. Outer group watches silently and takes notes on the discussion.","After 5–8 minutes, swap: new students enter the fishbowl.","Debrief: outer students share what they observed about the discussion — what worked well, what could improve."],
+ tips:"Powerful for teaching what good academic discussion looks like. The observation step turns the rest of the class into active learners, not passive bystanders. Give outer students a specific observation focus.",
+ example:"'Inner circle: discuss whether Gatsby is a tragic hero. Outer circle: watch for how they build on each other's ideas. After 6 minutes, we'll swap and debrief.'"},
+
+{name:"Speed Consult",engine:"Pair + Timed + Rotate",need:"share",group:"Class",time:"12–15 min",diff:"Intermediate",bloom:["Evaluate"],dok:[3],move:true,
+ how:"Students bring a work-in-progress. In rapid 2-minute rounds, they pair up and get feedback, then rotate to get a new perspective.",
+ best:"Draft feedback, work-in-progress review, getting multiple perspectives quickly",
+ steps:["Each student has a work-in-progress (draft, sketch, solution, plan).","Students pair up. Partner A has 2 minutes to present their work and get feedback from B.","Switch: B presents, A gives feedback.","Find a new partner. Repeat for 3–4 rounds."],
+ tips:"Faster than Gallery Walk Feedback and more personal. By the third round, students start noticing patterns in the feedback they receive — that's the insight. Provide a feedback frame: 'The strongest part is… My question is… Consider trying…'",
+ example:"'Bring your essay draft. Pair up. You have 2 minutes each: present your thesis and get feedback. Then find someone new. Three rounds.'"}
+];
+
+var NEEDS=[
+{id:"review",icon:"📚",label:"Review & Remember",desc:"Help students master facts, vocabulary, and content through active practice."},
+{id:"think",icon:"🧠",label:"Think Deeper",desc:"Develop analysis, reflection, perspective-taking, and higher-order thinking."},
+{id:"discuss",icon:"💬",label:"Discuss & Communicate",desc:"Build speaking, listening, and academic discourse skills."},
+{id:"practice",icon:"✏️",label:"Practice Skills",desc:"Drill procedures and skills with built-in coaching and feedback."},
+{id:"community",icon:"🤝",label:"Build Class Community",desc:"Help students know and trust classmates beyond their immediate team."},
+{id:"team",icon:"⭐",label:"Build Team Trust",desc:"Strengthen bonds within a team of four."},
+{id:"share",icon:"📢",label:"Share & Present",desc:"Share work, ideas, and projects across teams or with the class."},
+{id:"decide",icon:"⚖️",label:"Make Decisions",desc:"Help teams prioritize, reach consensus, and make choices together."}
+];
+
+var view="home",activeNeed=null,openCard=null,searchText="",filterGroup="All",filterDiff="All",filterBloom="All",filterDok="All";
+
+function render(){
+  var app=document.getElementById("app"),h="";
+  h+='<div class="hdr"><div class="pre">Cooperative Learning</div><h1>Structure Toolkit</h1>';
+  h+='<div class="sub">Interactive structures that get every student talking, thinking, and learning — not just the ones who raise their hands. No special training needed. Pick a goal, follow the steps.</div></div>';
+  h+='<div class="tabs">';
+  h+=tb("What do I need?","home")+tb("All Structures","all")+tb("Building Blocks","blocks")+tb("Getting Started","start")+tb("Discussion Tools","tools");
+  h+='</div>';
+  if(view==="home")h+=rHome();else if(view==="need")h+=rNeed();else if(view==="all")h+=rAll();else if(view==="blocks")h+=rBlocks();else if(view==="start")h+=rStart();else if(view==="tools")h+=rTools();
+  h+='<div class="ftr">Cooperative Learning Structure Toolkit · Built by <a href="#">Jason Beyer</a>, Director of Educational Technology — Regis Jesuit High School</div>';
+  app.innerHTML=h;bindEvents();
+}
+
+function tb(l,v){return '<button class="tab'+((view===v||(view==="need"&&v==="home"))?" a":"")+'" data-view="'+v+'">'+l+'</button>';}
+
+function rHome(){
+  var h='<div style="text-align:center;margin-bottom:16px"><div style="font-size:15px;font-weight:700;color:#eee">What do you need students to do?</div><div style="font-size:12px;color:#777;margin-top:4px">Pick a goal — we\'ll show you the right structures with step-by-step instructions.</div></div>';
+  h+='<div class="needs">';
+  for(var i=0;i<NEEDS.length;i++){var n=NEEDS[i];h+='<button class="need-btn" data-need="'+n.id+'"><div class="icon">'+n.icon+'</div><div class="label">'+n.label+'</div><div class="desc">'+n.desc+'</div></button>';}
+  h+='</div>';return h;
+}
+
+function rNeed(){
+  var need=NEEDS.filter(function(n){return n.id===activeNeed})[0];
+  if(!need)return"";
+  var st=S.filter(function(s){return s.need===activeNeed});
+  var h='<button class="back-btn" data-view="home">← Back to needs</button>';
+  h+='<div style="margin-bottom:16px"><span style="font-size:28px;margin-right:8px">'+need.icon+'</span><span style="font-size:20px;font-weight:700">'+need.label+'</span><div style="font-size:12px;color:#888;margin-top:4px">'+need.desc+' · '+st.length+' structures</div></div>';
+  for(var i=0;i<st.length;i++)h+=rCard(st[i]);
+  return h;
+}
+
+function rAll(){
+  var h='<div class="search-wrap"><input type="text" id="si" placeholder="Search structures, uses, or keywords…" value="'+esc(searchText)+'"></div>';
+  h+='<div class="filters"><select id="fg"><option value="All">All Groupings</option><option value="Pairs"'+(filterGroup==="Pairs"?" selected":"")+'>Pairs</option><option value="Team"'+(filterGroup==="Team"?" selected":"")+'>Team of 4</option><option value="Class"'+(filterGroup==="Class"?" selected":"")+'>Whole Class</option></select>';
+  h+='<select id="fd"><option value="All">All Levels</option><option value="Beginner"'+(filterDiff==="Beginner"?" selected":"")+'>Beginner</option><option value="Intermediate"'+(filterDiff==="Intermediate"?" selected":"")+'>Intermediate</option><option value="Advanced"'+(filterDiff==="Advanced"?" selected":"")+'>Advanced</option></select>';
+  h+='<select id="fb"><option value="All">All Bloom\'s</option><option value="Remember"'+(filterBloom==="Remember"?" selected":"")+'>Remember</option><option value="Understand"'+(filterBloom==="Understand"?" selected":"")+'>Understand</option><option value="Apply"'+(filterBloom==="Apply"?" selected":"")+'>Apply</option><option value="Analyze"'+(filterBloom==="Analyze"?" selected":"")+'>Analyze</option><option value="Evaluate"'+(filterBloom==="Evaluate"?" selected":"")+'>Evaluate</option><option value="Create"'+(filterBloom==="Create"?" selected":"")+'>Create</option></select>';
+  h+='<select id="fk"><option value="All">All DOK</option><option value="1"'+(filterDok==="1"?" selected":"")+'>DOK 1 — Recall</option><option value="2"'+(filterDok==="2"?" selected":"")+'>DOK 2 — Skill/Concept</option><option value="3"'+(filterDok==="3"?" selected":"")+'>DOK 3 — Strategic</option><option value="4"'+(filterDok==="4"?" selected":"")+'>DOK 4 — Extended</option></select>';
+  h+='</div>';
+  var f=S.filter(function(s){if(filterGroup!=="All"&&s.group!==filterGroup)return false;if(filterDiff!=="All"&&s.diff!==filterDiff)return false;if(filterBloom!=="All"&&(!s.bloom||s.bloom.indexOf(filterBloom)===-1))return false;if(filterDok!=="All"&&(!s.dok||s.dok.indexOf(parseInt(filterDok))===-1))return false;if(searchText){var q=searchText.toLowerCase();if(s.name.toLowerCase().indexOf(q)===-1&&s.best.toLowerCase().indexOf(q)===-1&&s.how.toLowerCase().indexOf(q)===-1&&s.engine.toLowerCase().indexOf(q)===-1)return false;}return true;});
+  h+='<div class="count">'+f.length+' structure'+(f.length!==1?'s':'')+'</div>';
+  for(var i=0;i<f.length;i++)h+=rCard(f[i]);return h;
+}
+
+function rCard(s){
+  var isOpen=openCard===s.name;
+  var h='<div class="card s-card'+(isOpen?" card-open":"")+'" data-structure="'+s.name+'">';
+  h+='<div class="s-hdr"><div class="s-name">'+s.name+'<span class="arrow'+(isOpen?" open":"")+'">▸</span></div></div>';
+  h+='<div class="s-badges">';
+  h+='<span class="badge b-group">'+(s.group==="Pairs"?"👫 Pairs":s.group==="Team"?"👥 Team of 4":"🏫 Whole Class")+'</span>';
+  h+='<span class="badge b-time">⏱ '+s.time+'</span>';
+  h+='<span class="badge b-diff">'+s.diff+'</span>';
+  if(s.move)h+='<span class="badge b-move">🚶 Movement</span>';
+  h+='<span class="badge b-engine">'+s.engine+'</span>';
+  if(s.bloom)h+='<span class="badge b-bloom">Bloom\'s: '+s.bloom.join(", ")+'</span>';
+  if(s.dok)h+='<span class="badge b-dok">DOK '+s.dok.join("–")+'</span>';
+  h+='</div>';
+  h+='<div class="s-how">'+s.how+'</div>';
+  h+='<div class="s-best"><strong>Best for:</strong> '+s.best+'</div>';
+  if(isOpen){
+    h+='<div class="steps"><div class="step-label">Step-by-Step</div>';
+    for(var j=0;j<s.steps.length;j++)h+='<div class="step"><div class="step-num">'+(j+1)+'</div><div class="step-text">'+s.steps[j]+'</div></div>';
+    h+='<div class="tip-box"><div class="tip-label">💡 Teacher Tip</div><p>'+s.tips+'</p></div>';
+    h+='<div class="example-box"><div class="ex-label">Example in Action</div><p>'+s.example+'</p></div></div>';
+  }
+  h+='</div>';return h;
+}
+
+// ========== BUILDING BLOCKS ==========
+function rBlocks(){
+  var h='<div class="gs-section"><div class="gs-title">The Three Engines</div>';
+  h+='<div class="gs-text" style="margin-bottom:12px">Every cooperative learning structure is built from just <strong>three interaction patterns</strong>. Learn these, and you can understand — or invent — any structure.</div>';
+  h+='<div class="engine-grid">';
+  h+='<div class="engine-card"><h3>Volley</h3><div class="pattern">A → B → A → B</div><p>Back-and-forth between <strong>two people</strong>. Like a ping-pong rally. Partners alternate, one contribution at a time. Fast, focused, equal.</p></div>';
+  h+='<div class="engine-card"><h3>Go-Around</h3><div class="pattern">A → B → C → D → A</div><p>Sequential turn-taking around a <strong>team of 3+</strong>. Each person contributes in order. Guarantees airtime for every voice, including the quiet ones.</p></div>';
+  h+='<div class="engine-card"><h3>Mix</h3><div class="pattern">→ ? → ? → ?</div><p><strong>Movement</strong> to find new partners. Students leave their seats, pair with different classmates, interact, then find someone new. Breaks social bubbles.</p></div>';
+  h+='</div></div>';
+
+  h+='<div class="gs-section"><div class="gs-title">The Modes</div>';
+  h+='<div class="gs-text" style="margin-bottom:12px">Each engine can run in different <strong>modes</strong> — how students interact within the pattern. Combine an engine with a mode and you have a structure.</div>';
+  h+='<table class="mode-table"><thead><tr><th>Mode</th><th>What Students Do</th><th>When to Use</th></tr></thead><tbody>';
+  h+='<tr><td>Verbal</td><td>Speak their response aloud</td><td>Quick, low-prep, good for brainstorming and recall</td></tr>';
+  h+='<tr><td>Written</td><td>Write their response on paper</td><td>When you need a product, or the room is too noisy for verbal</td></tr>';
+  h+='<tr><td>Coach</td><td>One solves, one watches and helps</td><td>Skill practice — math, writing mechanics, procedures</td></tr>';
+  h+='<tr><td>Timed</td><td>One speaks for a set time, the other just listens</td><td>Reflection, deep sharing, opinion-forming</td></tr>';
+  h+='<tr><td>Silent</td><td>Write without speaking (ideas go to center)</td><td>Equalizing voice, giving introverts full access</td></tr>';
+  h+='<tr><td>Role-Based</td><td>Each person has a specific job (reader, responder, coach)</td><td>Complex tasks, structured practice, discussion</td></tr>';
+  h+='</tbody></table></div>';
+
+  h+='<div class="gs-section"><div class="gs-title">How Structures Stack</div>';
+  h+='<div class="gs-text" style="margin-bottom:12px">Simple structures combine into more complex ones, just like chords combine into songs. Here\'s how the progression works:</div>';
+
+  h+='<div class="card" style="margin-bottom:10px"><div style="font-size:12px;font-weight:700;color:#9b59b6;margin-bottom:6px">Level 1: Pair Structures</div>';
+  h+='<div style="font-size:12px;color:#bbb;line-height:1.7">Start here. Two students, one interaction pattern. <strong>Ping-Pong Share</strong> (Volley + Verbal), <strong>Listen & Switch</strong> (Volley + Timed), <strong>Partner Coach</strong> (Volley + Coach). Every teacher can run these on day one.</div></div>';
+
+  h+='<div class="card" style="margin-bottom:10px"><div style="font-size:12px;font-weight:700;color:#9b59b6;margin-bottom:6px">Level 2: Team Structures (building on pairs)</div>';
+  h+='<div style="font-size:12px;color:#bbb;line-height:1.7">Expand from 2 to 4. <strong>Go-Around Share</strong> is just Ping-Pong Share extended to a team. <strong>Pass the Pen</strong> is the written version. <strong>Heads Up</strong> adds accountability by randomly calling one student to represent the team. Pairs within teams can still use Level 1 structures.</div></div>';
+
+  h+='<div class="card" style="margin-bottom:10px"><div style="font-size:12px;font-weight:700;color:#9b59b6;margin-bottom:6px">Level 3: Whole-Class Structures (building on pairs & teams)</div>';
+  h+='<div style="font-size:12px;color:#bbb;line-height:1.7">Add movement. <strong>Stand & Find</strong> is Ping-Pong Share with new random partners each round. <strong>Card Swap</strong> adds question cards and trading. <strong>Double Ring</strong> rotates through many partners quickly. The engine is the same — just the scope changes.</div></div>';
+
+  h+='<div class="card" style="margin-bottom:10px"><div style="font-size:12px;font-weight:700;color:#9b59b6;margin-bottom:6px">Level 4: Combined & Sequenced Structures</div>';
+  h+='<div style="font-size:12px;color:#bbb;line-height:1.7">Chain structures together. <strong>Snowball Build</strong> is Individual → Pair → Team (three structures in sequence). <strong>Interview Relay</strong> is two Volley interviews followed by a Go-Around share. <strong>Teach-Back Puzzle</strong> is individual study → expert Go-Around → team teaching. Once you see the engines, you can design your own sequences.</div></div>';
+  h+='</div>';
+
+  h+='<div class="gs-section"><div class="gs-title">Design Your Own</div>';
+  h+='<div class="gs-text">Pick an engine. Pick a mode. You have a structure. Want students to brainstorm in pairs? <strong>Volley + Verbal</strong>. Want accountability in teams? <strong>Go-Around + Written + Consensus Check</strong>. Want energy and movement? <strong>Mix + Quiz</strong>. The structures in this toolkit aren\'t magic formulas — they\'re just well-tested combinations of these building blocks. Once you internalize the engines, you\'ll start inventing your own.</div></div>';
+
+  h+='<div class="gs-section"><div class="gs-title">Thinking Levels: Bloom\'s Taxonomy & DOK</div>';
+  h+='<div class="gs-text" style="margin-bottom:12px">Each structure in this toolkit is tagged with its <strong>Bloom\'s Taxonomy</strong> range and <strong>Webb\'s Depth of Knowledge (DOK)</strong> level. But here\'s the critical insight: <strong>the structure creates the interaction pattern; the prompt determines the cognitive demand.</strong> A Go-Around Share is DOK 1 if you ask "list the state capitals" and DOK 3 if you ask "name factors that could destabilize a democracy." Choose your structure for the interaction you want, then write your prompt for the thinking level you need.</div>';
+
+  h+='<div class="card" style="margin-bottom:12px"><div style="font-size:13px;font-weight:700;color:#e67e22;margin-bottom:8px">Bloom\'s Taxonomy (Revised) — from simple to complex</div>';
+  h+='<table class="mode-table"><tbody>';
+  h+='<tr><td style="color:#27ae60">Remember</td><td>Recall facts, terms, definitions</td><td style="color:#777;font-size:11px">Ping-Pong Share, Card Swap, Reveal Together</td></tr>';
+  h+='<tr><td style="color:#2ecc71">Understand</td><td>Explain, interpret, summarize, paraphrase</td><td style="color:#777;font-size:11px">Listen & Switch, Go-Around Share, Interview Relay</td></tr>';
+  h+='<tr><td style="color:#3498db">Apply</td><td>Use knowledge in new situations, solve, demonstrate</td><td style="color:#777;font-size:11px">Partner Coach, Pair & Verify, Expert Hunt</td></tr>';
+  h+='<tr><td style="color:#9b59b6">Analyze</td><td>Break apart, compare, contrast, find patterns</td><td style="color:#777;font-size:11px">Compare & Combine, Perspective Swap, Spot the Bluff</td></tr>';
+  h+='<tr><td style="color:#e74c3c">Evaluate</td><td>Justify, argue, critique, judge, defend</td><td style="color:#777;font-size:11px">Opinion Line, Gallery Walk Feedback, Budget Vote, Fishbowl Focus</td></tr>';
+  h+='<tr><td style="color:#C11430">Create</td><td>Design, produce, invent, compose</td><td style="color:#777;font-size:11px">Problem Swap, Snowball Build</td></tr>';
+  h+='</tbody></table></div>';
+
+  h+='<div class="card" style="margin-bottom:12px"><div style="font-size:13px;font-weight:700;color:#95a5a6;margin-bottom:8px">Webb\'s Depth of Knowledge — how deep does the thinking go?</div>';
+  h+='<table class="mode-table"><tbody>';
+  h+='<tr><td>DOK 1</td><td><strong>Recall & Reproduce</strong> — Right there. One correct answer. Retrieval from memory.</td><td style="color:#777;font-size:11px">Card Swap, Reveal Together, Ping-Pong Share (with recall prompts)</td></tr>';
+  h+='<tr><td>DOK 2</td><td><strong>Skill & Concept</strong> — Requires some mental processing. Classify, compare, organize, interpret. More than one step.</td><td style="color:#777;font-size:11px">Partner Coach, Heads Up, Expert Hunt, Stand & Find</td></tr>';
+  h+='<tr><td>DOK 3</td><td><strong>Strategic Thinking</strong> — Requires reasoning, planning, justifying. Multiple valid approaches. Students must develop an argument or strategy.</td><td style="color:#777;font-size:11px">Opinion Line, Perspective Swap, Compare & Combine, Role Rotate Discussion</td></tr>';
+  h+='<tr><td>DOK 4</td><td><strong>Extended Thinking</strong> — Investigate over time. Synthesize across sources. Connect to the real world. Create something original.</td><td style="color:#777;font-size:11px">Snowball Build, Teach-Back Puzzle, Fishbowl Focus</td></tr>';
+  h+='</tbody></table></div>';
+
+  h+='<div class="card" style="margin-bottom:12px"><div style="font-size:13px;font-weight:700;color:#C11430;margin-bottom:8px">The Prompt Is the Lever</div>';
+  h+='<div style="font-size:12px;color:#bbb;line-height:1.7;margin-bottom:8px">The same structure operates at radically different cognitive levels depending on your prompt. Here\'s the same structure — <strong>Go-Around Share</strong> — at each Bloom\'s level:</div>';
+  h+='<table class="mode-table"><tbody>';
+  h+='<tr><td style="color:#27ae60">Remember</td><td>"Go around and name one element from the periodic table."</td></tr>';
+  h+='<tr><td style="color:#2ecc71">Understand</td><td>"Go around and explain one cause of the French Revolution in your own words."</td></tr>';
+  h+='<tr><td style="color:#3498db">Apply</td><td>"Go around and give an example of this formula used in a real-world context."</td></tr>';
+  h+='<tr><td style="color:#9b59b6">Analyze</td><td>"Go around: each person names one similarity OR difference between the two texts."</td></tr>';
+  h+='<tr><td style="color:#e74c3c">Evaluate</td><td>"Go around and argue whether the protagonist made the right decision — and why."</td></tr>';
+  h+='<tr><td style="color:#C11430">Create</td><td>"Go around: each person contributes one line to an original poem about migration."</td></tr>';
+  h+='</tbody></table>';
+  h+='<div style="font-size:11px;color:#888;margin-top:8px;font-style:italic">Same structure. Same steps. Six completely different levels of thinking. The structure is the vehicle; the prompt is the destination.</div></div>';
+
+  h+='</div>';
+
+  return h;
+}
+
+// ========== GETTING STARTED ==========
+function rStart(){
+  var h='';
+  h+='<div class="gs-section"><div class="gs-title">The Core Idea</div><div class="gs-text">A <strong>structure</strong> is a step-by-step way of organizing how students interact with each other and with content. Structures are content-free — you plug in your own material. The same structure works in math, English, science, or history. Learn the structure once, use it everywhere.</div></div>';
+
+  h+='<div class="gs-section"><div class="gs-title">The Formula</div><div class="card" style="text-align:center;padding:20px"><div style="font-size:18px;font-weight:800;color:#eee"><span style="color:#C11430">Content</span> + <span style="color:#3498db">Structure</span> = <span style="color:#2ecc71">Activity</span></div><div style="font-size:12px;color:#888;margin-top:6px">(What you teach) + (How students interact) = (A learning experience)</div><div style="font-size:12px;color:#666;margin-top:8px">Activity + Activity + Activity = <strong style="color:#eee">Lesson</strong></div></div></div>';
+
+  h+='<div class="gs-section"><div class="gs-title">The Four Principles (PIES)</div><div class="gs-text" style="margin-bottom:10px">These are what separate structured cooperative learning from regular group work. If these are in place, the approach works. If not, you\'re just doing group work and hoping for the best.</div>';
+  h+='<div class="pies-grid">';
+  h+=pC("P","Positive Interdependence","Does the success of one benefit others?","Students share a common goal. Teammates help each other because everyone's success is linked.");
+  h+=pC("I","Individual Accountability","Can each student be called on?","Each student must demonstrate understanding. No hiding behind the group. Structures make this visible.");
+  h+=pC("E","Equal Participation","How equal is the participation?","Turn-taking, timed sharing, and roles ensure no one dominates and no one disappears.");
+  h+=pC("S","Simultaneous Interaction","What percent are active at once?","Pairs = 50% active. Teams = 25%. Compare that to calling on one student = 3%. More active = more learning.");
+  h+='</div></div>';
+
+  h+='<div class="gs-section"><div class="gs-title">Setting Up Teams</div><div class="gs-text"><strong>Teams of 4</strong> are ideal — small enough for everyone to participate, and they split cleanly into pairs. Form <strong>mixed-ability teams</strong>: rank students into four performance quartiles (top 25%, next 25%, next 25%, bottom 25%), then place one from each quartile on every team. Within the team, seat students so <strong>partners sitting side by side are two quartiles apart</strong> — that\'s the productive gap for peer coaching. Keep teams together for <strong>5–6 weeks</strong>, then reshuffle.</div></div>';
+
+  h+='<div class="gs-section"><div class="gs-title">Start with These Five</div><div class="gs-text" style="margin-bottom:10px">New to this? These five structures are the simplest, require no materials, and work in every subject.</div>';
+  var starters=["Ping-Pong Share","Listen & Switch","Reflect-Discuss-Share","Go-Around Share","Heads Up"];
+  for(var i=0;i<starters.length;i++){var s=S.filter(function(x){return x.name===starters[i]})[0];if(s)h+=rCard(s);}
+  h+='</div>';
+
+  h+='<div class="gs-section"><div class="gs-title">Management Essentials</div>';
+  h+=mT("Quiet Signal","Establish one consistent signal (raised hand, chime, call-and-response). When you give it, students stop talking, stop working, and look at you. Practice until it takes less than 5 seconds.");
+  h+=mT("12-Inch Voices","Teach students to talk at a volume that only reaches their partner or team — about 12 inches. Name it. Practice it. Reinforce it.");
+  h+=mT("Sponge Activities","Have self-directed activities ready for early finishers: brainteasers, journal prompts, extension problems. Easy in, easy out, high success rate.");
+  h+=mT("Three Before Me","If a student has a question, they ask their teammates first. Only if the whole team is stuck do they come to you. This reduces dependency and builds team problem-solving.");
+  h+=mT("Structures Replace, Not Add","These don't take extra time — they replace traditional methods. A Listen & Switch takes the same minutes as calling on three students, but engages 100% of the class instead of 10%.");
+  h+='</div>';
+  return h;
+}
+
+function pC(l,n,q,d){return '<div class="pies-card"><div class="pies-letter">'+l+'</div><div class="pies-name">'+n+'</div><div class="pies-q">'+q+'</div><div class="pies-desc">'+d+'</div></div>';}
+function mT(t,d){return '<div class="card" style="margin-bottom:8px"><div style="font-size:13px;font-weight:700;color:#eee;margin-bottom:4px">'+t+'</div><div style="font-size:12px;color:#999;line-height:1.6">'+d+'</div></div>';}
+
+// ========== TOOLS ==========
+function rTools(){
+  var h='<div class="gs-section"><div class="gs-title">Discussion Gambits</div><div class="gs-text" style="margin-bottom:10px">Sentence starters that teach students the mechanics of academic discourse. Post in your classroom, print on cards, or project on screen.</div>';
+  var G=[{t:"Agreeing",i:["I agree with you because…","That's a great point because…","I see what you mean…","Building on what you said…"]},{t:"Respectfully Disagreeing",i:["I see it differently because…","I respectfully disagree because…","Have you considered…?","Another way to look at it is…"]},{t:"Paraphrasing",i:["So what you're saying is…","In other words…","Let me make sure I understand…","It sounds like you think…"]},{t:"Adding On",i:["Building on that idea…","To add to what you said…","That reminds me of…","Along those lines…"]},{t:"Encouraging Others",i:["What do you think?","Tell me more about that…","That's interesting — go on…","I'd love to hear your idea…"]},{t:"Asking for Clarification",i:["Can you explain what you mean by…?","Could you give an example?","I'm not sure I follow — can you say more?","What makes you think that?"]}];
+  for(var i=0;i<G.length;i++){h+='<div class="gambit-section"><div class="gambit-type">'+G[i].t+'</div>';for(var j=0;j<G[i].i.length;j++)h+='<div class="gambit">"'+G[i].i[j]+'"</div>';h+='</div>';}
+  h+='</div>';
+
+  h+='<div class="gs-section"><div class="gs-title">Sponge Activities</div><div class="gs-text" style="margin-bottom:10px">Self-directed activities for teams that finish early. Characteristics: easy entry, easy exit, high success rate, fun, connected to learning.</div>';
+  var sp=["Puzzles and mazes (with or without words)","Brainteasers and logic puzzles","Letter matrix — how many words can you find?","How many words can you make from [a long word]?","Task cards related to current content","Game corner: chess, checkers, dominoes","Extensions to the current lesson or unit","Journal or log entries — reflective writing","List all the ways to make the number [X]","Brainstorming challenges (things made from rubber, uses for a paperclip)","How many ways can you make one dollar?","Create quiz questions for classmates"];
+  h+='<div class="card">';for(var i=0;i<sp.length;i++)h+='<div style="font-size:12px;color:#bbb;padding:5px 0;border-bottom:'+(i<sp.length-1?"1px solid rgba(255,255,255,.04)":"none")+'">'+sp[i]+'</div>';
+  h+='</div></div>';
+
+  h+='<div class="gs-section"><div class="gs-title">Sample Prompts by Subject</div>';
+  var P={"Teambuilding (any subject)":["What's something most people don't know about you?","If you could have any superpower for one day…","Describe your ideal weekend in three words.","What's a skill you'd love to learn?","If you could time-travel, where and when?","What's the best advice you've ever received?"],Science:["Name three renewable energy sources.","Explain the water cycle in your own words.","What variables would you test in this experiment?","Predict what would happen if…","Design an experiment to test this hypothesis."],Humanities:["What is the author's purpose in this passage?","Compare two perspectives on this event.","What would you have done differently?","How does this connect to current events?","Summarize the main argument in one sentence."],Math:["Explain your solution strategy.","What's a common mistake someone might make here?","Create a word problem using today's concept.","Is there another way to solve this?","Estimate the answer before solving."],"World Languages":["Describe your morning using at least 5 verbs.","Create a dialogue at a restaurant.","Find cognates in this text.","Use three new vocabulary words in a sentence.","Describe this image using only the target language."]};
+  for(var k in P){h+='<div class="card" style="margin-bottom:8px"><div style="font-size:12px;font-weight:700;color:#C11430;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">'+k+'</div>';for(var i=0;i<P[k].length;i++)h+='<div style="font-size:12px;color:#bbb;padding:4px 0;border-bottom:'+(i<P[k].length-1?"1px solid rgba(255,255,255,.04)":"none")+'">'+P[k][i]+'</div>';h+='</div>';}
+  h+='</div>';
+  return h;
+}
+
+// ========== EVENTS ==========
+function bindEvents(){
+  var els=document.querySelectorAll("[data-view]");for(var i=0;i<els.length;i++)els[i].addEventListener("click",function(){var v=this.getAttribute("data-view");if(v){view=v;openCard=null;searchText="";filterGroup="All";filterDiff="All";filterBloom="All";filterDok="All";render();}});
+  var nbs=document.querySelectorAll(".need-btn");for(var i=0;i<nbs.length;i++)nbs[i].addEventListener("click",function(){activeNeed=this.getAttribute("data-need");view="need";openCard=null;render();});
+  var scs=document.querySelectorAll(".s-card");for(var i=0;i<scs.length;i++)scs[i].addEventListener("click",function(){var n=this.getAttribute("data-structure");openCard=openCard===n?null:n;render();});
+  var si=document.getElementById("si");if(si){si.addEventListener("input",function(){searchText=this.value;render();var el=document.getElementById("si");if(el){el.focus();el.setSelectionRange(searchText.length,searchText.length);}});}
+  var fg=document.getElementById("fg");if(fg)fg.addEventListener("change",function(){filterGroup=this.value;render();});
+  var fd=document.getElementById("fd");if(fd)fd.addEventListener("change",function(){filterDiff=this.value;render();});
+  var fb=document.getElementById("fb");if(fb)fb.addEventListener("change",function(){filterBloom=this.value;render();});
+  var fk=document.getElementById("fk");if(fk)fk.addEventListener("change",function(){filterDok=this.value;render();});
+}
+
+function esc(s){return s.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+document.getElementById("themeBtn").addEventListener("click",function(){document.body.classList.toggle("light");this.textContent=document.body.classList.contains("light")?"🌙 Dark":"☀ Light";try{localStorage.setItem("clt_theme",document.body.classList.contains("light")?"light":"dark")}catch(e){}});
+try{if(localStorage.getItem("clt_theme")==="light"){document.body.classList.add("light");document.getElementById("themeBtn").textContent="🌙 Dark";}}catch(e){}
+
+render();
+})();
+</script>
+</body>
+</html>
