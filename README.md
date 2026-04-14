@@ -2,7 +2,7 @@
 
 An interactive reference for teachers who want every student talking, thinking, and learning — not just the ones who raise their hands. Browse 40+ cooperative learning structures by what you need students to do, with step-by-step instructions, Bloom's/DOK tagging, and ready-to-use classroom examples.
 
-**[Launch the Toolkit →](https://YOUR-USERNAME.github.io/cooperative-learning-toolkit/)**
+**[Launch the Toolkit →](https://rjedtech.github.io/cooperative-learning-toolkit/)**
 
 ## The Problem This Solves
 
