@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Methods &amp; Frameworks · Cooperative Learning Toolkit</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#C11430">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f0f1a;color:#eee;min-height:100vh;position:relative}
+.watermark{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url('favicon.svg');
+ background-repeat:no-repeat;background-position:center;background-attachment:fixed;background-size:min(66vh,540px) auto;opacity:.04}
+body.light .watermark{opacity:.05}
+.wrap{max-width:900px;margin:0 auto;padding:20px 16px;position:relative;z-index:1}
+.rj-mark{height:40px;width:auto;display:block;flex-shrink:0}
+.site-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 20px .9rem;
+ border-bottom:1px solid rgba(255,255,255,.10);margin:0 auto;max-width:1100px;position:relative;z-index:1}
+body.light .site-header{border-bottom-color:rgba(0,0,0,.10)}
+.site-header .hl{display:flex;align-items:center;gap:.85rem;min-width:0;flex-wrap:wrap}
+.brand{font-size:1.35rem;font-weight:600;color:#eee}
+body.light .brand{color:#1a1a1a}
+.brand .accent{color:#C11430}
+.tagline{color:#888;font-size:.9rem}
+body.light .tagline{color:#777}
+.icon-btn{background:transparent;border:1px solid rgba(255,255,255,.20);color:#aaa;width:36px;height:36px;border-radius:6px;
+ cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+body.light .icon-btn{border-color:rgba(0,0,0,.20);color:#666}
+.icon-btn:hover{border-color:#C11430;color:#C11430}
+.icon-btn svg{width:18px;height:18px}
+body:not(.light) .theme-toggle .icon-moon{display:none}
+body:not(.light) .theme-toggle .icon-sun{display:block}
+body.light .theme-toggle .icon-sun{display:none}
+body.light .theme-toggle .icon-moon{display:block}
+.xnav{display:flex;gap:6px;justify-content:center;margin:16px auto 4px;max-width:1100px;flex-wrap:wrap}
+.xnav a{padding:7px 18px;border-radius:8px;border:1px solid transparent;font-size:12px;font-weight:700;background:rgba(255,255,255,.04);color:#888;text-decoration:none;transition:all .15s}
+.xnav a:hover{background:rgba(255,255,255,.06)}
+.xnav a.a{background:rgba(193,20,48,.15);color:#C11430;border-color:rgba(193,20,48,.3)}
+body.light .xnav a{background:rgba(0,0,0,.03);color:#888}
+body.light .xnav a.a{background:rgba(193,20,48,.08);color:#C11430;border-color:rgba(193,20,48,.2)}
+.intro{font-size:13px;color:#bbb;line-height:1.7;margin:14px 0 16px}
+body.light .intro{color:#444}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:#888;margin-bottom:16px;padding:12px 14px;
+ border:1px dashed rgba(255,255,255,.12);border-radius:10px}
+body.light .legend{border-color:rgba(0,0,0,.12)}
+.legend b{color:#ccc} body.light .legend b{color:#333}
+.search-wrap input{width:100%;padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.1);
+ background:rgba(0,0,0,.3);color:#eee;font-size:14px;font-family:inherit;outline:none;margin-bottom:12px}
+body.light .search-wrap input{background:rgba(0,0,0,.03);border-color:rgba(0,0,0,.1);color:#1a1a1a}
+.search-wrap input:focus{border-color:rgba(193,20,48,.3)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.filters select{padding:6px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.3);
+ color:#eee;font-size:12px;font-family:inherit;outline:none}
+body.light .filters select{background:rgba(0,0,0,.03);border-color:rgba(0,0,0,.1);color:#1a1a1a}
+.count{font-size:11px;color:#555;margin-bottom:12px}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;margin-bottom:12px;transition:all .15s}
+.card:hover{border-color:rgba(255,255,255,.15)}
+body.light .card{background:rgba(0,0,0,.02);border-color:rgba(0,0,0,.08)}
+.c-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.c-name{font-size:16px;font-weight:700;color:#eee}
+body.light .c-name{color:#1a1a1a}
+.c-src{font-size:11px;color:#888;margin-top:2px}
+.badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
+.b-type{background:rgba(155,89,182,.12);color:#9b59b6;font-style:italic;margin:8px 0}
+.lic-pd{background:rgba(46,204,113,.12);color:#2ecc71}
+.lic-open{background:rgba(52,152,219,.14);color:#3498db}
+.lic-free{background:rgba(230,126,34,.14);color:#e67e22}
+.lic-prop{background:rgba(127,140,141,.18);color:#95a5a6}
+.c-desc{font-size:13px;color:#bbb;line-height:1.6;margin:8px 0}
+body.light .c-desc{color:#444}
+.c-pair{font-size:12px;color:#999;line-height:1.5;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,.02);border-left:3px solid rgba(193,20,48,.3);margin-bottom:8px}
+body.light .c-pair{background:rgba(0,0,0,.02)}
+.c-pair b{color:#C11430}
+.c-link{font-size:12px;font-weight:600;color:#C11430;text-decoration:none}
+.c-link:hover{text-decoration:underline}
+.c-nolink{font-size:12px;color:#777;font-style:italic}
+@media(max-width:500px){.brand{font-size:1.15rem}.c-hdr{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="watermark" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="hl">
+    <img class="rj-mark" src="favicon.svg" alt="Regis Jesuit" onerror="this.style.display='none'">
+    <div class="header-text">
+      <div class="brand">Cooperative Learning <span class="accent">Toolkit</span></div>
+      <div class="tagline">Methods &amp; frameworks — what you can use, and what you can do with it</div>
+    </div>
+  </div>
+  <div class="hdr-tools">
+    <button class="icon-btn theme-toggle" id="themeBtn" type="button" aria-label="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+    </button>
+  </div>
+</header>
+
+<nav class="xnav">
+  <a href="index.html">Structures</a>
+  <a href="methods.html" class="a">Methods &amp; Frameworks</a>
+  <a href="designer.html">Activity Designer</a>
+</nav>
+
+<div class="wrap">
+  <p class="intro">The Structures tab gives you original, ready-to-run cooperative routines. This page maps the wider world of teaching methods and frameworks teachers ask about — thinking routines, questioning techniques, discussion protocols, and named systems. We don't reproduce copyrighted material; each entry says where it comes from, links to the source, and carries a badge telling you what you're allowed to do with it.</p>
+
+  <div class="legend">
+    <span><span class="badge lic-pd">🟢 PUBLIC</span> &nbsp;<b>Public method</b> — no owner; build, rename, share freely.</span>
+    <span><span class="badge lic-open">🔵 OPEN</span> &nbsp;<b>Adapt &amp; share</b> — Creative Commons; remix with attribution (noncommercial).</span>
+    <span><span class="badge lic-free">🟠 FREE</span> &nbsp;<b>Free to use</b> — attribute; use/share as published, don't republish modified versions.</span>
+    <span><span class="badge lic-prop">⚪ PROPRIETARY</span> &nbsp;<b>Trademarked</b> — learn it from the source; don't reproduce its materials.</span>
+  </div>
+
+  <div class="search-wrap"><input type="search" id="si" placeholder="Search methods, frameworks, or sources…"></div>
+  <div class="filters">
+    <select id="ft">
+      <option value="All">All types</option>
+      <option value="thinking">Visible Thinking</option>
+      <option value="questioning">Questioning</option>
+      <option value="discussion">Discussion Protocols</option>
+      <option value="groupprocess">Group Process</option>
+      <option value="framework">Named Frameworks</option>
+    </select>
+    <select id="fl">
+      <option value="All">All licenses</option>
+      <option value="pd">🟢 Public</option>
+      <option value="open">🔵 Open</option>
+      <option value="free">🟠 Free</option>
+      <option value="prop">⚪ Proprietary</option>
+    </select>
+  </div>
+  <div class="count" id="ct"></div>
+  <div id="grid"></div>
+</div>
+
+<footer class="site-footer" style="border-top:1px solid rgba(255,255,255,.08);margin:28px auto 0;padding:1.3rem 20px;text-align:center;font-size:.82rem;color:#666;max-width:1100px;position:relative;z-index:1;line-height:1.7">
+  <div style="margin-bottom:8px;font-size:.78rem">
+    <b style="color:#999">Sources &amp; attribution.</b>
+    Thinking Routines were developed by <b>Project Zero</b>, Harvard Graduate School of Education (CC BY-NC-ND 4.0). &middot;
+    The <b>Question Formulation Technique (QFT)</b> was created by Dan Rothstein &amp; Luz Santana, Right Question Institute (CC ShareAlike, noncommercial). &middot;
+    <b>Liberating Structures</b> by Henri Lipmanowicz &amp; Keith McCandless (Creative Commons). &middot;
+    Protocols from the <b>National School Reform Faculty</b> and <b>School Reform Initiative / CLEE</b>. &middot;
+    <b>Kagan Structures</b>, <b>Six Thinking Hats</b> (de Bono), and <b>Thinking Maps</b> are trademarks of their owners and are referenced, not reproduced.
+  </div>
+  Built for Regis Jesuit High School &middot; No data leaves your browser &middot;
+  <a href="https://github.com/RJEdTech/Cooperative-Learning-Toolkit" target="_blank" rel="noopener" style="color:#999;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15)">View on GitHub</a> &middot;
+  <a href="https://forms.microsoft.com/r/sKU9sHY45r" target="_blank" rel="noopener" style="color:#999;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15)">Report a bug or request a tool</a>
+</footer>
+
+<script>
+(function(){
+var PZ="https://pz.harvard.edu/resources/";
+var M=[
+ {n:"Project Zero — Thinking Routines",src:"Project Zero, Harvard GSE",lic:"free",type:"thinking",
+  desc:"A free library of 85+ short routines — sets of questions or steps repeated until they become classroom habit — that make student thinking visible. Licensed CC BY-NC-ND, so we link to the source rather than copy them.",
+  pair:"Run any routine through one of your cooperative structures — the routine sets the thinking, the structure distributes the talk.",url:"https://pz.harvard.edu/thinking-routines"},
+ {n:"See, Think, Wonder",src:"Project Zero",lic:"free",type:"thinking",
+  desc:"Observe, then interpret, then ask what it makes you wonder. The discipline is describing before interpreting.",
+  pair:"Go-Around Share — one observation each before anyone is allowed to interpret.",url:PZ+"see-think-wonder"},
+ {n:"Circle of Viewpoints",src:"Project Zero",lic:"free",type:"thinking",
+  desc:"Brainstorm the stakeholders in an issue, then speak in character from one viewpoint. Cracks open false two-sided debates.",
+  pair:"Assign one viewpoint per pod seat, then a structured share-out.",url:PZ+"circle-of-viewpoints"},
+ {n:"Compass Points",src:"Project Zero",lic:"free",type:"thinking",
+  desc:"Evaluate a proposal across four directions — Excited, Worrisome, Need-to-know, Stance — before taking a position.",
+  pair:"Four-corner jigsaw: one direction per teammate, then synthesize a pod stance.",url:PZ+"compass-points"},
+ {n:"Claim, Support, Question",src:"Project Zero",lic:"free",type:"thinking",
+  desc:"Make a claim, back it with evidence, then question what isn't explained. Moves students past reflexive agree/disagree.",
+  pair:"Partner Coach / Rally Coach — peers stress-test each other's supports.",url:PZ+"claim-support-question"},
+ {n:"I Used to Think… Now I Think…",src:"Project Zero",lic:"free",type:"thinking",
+  desc:"Two sentence stems that surface how and why a student's thinking changed. A strong unit-closer.",
+  pair:"Reflect-Discuss-Share or Listen & Switch.",url:PZ+"i-used-think-now-i-think"},
+ {n:"Question Formulation Technique (QFT)",src:"Right Question Institute — Rothstein & Santana",lic:"open",type:"questioning",
+  desc:"A scaffolded protocol where students produce, improve, prioritize, and reflect on their OWN questions from a 'Question Focus.' You may adapt and share it with the RQI source line (CC ShareAlike).",
+  pair:"Snowball Build — individual question lists → pair → team prioritization.",url:"https://rightquestion.org/what-is-the-qft/"},
+ {n:"Liberating Structures",src:"Lipmanowicz & McCandless",lic:"open",type:"groupprocess",
+  desc:"33 'microstructures' (1-2-4-All, Impromptu Networking, Troika Consulting, What/So What/Now What) that replace conventional discussion formats. Creative Commons — freely adaptable for noncommercial use.",
+  pair:"1-2-4-All is essentially your Snowball Build; Troika maps onto team coaching.",url:"https://www.liberatingstructures.com/ls-menu/"},
+ {n:"World Café",src:"Public method",lic:"pd",type:"groupprocess",
+  desc:"Rotating small-group rounds with one 'host' who stays at each table; ideas cross-pollinate as groups move.",
+  pair:"Pairs with Ambassador Visit / Gallery Walk Feedback.",url:""},
+ {n:"NSRF Protocols (Critical Friends Group)",src:"National School Reform Faculty",lic:"free",type:"discussion",
+  desc:"200+ structured protocols for examining work, discussion, and decision-making, refined since 1994. Many are free (a free account unlocks the library); the newest are member-only.",
+  pair:"Discussion protocols like Save-the-Last-Word run cleanly as a team Go-Around.",url:"https://nsrfharmony.org/protocols-for-all/"},
+ {n:"SRI / CLEE Protocols",src:"School Reform Initiative · Center for Leadership & Educational Equity",lic:"free",type:"discussion",
+  desc:"A free, educator-developed protocol library (now hosted by CLEE after acquiring SRI). Especially strong for looking at student work and reflective discussion.",
+  pair:"Use for PLC and structured team discussion.",url:"https://www.clee.org/resources/"},
+ {n:"Socratic Seminar",src:"Public method",lic:"pd",type:"discussion",
+  desc:"Student-led, text-based dialogue with norms instead of hand-raising; the teacher mostly stays out.",
+  pair:"Your Structures tool already has an original inner/outer-circle version: Fishbowl Focus.",url:""},
+ {n:"Fishbowl",src:"Public method",lic:"pd",type:"discussion",
+  desc:"An inner circle discusses while an outer circle observes against a focus, then the circles swap.",
+  pair:"Already in your Structures tool as Fishbowl Focus.",url:""},
+ {n:"Jigsaw",src:"Public method (Elliot Aronson)",lic:"pd",type:"groupprocess",
+  desc:"Students become 'experts' on one piece in expert groups, then return to home teams to teach it. Built-in interdependence.",
+  pair:"Your Expert Hunt is a movement-based cousin.",url:""},
+ {n:"Gallery Walk",src:"Public method",lic:"pd",type:"discussion",
+  desc:"Teams rotate past posted work or prompts, reading and adding responses as they go.",
+  pair:"Your Structures tool has Gallery Walk Feedback.",url:""},
+ {n:"Four Corners",src:"Public method",lic:"pd",type:"discussion",
+  desc:"Students physically move to a corner representing their stance, then defend it and listen to others.",
+  pair:"Your Corner Choice is an original version of the same move.",url:""},
+ {n:"Kagan Cooperative Learning Structures",src:"Spencer Kagan",lic:"prop",type:"framework",
+  desc:"The most widely used structures system (PIES, Numbered Heads Together, RallyRobin, and many more). The structure names and materials are trademarked and sold commercially. This toolkit's structures are original alternatives built on the same public interaction patterns.",
+  pair:"Conceptual parent of much of your Structures tab.",url:"https://www.kaganonline.com/"},
+ {n:"Six Thinking Hats",src:"Edward de Bono",lic:"prop",type:"framework",
+  desc:"A parallel-thinking method where a group 'wears' one colored hat (mode of thinking) at a time. 'Six Thinking Hats' and 'de Bono' are registered trademarks — learn it from the official source.",
+  pair:"Run a hat sequence through Go-Around Share.",url:"https://www.debono.com/"},
+ {n:"Thinking Maps",src:"David Hyerle",lic:"prop",type:"framework",
+  desc:"Eight visual maps each tied to a cognitive process (defining, comparing, sequencing, cause/effect…). Trademarked; sold as a school-license product with required training.",
+  pair:"Pair a map with any structure as the written product.",url:"https://www.thinkingmaps.com/"},
+ {n:"Facing History & Ourselves",src:"Facing History & Ourselves (nonprofit)",lic:"free",type:"framework",
+  desc:"A large library of free teaching strategies and routines — many discussion and reflection formats — anchored in history and ethics. Free to use; the materials remain theirs.",
+  pair:"Their strategies slot into your discussion structures.",url:"https://www.facinghistory.org/resource-library"},
+ {n:"Total Participation Techniques",src:"Pérsida & William Himmele (ASCD)",lic:"prop",type:"framework",
+  desc:"A published collection of whole-class engagement techniques. It's a copyrighted book — a good 'further reading' purchase, not something to reproduce.",
+  pair:"Many TPTs are variations on the engines in your Building Blocks tab.",url:"https://www.ascd.org/books/total-participation-techniques-2nd-edition"}
+];
+var TYPE={thinking:"Visible Thinking",questioning:"Questioning",discussion:"Discussion Protocols",groupprocess:"Group Process",framework:"Named Framework"};
+var SRC={PZ:"Project Zero",RQI:"Right Question Institute",LS:"Liberating Structures",PD:"Public-domain method"};
+var LIC={pd:["lic-pd","🟢 Public"],open:["lic-open","🔵 Open"],free:["lic-free","🟠 Free"],prop:["lic-prop","⚪ Proprietary"]};
+var grid=document.getElementById("grid"),si=document.getElementById("si"),ft=document.getElementById("ft"),fl=document.getElementById("fl"),ct=document.getElementById("ct");
+function esc(s){return s.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function render(){
+  var q=(si.value||"").toLowerCase(),t=ft.value,l=fl.value;
+  var rows=M.filter(function(m){
+    var hay=(m.n+" "+m.src+" "+m.desc+" "+(TYPE[m.type]||"")).toLowerCase();
+    return (q===""||hay.indexOf(q)>-1)&&(t==="All"||m.type===t)&&(l==="All"||m.lic===l);
+  });
+  ct.textContent=rows.length+" of "+M.length+" methods";
+  if(!rows.length){grid.innerHTML='<div class="card" style="text-align:center;color:#888">No methods match those filters.</div>';return;}
+  grid.innerHTML=rows.map(function(m){
+    var L=LIC[m.lic];
+    return '<div class="card"><div class="c-hdr"><div><div class="c-name">'+esc(m.n)+'</div>'+
+      '<div class="c-src">'+esc(m.src)+'</div></div><span class="badge '+L[0]+'">'+L[1]+'</span></div>'+
+      '<span class="badge b-type">'+(TYPE[m.type]||m.type)+'</span>'+
+      '<div class="c-desc">'+esc(m.desc)+'</div>'+
+      '<div class="c-pair"><b>In your classroom:</b> '+esc(m.pair)+'</div>'+
+      (m.url?'<a class="c-link" href="'+m.url+'" target="_blank" rel="noopener">Open the source →</a>'
+            :'<span class="c-nolink">Public method — no single owner to link</span>')+'</div>';
+  }).join("");
+}
+[si,ft,fl].forEach(function(el){el.addEventListener("input",render);el.addEventListener("change",render);});
+var __clt=null;try{__clt=localStorage.getItem("clt_theme")}catch(e){}
+document.body.classList.toggle("light", __clt ? (__clt==="light") : true);
+document.getElementById("themeBtn").addEventListener("click",function(){
+  document.body.classList.toggle("light");
+  try{localStorage.setItem("clt_theme",document.body.classList.contains("light")?"light":"dark")}catch(e){}
+});
+render();
+})();
+</script>
+</body>
+</html>

@@ -1,123 +1,81 @@
-# Cooperative Learning Structure Toolkit
+# Cooperative Learning Toolkit
 
-An interactive reference for teachers who want every student talking, thinking, and learning — not just the ones who raise their hands. Browse 40+ cooperative learning structures by what you need students to do, with step-by-step instructions, Bloom's/DOK tagging, and ready-to-use classroom examples.
+An interactive reference for teachers who want every student talking, thinking, and learning — not just the ones who raise their hands. Three connected pages: an interactive library of **original cooperative learning structures**, a curated **Methods & Frameworks** directory that tells you what you're allowed to do with each one, and an **Activity Designer** that turns any objective into an evidence-based, student-centered activity (and generates more ideas with AI).
 
 **[Launch the Toolkit →](https://rjedtech.github.io/cooperative-learning-toolkit/)**
 
-## The Problem This Solves
+## The Three Pages
 
-In a traditional classroom, the teacher asks a question and one student answers. That's 3% participation. The other 97% are watching — or not. Cooperative learning structures replace that pattern with interaction designs where 50–100% of students are actively engaged at the same time. But most structure references assume you already know the system. This toolkit doesn't. It starts with a question every teacher already asks: **what do I need students to do right now?**
+### 1. Structures (`index.html`)
+50 original cooperative learning structures, browsable by what you need students to do, with step-by-step instructions, the Volley/Go-Around/Mix engine system, Bloom's/DOK tagging, teacher tips, and ready-to-use examples. Includes a set of movement / stand-up structures (Stand Up Sit Down, Line-Up, Running Dictation, Find Someone Who, Give One Get One, Stretch & Recall) for body movement and energy. All structure names and descriptions are original; the underlying interaction patterns are general pedagogical techniques owned by no one.
 
-## How It Works
+### 2. Methods & Frameworks (`methods.html`)
+A curated directory of the thinking routines, questioning techniques, discussion protocols, and named frameworks teachers ask about. **We don't reproduce copyrighted material.** Each entry says where it comes from, links to the source, adds our own description and a classroom-pairing note, and carries a license badge:
+
+| Badge | Means | You can… |
+|-------|-------|----------|
+| 🟢 **Public** | Public method, no owner | Build, rename, adapt, and share freely |
+| 🔵 **Open** | Creative Commons (adapt allowed) | Remix and redistribute with attribution (noncommercial) |
+| 🟠 **Free** | Free to use, copyrighted | Use and share as published, attribute, don't republish modified versions |
+| ⚪ **Proprietary** | Trademarked / commercial | Learn it from the source; don't reproduce its materials |
+
+Covers Project Zero thinking routines (linked, CC BY-NC-ND), the Question Formulation Technique (RQI), Liberating Structures, NSRF and SRI/CLEE protocols, public-domain formats (Socratic Seminar, Fishbowl, Jigsaw, Gallery Walk, Four Corners, World Café), and named frameworks (Kagan, Six Thinking Hats, Thinking Maps, Facing History, Total Participation Techniques).
+
+### 3. Activity Designer (`designer.html`)
+Pick a structure, your subject (including a language sub-menu for Spanish/French/Latin/Mandarin/German), and your topic. The Designer shows the **evidence basis** for that structure, the **research signature of your discipline** (what matters most in your subject, with sources), a worked example, and tappable recommended structures. It then generates a **copy-paste prompt for Claude or ChatGPT** that produces more activities for your exact lesson — written to keep the AI honest, so every idea must make students retrieve, produce, or reason, and name the principle it serves. Each subject injects its own evidence guardrail (e.g., English centers discussion and argument-from-text and bans isolated grammar drills; science forces misconception-surfacing; math builds in worked examples and anxiety management).
+
+## The Evidence Spine
+
+The toolkit runs on a small set of deep principles that recur across every subject:
+
+- **How learning sticks:** retrieval practice, spacing, interleaving, dual coding, elaboration, generation, comprehensible input, sound–spelling (phonological) mapping, embodied practice.
+- **How the group makes it happen:** low-anxiety output, peer teaching, individual accountability, and belonging/teambuilding (the cooperative/social side Kagan emphasizes).
+
+Per-discipline signatures (in the Activity Designer):
+- **World Languages** — comprehensible input, the affective filter, sound–spelling mapping.
+- **English / Language Arts** — writing as strategy + peer process (not grammar drills); authentic discussion over recitation; argument from textual evidence. *(Graham & Perin 2007; Applebee et al. 2003; Murphy et al. 2009)*
+- **Math** — cognitive load / worked examples, interleaving, math anxiety. *(Sweller; Rohrer & Taylor; Beilock/Ramirez)*
+- **Science** — conceptual change / confronting misconceptions; argument from evidence. *(Posner/Vosniadou/Chi; Pacaci 2024)*
+- **Social Studies / History** — disciplinary literacy: sourcing, contextualization, corroboration. *(Wineburg; Reisman 2012)*
+- **Theology / Philosophy** — dialogic inquiry + reflection (≈ the Ignatian Examen as metacognition). *(Alexander; Nystrand; P4C)*
+- **Fine & Performing Arts** — varied/interleaved practice + structured peer critique. *(contextual interference)*
+- **Health & PE** — self-efficacy for behavior; contextual interference for motor skills. *(Bandura; Battig; Shea & Morgan)*
+
+## How the Structures Page Works
 
 ### Need-Based Entry
+Teachers choose a goal; the toolkit shows the structures that match.
 
-Instead of memorizing structure names, teachers choose a goal. The toolkit shows only the structures that match.
+| Need | Example structures |
+|------|--------------------|
+| 📚 Review & Remember | Ping-Pong Share, Card Swap, Give One Get One |
+| 🧠 Think Deeper | Reflect-Discuss-Share, Snowball Build, Opinion Line |
+| 💬 Discuss & Communicate | Listen & Switch, Interview Relay, Fishbowl Focus |
+| ✏️ Practice Skills | Partner Coach, Running Dictation, Pair & Verify |
+| 🤝 Build Class Community | Stand & Find, Find Someone Who, Double Ring |
+| ⭐ Build Team Trust | Hot Seat Interview, Spot the Bluff |
+| 📢 Share & Present | Gallery Walk Feedback, Ambassador Visit, Speed Consult |
+| ⚖️ Make Decisions | Budget Vote, Agree & Write |
 
-| Need | What it covers | Example structures |
-|------|---------------|-------------------|
-| 📚 Review & Remember | Master facts, vocabulary, content | Ping-Pong Share, Card Swap, Reveal Together |
-| 🧠 Think Deeper | Analysis, reflection, perspective | Reflect-Discuss-Share, Snowball Build, Opinion Line |
-| 💬 Discuss & Communicate | Speaking, listening, discourse | Listen & Switch, Talking Chips, Blind Match |
-| ✏️ Practice Skills | Procedures and drills with coaching | Partner Coach, Explain & Record, Pair & Verify |
-| 🤝 Build Class Community | Know and trust classmates | Stand & Find, Double Ring, Expert Hunt |
-| ⭐ Build Team Trust | Strengthen within-team bonds | Hot Seat Interview, Spot the Bluff |
-| 📢 Share & Present | Share work and ideas across teams | Gallery Walk Feedback, Ambassador Visit, Speed Consult |
-| ⚖️ Make Decisions | Prioritize and reach consensus | Budget Vote, Agree & Write |
+### Each structure includes
+Step-by-step instructions, grouping, time estimate, difficulty, engine tag (Volley / Go-Around / Mix), a 🚶 Movement badge where relevant, Bloom's range, DOK level, a teacher tip, and a ready-to-use example.
 
-### Each Structure Includes
-
-- **Step-by-step instructions** — what to say and do, numbered
-- **Grouping** — pairs, team of 4, or whole class
-- **Time estimate** — how long it takes
-- **Difficulty level** — beginner, intermediate, or advanced
-- **Engine tag** — the underlying interaction pattern (Volley, Go-Around, or Mix) so you can see how structures relate
-- **Bloom's Taxonomy range** — which cognitive levels the structure naturally supports
-- **DOK level** — Webb's Depth of Knowledge rating
-- **Teacher tip** — what to watch for, common mistakes, coaching language
-- **Example in action** — a ready-to-use classroom prompt
-
-## The Building Blocks Framework
-
-Every structure in the toolkit is built from three interaction engines and six modes. The **Building Blocks** tab explains the system:
-
-### Three Engines
-
-| Engine | Pattern | What it means |
-|--------|---------|---------------|
-| **Volley** | A → B → A → B | Back-and-forth between two people, like a ping-pong rally |
-| **Go-Around** | A → B → C → D → A | Sequential turns around a team of 3+ |
-| **Mix** | → ? → ? → ? | Movement to find new, random partners |
-
-### Six Modes
-
-| Mode | Students… | Use when… |
-|------|-----------|-----------|
-| Verbal | Speak their response | Quick, low-prep, brainstorming and recall |
-| Written | Write their response | You need a product, or it's too noisy for verbal |
-| Coach | One solves, one helps | Skill practice — math, writing, procedures |
-| Timed | One speaks, one listens | Reflection, deep sharing, opinion-forming |
-| Silent | Write without speaking | Equalizing voice, giving introverts full access |
-| Role-Based | Each person has a job | Complex tasks, structured discussion |
-
-**Engine + Mode = Structure.** Ping-Pong Share is Volley + Verbal. Pass the Pen is Go-Around + Written. Once teachers see this, they stop memorizing names and start understanding mechanics — and they can design their own.
-
-### Structure Progression
-
-Structures stack from simple to complex:
-
-1. **Level 1: Pairs** — Two students, one pattern. Start here day one.
-2. **Level 2: Teams** — Expand pairs to teams of four. Same engines, wider scope.
-3. **Level 3: Whole Class** — Add movement. Same pair interactions, random partners.
-4. **Level 4: Combined** — Chain structures in sequence (e.g., individual → pair → team).
-
-## Bloom's Taxonomy & DOK Integration
-
-Every structure is tagged with its Bloom's range and DOK level. But the toolkit emphasizes the key insight: **the structure creates the interaction pattern; the prompt determines the cognitive demand.**
-
-The same structure — Go-Around Share — operates at every Bloom's level depending on what you ask:
-
-| Level | Prompt |
-|-------|--------|
-| Remember | "Name one element from the periodic table." |
-| Understand | "Explain one cause of the French Revolution in your own words." |
-| Apply | "Give a real-world example of this formula." |
-| Analyze | "Name one similarity or difference between the two texts." |
-| Evaluate | "Argue whether the protagonist made the right decision — and why." |
-| Create | "Contribute one line to an original poem about migration." |
-
-The **All Structures** view lets teachers filter by Bloom's level and DOK to find structures that naturally support the thinking depth they're targeting.
-
-## Additional Resources
-
-- **Getting Started** — the PIES principles, team formation, five beginner structures, and management essentials
-- **Discussion Tools** — sentence-starter gambits (agreeing, disagreeing, paraphrasing, adding on), sponge activities, and sample prompts by subject
+### The Building Blocks Framework
+Every structure is built from **three engines** (Volley, Go-Around, Mix) and **six modes** (Verbal, Written, Coach, Timed, Silent, Role-Based). Engine + Mode = Structure — so teachers stop memorizing names and start designing their own.
 
 ## For Teachers New to Cooperative Learning
-
-Open the **Getting Started** tab. It covers:
-
-- **The formula**: Content + Structure = Activity
-- **PIES**: The four principles that separate cooperative learning from group work (Positive Interdependence, Individual Accountability, Equal Participation, Simultaneous Interaction)
-- **Team setup**: How to form mixed-ability teams of four using quartile ranking
-- **Five starter structures**: Ping-Pong Share, Listen & Switch, Reflect-Discuss-Share, Go-Around Share, and Heads Up — all beginner-level, no materials needed
-- **Management basics**: Quiet signals, 12-inch voices, sponge activities, "three before me"
+The **Getting Started** tab covers the Content + Structure = Activity formula, the PIES principles (Positive Interdependence, Individual Accountability, Equal Participation, Simultaneous Interaction), mixed-ability team setup, five starter structures, and management basics.
 
 ## Privacy
-
 - No accounts, no login, no ads, no cookies, no tracking
-- No data leaves the browser — everything runs locally in a single HTML file
-- Theme preference saved to localStorage only
+- No data leaves the browser — everything runs locally in static HTML files
+- Theme preference saved to localStorage only, shared across all three pages
 - Nothing is transmitted anywhere, ever
 
-## Related Tools
+## Credits & Attribution
+This toolkit draws on the broader cooperative learning research tradition, including Spencer Kagan, David and Roger Johnson, Robert Slavin, and Elizabeth Cohen. All structure names and descriptions on the Structures page are original.
 
-- **[Raider Pod Generator](https://YOUR-USERNAME.github.io/raider-pod-generator/)** — Sort students into heterogeneous pods of 4 using the quartile grouping model
-
-## Credits
-
-This toolkit draws on the broader cooperative learning research tradition, including the work of Spencer Kagan, David and Roger Johnson, Robert Slavin, and Elizabeth Cohen. All structure names and descriptions in this toolkit are original. The underlying interaction patterns (pair sharing, sequential turn-taking, class mixing) are general pedagogical techniques not owned by any single framework.
+The Methods & Frameworks page references external work with attribution and does not reproduce it: Thinking Routines developed by **Project Zero**, Harvard Graduate School of Education (CC BY-NC-ND 4.0); the **Question Formulation Technique** by Dan Rothstein & Luz Santana, **Right Question Institute** (CC ShareAlike, noncommercial); **Liberating Structures** by Henri Lipmanowicz & Keith McCandless (Creative Commons); protocols from the **National School Reform Faculty** and the **School Reform Initiative / CLEE**. **Kagan Structures**, **Six Thinking Hats** (de Bono), and **Thinking Maps** are trademarks of their respective owners.
 
 ## Built By
-
 Jason Beyer, Director of Educational Technology — Regis Jesuit High School

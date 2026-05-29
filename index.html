@@ -166,6 +166,12 @@ body.light .site-footer a{color:#666;border-bottom-color:rgba(0,0,0,.15)}
 body.light .watermark{opacity:.05}
 body{position:relative}
 .wrap{position:relative;z-index:1}
+.xnav{display:flex;gap:6px;justify-content:center;margin:16px auto 4px;max-width:1100px;flex-wrap:wrap}
+.xnav a{padding:7px 18px;border-radius:8px;border:1px solid transparent;font-size:12px;font-weight:700;background:rgba(255,255,255,.04);color:#888;text-decoration:none;transition:all .15s}
+.xnav a:hover{background:rgba(255,255,255,.06)}
+.xnav a.a{background:rgba(193,20,48,.15);color:#C11430;border-color:rgba(193,20,48,.3)}
+body.light .xnav a{background:rgba(0,0,0,.03);color:#888}
+body.light .xnav a.a{background:rgba(193,20,48,.08);color:#C11430;border-color:rgba(193,20,48,.2)}
 </style>
 </head>
 <body>
@@ -185,6 +191,11 @@ body{position:relative}
     </button>
   </div>
 </header>
+<nav class="xnav">
+  <a href="index.html" class="a">Structures</a>
+  <a href="methods.html">Methods &amp; Frameworks</a>
+  <a href="designer.html">Activity Designer</a>
+</nav>
 <div class="wrap" id="app"></div>
 <footer class="site-footer">
   Built for Regis Jesuit High School &middot; No data leaves your browser &middot;
@@ -514,7 +525,49 @@ var S=[
  best:"Draft feedback, work-in-progress review, getting multiple perspectives quickly",
  steps:["Each student has a work-in-progress (draft, sketch, solution, plan).","Students pair up. Partner A has 2 minutes to present their work and get feedback from B.","Switch: B presents, A gives feedback.","Find a new partner. Repeat for 3–4 rounds."],
  tips:"Faster than Gallery Walk Feedback and more personal. By the third round, students start noticing patterns in the feedback they receive — that's the insight. Provide a feedback frame: 'The strongest part is… My question is… Consider trying…'",
- example:"'Bring your essay draft. Pair up. You have 2 minutes each: present your thesis and get feedback. Then find someone new. Three rounds.'"}
+ example:"'Bring your essay draft. Pair up. You have 2 minutes each: present your thesis and get feedback. Then find someone new. Three rounds.'"},
+
+{name:"Stand Up, Sit Down",engine:"Class + Body Vote",need:"review",group:"Class",time:"3–6 min",diff:"Beginner",bloom:["Remember","Understand"],dok:[1,2],move:true,
+ how:"The teacher makes a statement; students stand if it's true / they agree / it applies to them, and stay seated if not. A fast, full-body formative check where every student commits to an answer at the same instant.",
+ best:"Quick comprehension checks, true/false review, agree/disagree warm-ups, surfacing opinions before a discussion",
+ steps:["Teacher reads a statement — a fact to judge true/false, a claim to agree/disagree with, or a 'this is true for me.'","All students answer with their bodies at once: stand for yes/true/agree, stay seated for no/false/disagree.","Teacher scans the room — the split is instant data on who's got it.","Call on a standing student and a seated student to justify: 'Why did you stand?' Then re-ask or move on."],
+ tips:"The accountability is that everyone answers at the same moment — no one hides and no one waits to copy. Keep it brisk. For shy classes, open with low-risk 'true for me' statements before academic true/false. Add a middle option (hand on head = unsure) when you want a gray area.",
+ example:"'Me pongo de pie si la frase es correcta: \"Ayer yo fui al cine.\" Stand if the sentence is grammatically correct, stay seated if it has an error — then one of you tell me what's wrong.'"},
+
+{name:"Line-Up",engine:"Mix + Sequence",need:"review",group:"Class",time:"5–10 min",diff:"Intermediate",bloom:["Understand","Analyze"],dok:[2,3],move:true,
+ how:"Each student gets one card — an event, a step, a number, a word — and the whole class physically arranges itself into the correct order by talking to figure out who goes where. A timeline, a sequence, a number line, or even a sentence, built with bodies.",
+ best:"Sequencing events or steps, ordering numbers, ranking, building a sentence, any 'put this in order' content",
+ steps:["Give each student (or pair) one card from a set that has a correct order.","Students leave their seats and talk to classmates to find where they belong in the line.","The class assembles into one line in the correct sequence.","Read the finished line aloud and debrief — any disagreement becomes the discussion."],
+ tips:"The learning is in the negotiation: students have to justify their spot to their neighbors. For a 'living sentence,' hand out individual words, articles, and even accent marks so students assemble a grammatically correct sentence with their bodies — nobody is singled out because everyone holds a piece.",
+ example:"'Each of you holds one event from the Civil Rights Movement. Without asking me, line yourselves up in chronological order — then we'll read the timeline left to right and check it.'"},
+
+{name:"Running Dictation",engine:"Mix + Run + Dictate",need:"practice",group:"Pairs",time:"10–15 min",diff:"Intermediate",bloom:["Remember","Apply"],dok:[1,2],move:true,
+ how:"Sentences are posted on the walls. One partner runs to read and memorize a chunk, runs back, and dictates it to the seated partner who writes it down. They swap each sentence. Reading, memory, speaking, listening, and writing in one high-energy loop.",
+ best:"Accurate reading and spelling, processing target sentences, vocabulary in context, energizing a flat room",
+ steps:["Post 4–8 sentences containing your target content around the room.","In pairs, the 'Runner' goes to a sentence and reads/memorizes as much as they can — no writing at the wall.","Runner returns and dictates from memory; the 'Writer' writes it exactly.","Partners swap roles for each new sentence; first pair to transcribe all sentences correctly wins."],
+ tips:"The rule that makes it work: nothing to write with at the wall — they must hold it in memory and say it aloud. It quietly packs in retrieval, accurate output, and movement, and it's reliably a class favorite. Use it in any subject where the exact wording matters.",
+ example:"'Six lines of the poem are posted around the room. Runners memorize a line, race back, and dictate it for your partner to write — exact punctuation counts.'"},
+
+{name:"Find Someone Who",engine:"Mix + Interview Grid",need:"community",group:"Class",time:"8–12 min",diff:"Beginner",bloom:["Remember","Understand"],dok:[1,2],move:true,
+ how:"Students get a grid of statements and circulate, asking classmates real questions to find someone who fits each box, who then signs it. Everyone is up, talking, and retrieving the same language or content over and over.",
+ best:"Icebreakers, vocabulary in conversation, review questions, building class community",
+ steps:["Give each student a grid of statements — e.g., '…can name three branches of government,' '…has visited another country.'","Students walk around and ask classmates questions to find a match for each square.","A classmate who fits signs that square; usually each person may sign only once.","Debrief a few squares aloud: 'Who found someone who…?'"],
+ tips:"Require a real spoken question, not just showing the paper. It's a natural way to make one grammar target appear dozens of times — every conversation reuses the same structure. Capping signatures per person keeps students moving instead of clustering.",
+ example:"'Find someone who can name a corporal work of mercy, someone who has served at a retreat, someone who can explain the Examen. They sign your grid, and you'll share one thing you learned about a classmate.'"},
+
+{name:"Give One, Get One",engine:"Mix + Idea Trade",need:"review",group:"Class",time:"6–10 min",diff:"Beginner",bloom:["Remember","Understand"],dok:[1,2],move:true,
+ how:"Students brain-dump what they know, then stand and trade with classmates — give one idea, get one new idea, write it down, move to a new person. Recall plus cross-pollination, with everyone on their feet.",
+ best:"Activating prior knowledge, cumulative review, brainstorming, spreading ideas across the room",
+ steps:["Fold a paper into a 'Give' column (what I wrote) and a 'Get' column (new from others).","Students individually list everything they can recall on the topic in the 'Give' column.","On a signal, stand and meet a classmate: each gives one idea and gets one new one, recording it in 'Get.'","Move to new partners until the 'Get' column is full; debrief the best additions."],
+ tips:"Pairs the highest-yield warm-up — a closed-notes brain dump — with movement and peer learning, so the recall happens before anyone reopens notes. Works as a unit opener or as a way to resurface a unit from three weeks ago.",
+ example:"'Brain-dump everything you remember about the water cycle. Now give one term and get one from three different classmates — steal back the ones you forgot.'"},
+
+{name:"Stretch & Recall",engine:"Mix + Move + Recall",need:"review",group:"Class",time:"3–5 min",diff:"Beginner",bloom:["Remember"],dok:[1],move:true,
+ how:"A 60–90 second movement break fused with quick recall. Students stand, move — point, step, gesture, walk to a spot — and answer rapid prompts. Resets attention without losing instructional time.",
+ best:"Mid-class energy reset, fast recall, transitions, the 'we've been sitting too long' moment",
+ steps:["Everyone stands.","Teacher calls rapid prompts tied to movement: 'Point to the wall that matches the answer,' 'Take one step for each cause you can name,' 'Touch your head if true, toes if false.'","Run 5–8 quick prompts in under two minutes.","Sit and return to work with attention reset."],
+ tips:"Keep it fast and content-bound — movement plus retrieval, not movement for its own sake. Turning the four corners or four walls into 'answer zones' makes any multiple-choice review physical. Reach for it the moment you feel the room go flat.",
+ example:"'Each corner is an answer choice. I'll show an equation — walk to the corner you believe is right, then defend it to someone who picked a different one.'"}
 ];
 
 var NEEDS=[

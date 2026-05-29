@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activity Designer · Cooperative Learning Toolkit</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#C11430">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f0f1a;color:#eee;min-height:100vh;position:relative}
+.watermark{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url('favicon.svg');
+ background-repeat:no-repeat;background-position:center;background-attachment:fixed;background-size:min(66vh,540px) auto;opacity:.04}
+body.light .watermark{opacity:.05}
+.wrap{max-width:900px;margin:0 auto;padding:20px 16px;position:relative;z-index:1}
+.rj-mark{height:40px;width:auto;display:block;flex-shrink:0}
+.site-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 20px .9rem;
+ border-bottom:1px solid rgba(255,255,255,.10);margin:0 auto;max-width:1100px;position:relative;z-index:1}
+body.light .site-header{border-bottom-color:rgba(0,0,0,.10)}
+.site-header .hl{display:flex;align-items:center;gap:.85rem;min-width:0;flex-wrap:wrap}
+.brand{font-size:1.35rem;font-weight:600;color:#eee}
+body.light .brand{color:#1a1a1a}
+.brand .accent{color:#C11430}
+.tagline{color:#888;font-size:.9rem}
+body.light .tagline{color:#777}
+.icon-btn{background:transparent;border:1px solid rgba(255,255,255,.20);color:#aaa;width:36px;height:36px;border-radius:6px;
+ cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+body.light .icon-btn{border-color:rgba(0,0,0,.20);color:#666}
+.icon-btn:hover{border-color:#C11430;color:#C11430}
+.icon-btn svg{width:18px;height:18px}
+body:not(.light) .theme-toggle .icon-moon{display:none}
+body:not(.light) .theme-toggle .icon-sun{display:block}
+body.light .theme-toggle .icon-sun{display:none}
+body.light .theme-toggle .icon-moon{display:block}
+.xnav{display:flex;gap:6px;justify-content:center;margin:16px auto 4px;max-width:1100px;flex-wrap:wrap}
+.xnav a{padding:7px 18px;border-radius:8px;border:1px solid transparent;font-size:12px;font-weight:700;background:rgba(255,255,255,.04);color:#888;text-decoration:none;transition:all .15s}
+.xnav a:hover{background:rgba(255,255,255,.06)}
+.xnav a.a{background:rgba(193,20,48,.15);color:#C11430;border-color:rgba(193,20,48,.3)}
+body.light .xnav a{background:rgba(0,0,0,.03);color:#888}
+body.light .xnav a.a{background:rgba(193,20,48,.08);color:#C11430;border-color:rgba(193,20,48,.2)}
+.intro{font-size:13px;color:#bbb;line-height:1.7;margin:14px 0 6px}
+body.light .intro{color:#444}
+.intro b{color:#eee}body.light .intro b{color:#1a1a1a}
+.panel{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:18px;margin-bottom:14px}
+body.light .panel{background:rgba(0,0,0,.02);border-color:rgba(0,0,0,.08)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:11px;font-weight:700;color:#C11430;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.field .step{display:inline-block;width:18px;height:18px;border-radius:5px;background:rgba(193,20,48,.15);color:#C11430;text-align:center;line-height:18px;font-size:10px;margin-right:6px}
+select,input[type=text],textarea{width:100%;padding:11px 13px;border-radius:9px;border:1px solid rgba(255,255,255,.12);
+ background:rgba(0,0,0,.3);color:#eee;font-size:14px;font-family:inherit;outline:none}
+body.light select,body.light input[type=text],body.light textarea{background:rgba(0,0,0,.03);border-color:rgba(0,0,0,.1);color:#1a1a1a}
+select:focus,input:focus,textarea:focus{border-color:rgba(193,20,48,.4)}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1;min-width:160px}
+.info{display:none;margin-top:4px;padding:14px;border-radius:10px;background:rgba(155,89,182,.06);border:1px solid rgba(155,89,182,.18)}
+.info.show{display:block}
+.info .mech{font-size:13px;color:#ccc;line-height:1.6;margin-bottom:8px}
+body.light .info .mech{color:#444}
+.info .meta{font-size:11px;color:#9b59b6;font-style:italic;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:10px;font-weight:700;padding:3px 9px;border-radius:14px;background:rgba(46,204,113,.12);color:#2ecc71}
+.chip.soc{background:rgba(230,126,34,.14);color:#e67e22}
+.langnote{font-size:11px;color:#3498db;margin-top:8px;line-height:1.5}
+.seed{display:none;margin-top:10px;padding:12px 14px;border-radius:9px;background:rgba(255,255,255,.02);border-left:3px solid rgba(46,204,113,.4);font-size:12px;color:#bbb;line-height:1.6;font-style:italic}
+.seed.show{display:block}body.light .seed{color:#555}
+.seed b{color:#2ecc71;font-style:normal}
+.sig{display:none;margin-top:12px;padding:14px;border-radius:10px;background:rgba(193,20,48,.06);border:1px solid rgba(193,20,48,.2)}
+.sig.show{display:block}
+.sig .sl{font-size:10px;font-weight:700;color:#C11430;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.sig .st{font-size:13px;color:#ccc;line-height:1.6;margin-bottom:8px}
+body.light .sig .st{color:#444}
+.sig .cite{font-size:10px;color:#888;font-style:italic;margin-bottom:11px}
+.reclabel{font-size:10px;color:#888;margin-bottom:6px}
+.recs{display:flex;flex-wrap:wrap;gap:6px}
+.rec{font-size:11px;font-weight:600;padding:5px 11px;border-radius:14px;background:rgba(255,255,255,.05);color:#ccc;border:1px solid rgba(255,255,255,.12);cursor:pointer;transition:all .15s}
+.rec:hover{border-color:#C11430;color:#C11430}
+body.light .rec{background:rgba(0,0,0,.03);color:#444}
+.outlabel{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.copy{background:rgba(193,20,48,.15);color:#C11430;border:1px solid rgba(193,20,48,.3);border-radius:7px;padding:6px 14px;
+ font-size:11px;font-weight:700;cursor:pointer;font-family:inherit}
+.copy:hover{background:rgba(193,20,48,.22)}
+#prompt{min-height:300px;line-height:1.55;font-size:12.5px;resize:vertical;white-space:pre-wrap}
+.legend-title{font-size:13px;font-weight:700;color:#eee;margin:6px 0 8px}
+body.light .legend-title{color:#1a1a1a}
+.legend-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+.le{font-size:12px;color:#bbb;line-height:1.5;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,.02)}
+body.light .le{color:#555;background:rgba(0,0,0,.02)}
+.le b{color:#2ecc71}.le.soc b{color:#e67e22}
+.site-footer{border-top:1px solid rgba(255,255,255,.08);margin:28px auto 0;padding:1.3rem 20px;text-align:center;font-size:.82rem;color:#666;max-width:1100px;position:relative;z-index:1;line-height:1.7}
+body.light .site-footer{border-top-color:rgba(0,0,0,.10);color:#888}
+.site-footer a{color:#999;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15)}
+body.light .site-footer a{color:#666;border-bottom-color:rgba(0,0,0,.15)}
+.site-footer a:hover{color:#C11430;border-color:#C11430}
+@media(max-width:500px){.brand{font-size:1.15rem}}
+</style>
+</head>
+<body>
+<div class="watermark" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="hl">
+    <img class="rj-mark" src="favicon.svg" alt="Regis Jesuit" onerror="this.style.display='none'">
+    <div class="header-text">
+      <div class="brand">Cooperative Learning <span class="accent">Toolkit</span></div>
+      <div class="tagline">Activity Designer — build an evidence-based activity, then generate more with AI</div>
+    </div>
+  </div>
+  <button class="icon-btn theme-toggle" id="themeBtn" type="button" aria-label="Toggle dark mode">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+  </button>
+</header>
+
+<nav class="xnav">
+  <a href="index.html">Structures</a>
+  <a href="methods.html">Methods &amp; Frameworks</a>
+  <a href="designer.html" class="a">Activity Designer</a>
+</nav>
+
+<div class="wrap">
+  <p class="intro">Pick a structure, your subject, and your topic. You'll get the <b>evidence basis</b> for that structure, the <b>research signature of your discipline</b> (what matters most in your subject), a worked example, and a ready-to-paste prompt for Claude or ChatGPT that generates more activities for your exact lesson. The prompt keeps the AI honest: <b>every idea has to make students retrieve, produce, or reason — not just have fun.</b></p>
+
+  <div class="panel">
+    <div class="field">
+      <label><span class="step">1</span>Structure</label>
+      <select id="struct"><option value="">Choose a structure…</option></select>
+      <div class="info" id="sInfo">
+        <div class="mech" id="sMech"></div>
+        <div class="meta" id="sMeta"></div>
+        <div class="chips" id="sChips"></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label><span class="step">2</span>Subject</label>
+      <div class="row">
+        <select id="disc">
+          <option value="">Choose a subject…</option>
+          <option value="lang">World Languages</option>
+          <option value="ela">English / Language Arts</option>
+          <option value="math">Math</option>
+          <option value="sci">Science</option>
+          <option value="ss">Social Studies / History</option>
+          <option value="theo">Theology / Philosophy</option>
+          <option value="arts">Fine &amp; Performing Arts</option>
+          <option value="hpe">Health &amp; PE</option>
+          <option value="cs">Computer Science / Tech</option>
+          <option value="other">Other</option>
+        </select>
+        <select id="lang" style="display:none">
+          <option value="Spanish">Spanish</option>
+          <option value="French">French</option>
+          <option value="Latin">Latin</option>
+          <option value="Mandarin">Mandarin</option>
+        </select>
+      </div>
+      <div class="langnote" id="langNote" style="display:none"></div>
+      <div class="seed" id="seed"></div>
+      <div class="sig" id="sigBox">
+        <div class="sl">What the research says matters most in this subject</div>
+        <div class="st" id="sigText"></div>
+        <div class="cite" id="sigCite"></div>
+        <div class="reclabel">Structures the evidence points to (tap to load one):</div>
+        <div class="recs" id="sigRecs"></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label><span class="step">3</span>Your topic or objective</label>
+      <input type="text" id="topic" placeholder="e.g., preterite vs. imperfect · causes of WWI · the Beatitudes · factoring quadratics">
+    </div>
+    <div class="field">
+      <label><span class="step">4</span>Level</label>
+      <select id="level"><option>Any level</option><option>Beginning</option><option>Intermediate</option><option>Advanced / AP</option></select>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="outlabel">
+      <label style="margin:0;font-size:11px;font-weight:700;color:#C11430;text-transform:uppercase;letter-spacing:.5px">Your AI prompt — paste into Claude or ChatGPT</label>
+      <button class="copy" id="copyBtn">Copy</button>
+    </div>
+    <textarea id="prompt" readonly></textarea>
+  </div>
+
+  <div class="panel">
+    <div class="legend-title">The evidence this is built on</div>
+    <div style="font-size:12px;color:#888;margin-bottom:10px;line-height:1.6">A structure is just a delivery vehicle. It only helps learning if it makes students do one of these. Fun that doesn't do one of these is fun, not learning.</div>
+    <div style="font-size:11px;font-weight:700;color:#2ecc71;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">How learning sticks</div>
+    <div class="legend-grid" id="legCog"></div>
+    <div style="font-size:11px;font-weight:700;color:#e67e22;text-transform:uppercase;letter-spacing:.5px;margin:14px 0 6px">How the group makes it happen <span style="font-weight:400;text-transform:none;color:#888">(the cooperative/social side Kagan emphasizes)</span></div>
+    <div class="legend-grid" id="legSoc"></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  Built for Regis Jesuit High School &middot; No data leaves your browser &middot;
+  <a href="https://github.com/RJEdTech/Cooperative-Learning-Toolkit" target="_blank" rel="noopener">View on GitHub</a> &middot;
+  <a href="https://forms.microsoft.com/r/sKU9sHY45r" target="_blank" rel="noopener">Report a bug or request a tool</a>
+</footer>
+
+<script>
+(function(){
+var EV={
+ RET:["Retrieval practice","Students pull the answer from memory instead of rereading it.","cog"],
+ SPA:["Spaced practice","The material comes back days later, not just once.","cog"],
+ INT:["Interleaving","Topics are mixed and old units resurface alongside new ones.","cog"],
+ DUAL:["Dual coding","Words are paired with images or visuals.","cog"],
+ ELAB:["Elaboration","Students explain how/why and connect to what they know.","cog"],
+ GEN:["Generation","Students produce an answer before being shown one.","cog"],
+ CI:["Comprehensible input","Lots of understandable exposure before output (key for languages).","cog"],
+ PHON:["Sound–spelling mapping","Multisensory phonological processing — say it as you build it.","cog"],
+ MOVE:["Embodied practice","Movement that carries the content (modest but real — must be content-bound).","cog"],
+ OUT:["Low-anxiety output","Lower the social risk first so students will actually speak.","soc"],
+ TEACH:["Peer teaching","Explaining to a peer is itself deep retrieval.","soc"],
+ ACC:["Individual accountability","Everyone answers — no hiding behind the group.","soc"],
+ SOC:["Belonging & teambuilding","Safety and connection that make participation possible.","soc"]
+};
+var NEED={review:"Review & Remember",think:"Think Deeper",discuss:"Discuss & Communicate",practice:"Practice Skills",
+ community:"Build Class Community",team:"Build Team Trust",share:"Share & Present",decide:"Make Decisions"};
+var MOVERS={"Stand & Find":1,"Mingle & Discuss":1,"Freeze & Group":1,"Card Swap":1,"Double Ring":1,"Corner Choice":1,
+ "Opinion Line":1,"Expert Hunt":1,"Gallery Walk Feedback":1,"Ambassador Visit":1,"Scout & Report":1,"Table Hop":1,"Speed Consult":1,
+ "Stand Up, Sit Down":1,"Line-Up":1,"Running Dictation":1,"Find Someone Who":1,"Give One, Get One":1,"Stretch & Recall":1};
+var S=[
+ ["Ping-Pong Share","review","Pairs","2–4m","Partners rapidly alternate answers back and forth.",["RET","ACC","OUT"]],
+ ["Listen & Switch","discuss","Pairs","4–6m","One speaks for a set time while the other only listens, then swap.",["OUT","ELAB"]],
+ ["Partner Coach","practice","Pairs","10–15m","One solves aloud while the partner coaches (not solves), then swap.",["RET","TEACH","OUT"]],
+ ["Explain & Record","practice","Pairs","10–15m","One dictates each step of a solution; the other writes exactly that.",["ELAB","GEN","TEACH"]],
+ ["Blind Match","discuss","Pairs","10–15m","Partners describe without showing, to match or recreate something.",["OUT","ELAB"]],
+ ["Go-Around Share","review","Team","5–8m","Each teammate contributes in turn around the table.",["RET","ACC","OUT"]],
+ ["Pass the Pen","review","Team","5–8m","One paper goes around; each person adds a written contribution.",["RET","GEN","ACC"]],
+ ["All Write, All Pass","review","Team","5–8m","Everyone writes at once, then passes to build on each other.",["GEN","RET","ACC"]],
+ ["Share & Record","review","Team","5–8m","Each shares aloud while a rotating scribe records for the team.",["RET","ELAB"]],
+ ["Write First, Then Share","think","Team","6–10m","Silent writing before any talking, then a round of sharing.",["GEN","ELAB","OUT"]],
+ ["Heads Up","review","Team","5–8m","Team prepares everyone; teacher calls a random number to answer.",["RET","TEACH","ACC"]],
+ ["Reveal Together","review","Team","3–6m","Everyone shows their answer at the same moment on whiteboards.",["RET","ACC"]],
+ ["Deal & Roles","review","Team","8–12m","Rotating role cards (reader, checker, recorder) structure the task.",["ACC","ELAB"]],
+ ["Stand & Find","community","Class","5–8m","Stand up, move, and pair with a new classmate to talk.",["OUT","SOC","MOVE"]],
+ ["Mingle & Discuss","community","Class","5–8m","Circulate to music; pair with whoever's nearest when it stops.",["OUT","SOC","MOVE"]],
+ ["Freeze & Group","community","Class","5–8m","Mill around, then freeze and form groups of a called number.",["SOC","MOVE"]],
+ ["Card Swap","review","Class","8–12m","Quiz a partner from a card, trade cards, find a new partner.",["RET","SPA","MOVE"]],
+ ["Double Ring","community","Class","8–12m","Two facing circles rotate to give each student many partners.",["RET","OUT","MOVE"]],
+ ["Corner Choice","community","Class","5–8m","Move to the corner that matches your answer or stance.",["ACC","MOVE","OUT"]],
+ ["Opinion Line","think","Class","5–8m","Stand along a line by how strongly you agree.",["ELAB","OUT","MOVE"]],
+ ["Expert Hunt","community","Class","8–12m","Find the classmate who can teach you a needed piece.",["TEACH","RET","MOVE"]],
+ ["Find the Expert","review","Class","8–12m","Designated 'sages' teach circulating peers a sub-topic.",["TEACH","RET"]],
+ ["Pair & Verify","practice","Team","8–12m","Solve, then check against a partner before the team confirms.",["RET","ACC","TEACH"]],
+ ["Teach-Back Puzzle","think","Team","12–18m","Each learns one piece, then teaches it to assemble the whole.",["TEACH","ELAB","ACC"]],
+ ["Gallery Walk Feedback","share","Team","12–18m","Teams post work; others rotate to read and leave feedback.",["ELAB","MOVE"]],
+ ["Stand & Report","share","Team","5–8m","A member stands to report the team's thinking to the class.",["OUT","ACC"]],
+ ["Ambassador Visit","share","Team","8–12m","One member visits another team to share and bring ideas back.",["ELAB","TEACH","MOVE"]],
+ ["Scout & Report","share","Team","8–12m","A scout roves to gather ideas from other teams and reports back.",["ELAB","MOVE"]],
+ ["Budget Vote","decide","Team","8–12m","Allocate limited 'points' to prioritize options together.",["ELAB","ACC"]],
+ ["Agree & Write","decide","Team","8–12m","Reach consensus, then record a single agreed answer.",["ELAB","ACC"]],
+ ["Spot the Bluff","team","Team","8–12m","Share statements; teammates guess which is the bluff.",["SOC","OUT"]],
+ ["Hot Seat Interview","team","Team","8–12m","One teammate answers rapid questions from the others.",["SOC","RET","OUT"]],
+ ["Interview Relay","discuss","Team","10–15m","Pair-interview, then report your partner's answers to the team.",["OUT","ELAB","SOC"]],
+ ["Reflect-Discuss-Share","think","Pairs","5–8m","Think silently, rehearse with a partner, then a few share out.",["OUT","ELAB","GEN"]],
+ ["Silent Storm","think","Team","6–10m","Brainstorm in writing in silence, building on each other.",["GEN","ELAB","OUT"]],
+ ["Compare & Combine","think","Team","8–12m","Pairs compare answers, then merge into a stronger team answer.",["ELAB","GEN"]],
+ ["Table Hop","review","Class","10–15m","Rotate small groups through stations, each a different task.",["RET","INT","MOVE"]],
+ ["Problem Swap","review","Team","10–15m","Teams write problems, then swap and solve another team's.",["GEN","RET"]],
+ ["Perspective Swap","think","Pairs","8–12m","Argue a position, then switch and argue the opposite.",["ELAB","OUT"]],
+ ["Snowball Build","think","Class","10–15m","Idea grows from individual to pair to team to class.",["GEN","ELAB","OUT"]],
+ ["Role Rotate Discussion","discuss","Team","12–18m","Assigned discussion roles rotate each round.",["ELAB","ACC","OUT"]],
+ ["Teach-Back Pairs","review","Pairs","8–12m","Partners take turns teaching each other a chunk.",["TEACH","RET","ELAB"]],
+ ["Fishbowl Focus","discuss","Class","12–18m","An inner circle discusses while the outer observes, then swap.",["ELAB","OUT","TEACH"]],
+ ["Speed Consult","share","Class","8–12m","Timed one-on-one consults, then rotate to a new partner.",["RET","SPA","OUT","MOVE"]],
+ ["Stand Up, Sit Down","review","Class","3–6m","Stand for yes/true/agree, sit for no/false — everyone at once.",["RET","ACC","MOVE","OUT"]],
+ ["Line-Up","review","Class","5–10m","Each holds a card; the class arranges itself into the right order.",["ELAB","MOVE","ACC"]],
+ ["Running Dictation","practice","Pairs","10–15m","Run to read/memorize, return and dictate; partner writes.",["RET","PHON","MOVE","OUT"]],
+ ["Find Someone Who","community","Class","8–12m","Circulate with a grid, asking questions to find matches.",["RET","OUT","SOC","MOVE"]],
+ ["Give One, Get One","review","Class","6–10m","Brain-dump, then trade one idea for one with many peers.",["RET","ELAB","INT","MOVE"]],
+ ["Stretch & Recall","review","Class","3–5m","A movement break fused with rapid recall prompts.",["RET","MOVE"]]
+];
+var SEED={
+ lang:{
+  Spanish:["Running Dictation","Post six Spanish sentences in the preterite around the room. Runners memorize a sentence, race back, and dictate it; writers transcribe with correct accents. Drives sound–spelling accuracy and output."],
+  French:["Stand Up, Sit Down","'Levez-vous si la liaison se prononce.' Read a phrase; students stand if the liaison is pronounced, sit if not, then one explains. Targets phonological processing of liaison."],
+  Latin:["Line-Up","Each student holds one word of a Latin sentence with its case ending. Arrange yourselves into a correct sentence — word order is free, so the endings decide the meaning. Drives case/morphology retrieval."],
+  Mandarin:["Find Someone Who","Grid in pinyin + characters: 'find someone who can say a 4th-tone word… who can write 水…' Students ask in Mandarin and sign. Low-stakes tone production and character recall."],
+  other:["Running Dictation","Post target sentences around the room; runners memorize and dictate while partners transcribe exactly. Sound–spelling, retrieval, and accurate output in one loop."]
+ },
+ ela:["Fishbowl Focus","Inner circle debates whether the narrator is reliable, citing the text; outer circle tracks who grounds claims in evidence, then they swap. Authentic discussion plus argument from textual evidence."],
+ math:["Stand Up, Sit Down","Show a worked equation; students stand if it's solved correctly, sit if not. A stander and a sitter justify. Error analysis under retrieval — and worked examples lower the load for anxious students."],
+ sci:["Stand Up, Sit Down","Before the demo: 'Stand if you think the heavier ball lands first.' The split surfaces the misconception; run the discrepant event; then re-vote and explain. Cognitive conflict in 4 minutes."],
+ ss:["Line-Up","Each student holds one Cold War event; line up chronologically by negotiating with neighbors, then read the timeline and argue the causes. Sequencing plus claims warranted by evidence."],
+ theo:["Fishbowl Focus","Inner circle reasons through a moral dilemma against a Beatitude; outer circle notes the strongest reasoning, then swap, then a written reflection. Community of inquiry plus Examen-style reflection."],
+ arts:["Gallery Walk Feedback","Post sketches or score excerpts; teams rotate and leave one 'glow' and one 'grow' using arts vocabulary against the rubric. Builds the language of critique."],
+ hpe:["Stretch & Recall","Stand and act it out: demonstrate the recovery position; take one step for each component of fitness you can name. Recall through embodied practice."],
+ cs:["Pair & Verify","Each writes a function, then traces a partner's code by hand and predicts the output before running it. Predict-then-check drives retrieval and surfaces bugs."],
+ other:["Give One, Get One","Brain-dump what you remember, then trade one idea for one with several classmates. Retrieval plus peer elaboration."]
+};
+var SIG={
+ lang:{s:"Languages are acquired through understandable input before output, with the social risk of speaking kept low (the affective filter) and — for reading and spelling — explicit sound–spelling (phonological) mapping. Anxiety measurably suppresses the willingness to speak that acquisition needs.",
+  c:"Krashen (comprehensible input); Beilock (anxiety & working memory); science of reading",
+  i:"Give comprehensible input before demanding output, map sound to spelling explicitly, keep social risk low so students will actually speak, and build in many spaced encounters with each target item.",
+  r:["Running Dictation","Find Someone Who","Double Ring","Speed Consult","Reflect-Discuss-Share","Stand Up, Sit Down"]},
+ ela:{s:"At the college-prep level this is composition, argument, and literary interpretation — not decoding. Writing improves through explicit planning/revising strategies and peer response, not isolated grammar; literary understanding is driven by authentic student discussion rather than teacher recitation.",
+  c:"Graham & Perin 2007 (Writing Next): strategy 0.82, peer assistance 0.75, grammar −0.32; Applebee et al. 2003; Murphy et al. 2009",
+  i:"This is college-prep English: center authentic discussion and argument grounded in textual evidence, and treat writing as a strategy-and-peer-revision process. Do NOT propose isolated grammar drills — favor sentence combining, peer response to drafts, and clear product goals.",
+  r:["Fishbowl Focus","Reflect-Discuss-Share","Role Rotate Discussion","Gallery Walk Feedback","Teach-Back Pairs","Compare & Combine"]},
+ math:{s:"Math runs on managing working-memory load: study worked examples before independent problems, interleave problem types so students learn to choose a strategy, and actively lower math anxiety, which taxes the same working memory problem-solving needs.",
+  c:"Sweller (cognitive load); Rohrer & Taylor (interleaving); Beilock/Ramirez (math anxiety)",
+  i:"This is math: use worked examples before independent practice, interleave problem types rather than blocking one kind, and keep anxiety low (clear expectations, normalize struggle) since math anxiety consumes working memory. Build in retrieval and spaced revisiting.",
+  r:["Partner Coach","Pair & Verify","Explain & Record","Table Hop","Problem Swap","Stand Up, Sit Down"]},
+ sci:{s:"Students arrive with robust intuitive misconceptions that resist correction. Learning means surfacing those prior ideas, creating productive cognitive conflict, and supporting argument from evidence (claim–evidence–reasoning).",
+  c:"Posner / Vosniadou / Chi (conceptual change); Pacaci 2024 meta-analysis",
+  i:"This is science: first surface students' prior or intuitive ideas, then create cognitive conflict (a discrepant result or competing explanation) before presenting the scientific view. Have students argue from evidence (claim–evidence–reasoning) and watch for misconceptions that persist alongside the correct idea.",
+  r:["Stand Up, Sit Down","Opinion Line","Reflect-Discuss-Share","Fishbowl Focus","Give One, Get One","Compare & Combine"]},
+ ss:{s:"History is a disciplinary-literacy skill: sourcing (who wrote this and why), contextualization (the circumstances), and corroboration (across sources) — reading like a historian, not just absorbing a narrative.",
+  c:"Wineburg; Reisman 2012 (Reading Like a Historian)",
+  i:"This is history/social studies: build the activity around primary and secondary sources and the historian's heuristics — sourcing, contextualization, corroboration — and have students make claims warranted by evidence while weighing multiple perspectives.",
+  r:["Fishbowl Focus","Role Rotate Discussion","Perspective Swap","Corner Choice","Reflect-Discuss-Share","Opinion Line"]},
+ theo:{s:"Philosophy and theology advance through dialogic inquiry — co-constructing understanding by questioning, reasoning, and arguing — paired with genuine reflection, which is structured metacognition and maps directly to the Ignatian Examen.",
+  c:"Dialogic teaching (Alexander; Nystrand); P4C (strong on reasoning, mixed on attainment); reflection ≈ metacognition",
+  i:"This is theology/philosophy: build a community of inquiry with authentic open questions where students build on and challenge each other's reasoning, ground claims in the text or tradition, and include a structured reflection step (an Examen-style metacognitive pause).",
+  r:["Fishbowl Focus","Reflect-Discuss-Share","Perspective Swap","Role Rotate Discussion","Silent Storm"]},
+ arts:{s:"Arts learning blends skill practice with critique. Varied, interleaved practice beats blocked drilling for retention and transfer, and structured peer critique using domain vocabulary builds the language of evaluation.",
+  c:"Contextual interference (Battig 1966; Shea & Morgan 1979); critique & feedback research",
+  i:"This is fine/performing arts: combine varied/interleaved skill practice with structured, reciprocal peer critique using domain vocabulary (specific glow/grow against criteria) rather than vague praise.",
+  r:["Gallery Walk Feedback","Ambassador Visit","Partner Coach","Opinion Line","Compare & Combine","Reflect-Discuss-Share"]},
+ hpe:{s:"Two bases: health education targets behavior change through self-efficacy (the belief you can do it), and motor-skill learning follows the contextual-interference effect — varied/random practice feels harder but produces better retention and transfer than blocked drilling.",
+  c:"Bandura (self-efficacy); Battig 1966 & Shea & Morgan 1979 (contextual interference)",
+  i:"This is health/PE: for skills, use varied/interleaved practice (random over blocked) for better retention even though it feels harder in the moment; for health behavior, build self-efficacy through graded success, modeling, and specific goals. Keep performance anxiety low.",
+  r:["Find Someone Who","Stand Up, Sit Down","Stretch & Recall","Partner Coach","Opinion Line"]},
+ cs:{s:"CS rewards worked examples and predict-then-check: study and trace solutions before producing them, and surface misconceptions through prediction (what will this code do?). Pair programming distributes the cognitive load.",
+  c:"Cognitive load / worked examples; predict–observe–explain",
+  i:"This is computer science: use worked examples and code tracing before independent coding, and predict-then-check (predict the output, then run) to surface misconceptions. Use pair-programming roles (driver/navigator) to distribute the load.",
+  r:["Partner Coach","Pair & Verify","Explain & Record","Problem Swap","Teach-Back Pairs","Stand Up, Sit Down"]},
+ other:{s:"The universal core applies: make students retrieve, space and interleave practice, pair words with visuals, and have them explain their reasoning — with anxiety low enough that they participate.",
+  c:"Dunlosky et al. 2013; Bjork (desirable difficulties)",
+  i:"Apply the universal core: build in retrieval, spacing and interleaving, and elaboration (students explaining why), and keep participation psychologically safe.",
+  r:["Reflect-Discuss-Share","Give One, Get One","Heads Up","Fishbowl Focus","Stand Up, Sit Down"]}
+};
+var DISCNAME={lang:"World Languages",ela:"English / Language Arts",math:"Math",sci:"Science",ss:"Social Studies / History",theo:"Theology / Philosophy",arts:"Fine & Performing Arts",hpe:"Health & PE",cs:"Computer Science / Tech",other:"your subject"};
+
+var sel=document.getElementById("struct"),byNeed={};
+S.forEach(function(s){(byNeed[s[1]]=byNeed[s[1]]||[]).push(s);});
+Object.keys(NEED).forEach(function(nd){
+  if(!byNeed[nd])return;
+  var og=document.createElement("optgroup");og.label=NEED[nd];
+  byNeed[nd].forEach(function(s){var o=document.createElement("option");o.value=s[0];o.textContent=(MOVERS[s[0]]?"🚶 ":"")+s[0];og.appendChild(o);});
+  sel.appendChild(og);
+});
+function find(n){for(var i=0;i<S.length;i++)if(S[i][0]===n)return S[i];return null;}
+function evPhrase(c){return EV[c]?EV[c][0].toLowerCase():c;}
+
+(function legend(){
+  var c="",so="";
+  Object.keys(EV).forEach(function(k){
+    var e=EV[k];var html='<div class="le'+(e[2]==="soc"?" soc":"")+'"><b>'+e[0]+'</b> — '+e[1]+'</div>';
+    if(e[2]==="soc")so+=html;else c+=html;
+  });
+  document.getElementById("legCog").innerHTML=c;
+  document.getElementById("legSoc").innerHTML=so;
+})();
+
+var els={struct:sel,disc:document.getElementById("disc"),lang:document.getElementById("lang"),
+ topic:document.getElementById("topic"),level:document.getElementById("level")};
+
+function showStruct(){
+  var s=find(els.struct.value),box=document.getElementById("sInfo");
+  if(!s){box.classList.remove("show");return;}
+  box.classList.add("show");
+  document.getElementById("sMech").textContent=s[4];
+  document.getElementById("sMeta").textContent=s[2]+" · "+s[3]+(MOVERS[s[0]]?" · involves movement":"");
+  document.getElementById("sChips").innerHTML=s[5].map(function(c){
+    return '<span class="chip'+(EV[c]&&EV[c][2]==="soc"?" soc":"")+'">'+(EV[c]?EV[c][0]:c)+'</span>';}).join("");
+}
+function showDisc(){
+  var d=els.disc.value;
+  els.lang.style.display=d==="lang"?"":"none";
+  var ln=document.getElementById("langNote");
+  ln.style.display=d==="lang"?"":"none";
+  if(d==="lang"){
+    ln.innerHTML = (els.lang.value==="Latin")
+      ? "For <b>Latin</b>, this leans on <b>morphology and case</b> (the ending signals meaning, not word order), <b>comprehensible input</b>, and <b>reading/translation fluency</b> — the prompt builds those in."
+      : "For modern languages, this also leans on <b>sound\u2013spelling (phonological) processing</b>, <b>comprehensible input</b>, and <b>low-anxiety output</b> — the prompt builds those in.";
+  }
+  var seed=document.getElementById("seed"),pick=null;
+  if(d==="lang")pick=SEED.lang[els.lang.value]||SEED.lang.other;
+  else if(SEED[d])pick=SEED[d];
+  if(pick){seed.classList.add("show");seed.innerHTML='<b>Try this ('+pick[0]+'):</b> '+pick[1];}
+  else seed.classList.remove("show");
+  var sb=document.getElementById("sigBox");
+  if(d&&SIG[d]){
+    sb.classList.add("show");
+    document.getElementById("sigText").textContent=SIG[d].s;
+    document.getElementById("sigCite").textContent="Evidence: "+SIG[d].c;
+    document.getElementById("sigRecs").innerHTML=SIG[d].r.map(function(n){
+      return '<span class="rec" data-s="'+n.replace(/"/g,"&quot;")+'">'+n+'</span>';}).join("");
+    Array.prototype.forEach.call(document.querySelectorAll("#sigRecs .rec"),function(el){
+      el.addEventListener("click",function(){els.struct.value=this.getAttribute("data-s");update();});});
+  } else sb.classList.remove("show");
+}
+function buildPrompt(){
+  var s=find(els.struct.value),d=els.disc.value;
+  var subject=d?DISCNAME[d]:"your subject",isLang=(d==="lang");
+  if(isLang){var L=els.lang.value==="other"?"the target language":els.lang.value;subject=L;}
+  var topic=els.topic.value.trim()||"[your topic or learning objective]";
+  var level=els.level.value,struct=s?s[0]:"[choose a structure]",mech=s?s[4]:"";
+  var principles=s?s[5].map(evPhrase):["retrieval","accountability"];
+  if(isLang){
+    var addP = (els.lang.value==="Latin")
+      ? ["comprehensible input","morphology and case (form signals meaning)","reading and translation fluency"]
+      : ["comprehensible input","sound\u2013spelling (phonological) processing","low-anxiety output"];
+    addP.forEach(function(p){if(principles.indexOf(p)<0)principles.push(p);});
+  }
+  var pl=principles.join("; ");
+  var subjGuide=(d&&SIG[d])?SIG[d].i:"";
+  var p=
+"You are an instructional coach in evidence-based, collaborative learning for "+subject+". I teach "+subject+
+(level!=="Any level"?" at the "+level+" level":"")+".\n\n"+
+"I want to run the cooperative learning structure \""+struct+"\" on this topic/objective:\n\""+topic+"\"\n\n"+
+"How the structure works: "+mech+"\n\n"+
+"Design 4 ready-to-run versions of this activity for my lesson. Rules:\n"+
+"1. Not fun for fun's sake. Every version must make students actively retrieve, produce, or reason — not just receive or play.\n"+
+"2. Honor these learning principles, and name which one(s) each idea serves: "+pl+".\n"+
+(isLang?(els.lang.value==="Latin"?"3. Because this is Latin, build the activity around reading, parsing, and translation — focus on morphology and case (where the ending, not word order, signals meaning) and on understandable input, rather than spoken conversation.\n":"3. Because this is a modern language, make sure students get understandable input before producing, map sound to spelling, and speak with low social risk.\n"):"3. Make sure every student is individually accountable and talking — not just the confident few.\n")+
+"4. Keep my prep low and give me the exact words I would say to launch it.\n"+
+(subjGuide?"\nWhat matters most in this subject — honor it: "+subjGuide+"\n":"")+
+"\nFor each of the 4 ideas, give me:\n"+
+"  • The teacher script (what I say)\n"+
+"  • The student task (what they do)\n"+
+"  • The specific learning it targets and why\n"+
+"  • One quick way to check it worked\n\n"+
+"Then tell me how to bring this same activity back 3–5 days later (spaced practice) and fold it into a later cumulative review (interleaving).";
+  document.getElementById("prompt").value=p;
+}
+function update(){showStruct();showDisc();buildPrompt();}
+Object.keys(els).forEach(function(k){els[k].addEventListener("input",update);els[k].addEventListener("change",update);});
+update();
+
+document.getElementById("copyBtn").addEventListener("click",function(){
+  var t=document.getElementById("prompt"),b=this;t.select();
+  function ok(){b.textContent="Copied ✓";setTimeout(function(){b.textContent="Copy";},1500);}
+  if(navigator.clipboard){navigator.clipboard.writeText(t.value).then(ok).catch(function(){document.execCommand("copy");ok();});}
+  else{document.execCommand("copy");ok();}
+});
+
+var __clt=null;try{__clt=localStorage.getItem("clt_theme")}catch(e){}
+document.body.classList.toggle("light", __clt ? (__clt==="light") : true);
+document.getElementById("themeBtn").addEventListener("click",function(){
+  document.body.classList.toggle("light");
+  try{localStorage.setItem("clt_theme",document.body.classList.contains("light")?"light":"dark")}catch(e){}
+});
+})();
+</script>
+</body>
+</html>
