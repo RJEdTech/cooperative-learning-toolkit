@@ -95,6 +95,13 @@ body.light .site-footer{border-top-color:rgba(0,0,0,.10);color:#888}
 body.light .site-footer a{color:#666;border-bottom-color:rgba(0,0,0,.15)}
 .site-footer a:hover{color:#C11430;border-color:#C11430}
 @media(max-width:500px){.brand{font-size:1.15rem}}
+.le .le-when{margin-top:6px;font-size:11px;line-height:1.5;color:#9a9a9a}
+body.light .le .le-when{color:#666}
+.le .le-structs{margin-top:7px;line-height:1.9}
+.le-structs-lbl{color:#777;font-weight:700;text-transform:uppercase;letter-spacing:.4px;font-size:10px;margin-right:2px}
+.le-struct{display:inline-block;cursor:pointer;font-size:11px;padding:2px 8px;margin:0 4px 2px 0;border-radius:12px;background:rgba(46,204,113,.10);color:#2ecc71}
+.le.soc .le-struct{background:rgba(230,126,34,.12);color:#e67e22}
+.le-struct:hover{filter:brightness(1.25);text-decoration:underline}
 </style>
 </head>
 <body>
@@ -172,7 +179,7 @@ body.light .site-footer a{color:#666;border-bottom-color:rgba(0,0,0,.15)}
     </div>
     <div class="field">
       <label><span class="step">4</span>Level</label>
-      <select id="level"><option>Any level</option><option>Beginning</option><option>Intermediate</option><option>Advanced / AP</option></select>
+      <select id="level"><option>Any</option><option>Grade 9</option><option>Grade 10</option><option>Grade 11</option><option>Grade 12</option><option>Mixed grades</option><option>Level 1</option><option>Level 2</option><option>Level 3</option><option>Level 4</option></select>
     </div>
   </div>
 
@@ -203,20 +210,21 @@ body.light .site-footer a{color:#666;border-bottom-color:rgba(0,0,0,.15)}
 <script>
 (function(){
 var EV={
- RET:["Retrieval practice","Students pull the answer from memory instead of rereading it.","cog"],
- SPA:["Spaced practice","The material comes back days later, not just once.","cog"],
- INT:["Interleaving","Topics are mixed and old units resurface alongside new ones.","cog"],
- DUAL:["Dual coding","Words are paired with images or visuals.","cog"],
- ELAB:["Elaboration","Students explain how/why and connect to what they know.","cog"],
- GEN:["Generation","Students produce an answer before being shown one.","cog"],
- CI:["Comprehensible input","Lots of understandable exposure before output (key for languages).","cog"],
- PHON:["Sound–spelling mapping","Multisensory phonological processing — say it as you build it.","cog"],
- MOVE:["Embodied practice","Movement that carries the content (modest but real — must be content-bound).","cog"],
- OUT:["Low-anxiety output","Lower the social risk first so students will actually speak.","soc"],
- TEACH:["Peer teaching","Explaining to a peer is itself deep retrieval.","soc"],
- ACC:["Individual accountability","Everyone answers — no hiding behind the group.","soc"],
- SOC:["Belonging & teambuilding","Safety and connection that make participation possible.","soc"]
+ RET:["Retrieval practice","Students pull the answer from memory instead of rereading it.","cog","Reach for it when students get it in the moment but forget by next week \u2014 close a lesson by making them recall with notes closed."],
+ SPA:["Spaced practice","The material comes back days later, not just once.","cog","Reach for it when a topic is one-and-done in your plan \u2014 bring it back 2\u20133 days later so the memory is rebuilt, not just refreshed."],
+ INT:["Interleaving","Topics are mixed and old units resurface alongside new ones.","cog","Reach for it when a unit blocks one problem type all week \u2014 mix old and new types so students practice choosing a strategy, not just running one."],
+ DUAL:["Dual coding","Words are paired with images or visuals.","cog","Reach for it when content is all text \u2014 have students pair it with a sketch, diagram, or organizer they build themselves."],
+ ELAB:["Elaboration","Students explain how/why and connect to what they know.","cog","Reach for it when answers are correct but thin \u2014 push the 'because\u2026' and tie the idea back to something students already know."],
+ GEN:["Generation","Students produce an answer before being shown one.","cog","Reach for it before you teach, not after \u2014 have students predict or attempt first; even a wrong guess primes the correct one."],
+ CI:["Comprehensible input","Lots of understandable exposure before output (key for languages).","cog","Reach for it in world languages before demanding speech \u2014 flood students with understandable target-language input first; production follows comprehension."],
+ PHON:["Sound\u2013spelling mapping","Multisensory phonological processing \u2014 say it as you build it.","cog","Reach for it for vocabulary, spelling, and decoding \u2014 have students say it as they build it so sound and symbol lock together."],
+ MOVE:["Embodied practice","Movement that carries the content (modest but real \u2014 must be content-bound).","cog","Reach for it only when the motion encodes the idea \u2014 line up by chronology, move to the corner that matches your stance. Decorative movement doesn't count."],
+ OUT:["Low-anxiety output","Lower the social risk first so students will actually speak.","soc","Reach for it before any high-stakes share \u2014 let students rehearse with one partner first; the social risk, not the content, is what silences them."],
+ TEACH:["Peer teaching","Explaining to a peer is itself deep retrieval.","soc","Reach for it when you want the explainer to learn, not just the listener \u2014 assign someone to teach a piece back to the group."],
+ ACC:["Individual accountability","Everyone answers \u2014 no hiding behind the group.","soc","Reach for it whenever group work lets some students coast \u2014 make any single member answerable for the whole, e.g. a random call."],
+ SOC:["Belonging & teambuilding","Safety and connection that make participation possible.","soc","Reach for it early and when trust is low \u2014 a short, safe teambuilder buys the psychological safety academic risk-taking needs later."]
 };
+
 var NEED={review:"Review & Remember",think:"Think Deeper",discuss:"Discuss & Communicate",practice:"Practice Skills",
  community:"Build Class Community",team:"Build Team Trust",share:"Share & Present",decide:"Make Decisions"};
 var MOVERS={"Stand & Find":1,"Mingle & Discuss":1,"Freeze & Group":1,"Card Swap":1,"Double Ring":1,"Corner Choice":1,
@@ -348,13 +356,26 @@ function find(n){for(var i=0;i<S.length;i++)if(S[i][0]===n)return S[i];return nu
 function evPhrase(c){return EV[c]?EV[c][0].toLowerCase():c;}
 
 (function legend(){
+  var byP={};
+  S.forEach(function(row){(row[5]||[]).forEach(function(c){(byP[c]=byP[c]||[]).push(row[0]);});});
+  function card(k){
+    var e=EV[k],isSoc=(e[2]==="soc");
+    var structs=(byP[k]||[]).slice(0,6).map(function(n){
+      return '<span class="le-struct" data-load="'+n.replace(/"/g,"&quot;")+'">'+n+'</span>';}).join("");
+    return '<div class="le'+(isSoc?" soc":"")+'"><b>'+e[0]+'</b> \u2014 '+e[1]+
+      '<div class="le-when">'+e[3]+'</div>'+
+      (structs?'<div class="le-structs"><span class="le-structs-lbl">In this toolkit:</span> '+structs+'</div>':'')+
+      '</div>';
+  }
   var c="",so="";
-  Object.keys(EV).forEach(function(k){
-    var e=EV[k];var html='<div class="le'+(e[2]==="soc"?" soc":"")+'"><b>'+e[0]+'</b> — '+e[1]+'</div>';
-    if(e[2]==="soc")so+=html;else c+=html;
-  });
-  document.getElementById("legCog").innerHTML=c;
-  document.getElementById("legSoc").innerHTML=so;
+  Object.keys(EV).forEach(function(k){if(EV[k][2]==="soc")so+=card(k);else c+=card(k);});
+  var cg=document.getElementById("legCog"),sg=document.getElementById("legSoc");
+  cg.innerHTML=c;sg.innerHTML=so;
+  [cg,sg].forEach(function(g){g.addEventListener("click",function(ev){
+    var t=ev.target.closest&&ev.target.closest(".le-struct");if(!t)return;
+    els.struct.value=t.getAttribute("data-load");showStruct();
+    var box=document.getElementById("sInfo");if(box)box.scrollIntoView({behavior:"smooth",block:"center"});
+  });});
 })();
 
 var els={struct:sel,disc:document.getElementById("disc"),lang:document.getElementById("lang"),
@@ -412,7 +433,7 @@ function buildPrompt(){
   var subjGuide=(d&&SIG[d])?SIG[d].i:"";
   var p=
 "You are an instructional coach in evidence-based, collaborative learning for "+subject+". I teach "+subject+
-(level!=="Any level"?" at the "+level+" level":"")+".\n\n"+
+(level!=="Any"?" to a "+level+" class":"")+".\n\n"+
 "I want to run the cooperative learning structure \""+struct+"\" on this topic/objective:\n\""+topic+"\"\n\n"+
 "How the structure works: "+mech+"\n\n"+
 "Design 4 ready-to-run versions of this activity for my lesson. Rules:\n"+
@@ -426,7 +447,7 @@ function buildPrompt(){
 "  • The student task (what they do)\n"+
 "  • The specific learning it targets and why\n"+
 "  • One quick way to check it worked\n\n"+
-"Then tell me how to bring this same activity back 3–5 days later (spaced practice) and fold it into a later cumulative review (interleaving).";
+"Then show me how to bring this same activity back 3\u20135 days later so it isn\u2019t one-and-done, and how to fold it into a later review that mixes it in with earlier material \u2014 so students have to figure out which idea applies, not just recall one.";
   document.getElementById("prompt").value=p;
 }
 function update(){showStruct();showDisc();buildPrompt();}

@@ -209,6 +209,11 @@ body.light .src-card{background:rgba(0,0,0,.02);border-color:rgba(0,0,0,.08)}
 .src-card p{font-size:13px;color:#bbb;line-height:1.6;margin:6px 0}body.light .src-card p{color:#444}
 .src-card .train{font-size:12px;color:#C11430;text-decoration:none;font-weight:600}
 
+.disc-lens{margin:10px 0;padding:12px 14px;border-left:3px solid #C11430;background:rgba(193,20,48,.06);border-radius:6px}
+.disc-lens-h{font-size:12px;font-weight:700;color:#C11430;letter-spacing:.3px;margin-bottom:5px}
+.disc-lens p{margin:0;font-size:13px;line-height:1.6;color:#ddd}
+.disc-lens-cite{margin-top:7px;font-size:11px;color:#888}
+.disc-lens-cite span{color:#aaa}
 </style>
 </head>
 <body>
@@ -633,42 +638,271 @@ var KREF={
 };
 for(var _i=0;_i<S.length;_i++){S[_i].origin="ours"; if(KREF[S[_i].name])S[_i].kref=KREF[S[_i].name];}
 var METHODS=[
- {name:"See, Think, Wonder",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/thinking-routines",
-  engine:"Go-Around + Observe",need:"think",group:"Team",time:"8\u201315 min",diff:"Beginner",bloom:["Understand","Analyze"],dok:[2,3],move:false,
-  rounds:[{lab:"SEE",t:"each person names one thing they observe \u2014 facts only"},{lab:"THINK",t:"each person gives an interpretation, \u201cI think\u2026 because I see\u2026\u201d"},{lab:"WONDER",t:"each person shares one open question, \u201cI wonder\u2026\u201d"}],
-  how:"A three-round observation routine that forces description before interpretation: students name what they see, then what they think, then what it makes them wonder.",
-  best:"Launching a unit, analyzing a source, slowing down snap judgments",
-  steps:["Put a stimulus in front of students; 30 seconds of silent looking.","SEE: observable facts only, \u201cI see\u2026\u201d","THINK: \u201cI think\u2026 because I see\u2026\u201d \u2014 claims point back to a See.","WONDER: open questions the stimulus raises."],
-  tips:"The hard part is keeping students in See \u2014 hold the line so interpretations stay evidence-based.",
-  example:"\u201cLook at this source for 30 seconds, silently. Round one: one thing you SEE. Round two: what you THINK, and why. Round three: one WONDER.\u201d",
-  slide:[["SEE","What do you observe?","\u201cI see ___\u201d  (facts only)"],["THINK","What\u2019s going on?","\u201cI think ___ because I see ___\u201d"],["WONDER","What does it make you wonder?","\u201cI wonder ___\u201d"]]},
- {name:"Claim, Support, Question",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/thinking-routines",
-  engine:"Go-Around + Reason",need:"think",group:"Team",time:"10\u201315 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
-  rounds:[{lab:"CLAIM",t:"each states a claim about the material"},{lab:"SUPPORT",t:"each backs the claim with specific evidence"},{lab:"QUESTION",t:"each raises what the claim doesn\u2019t yet explain"}],
-  how:"Make a claim, back it with evidence, then question what isn\u2019t explained \u2014 moves students past reflexive agree/disagree.",
-  best:"Argument from evidence, source analysis, debate prep",
-  steps:["Pose a claim-worthy prompt about the text or data.","CLAIM: each states a position.","SUPPORT: each cites specific evidence.","QUESTION: each names what the claim leaves unexplained."],
-  tips:"The Question round is where the thinking deepens \u2014 don\u2019t skip it to save time.",
-  example:"\u201cClaim: what drove this character\u2019s choice? Support it with a line from the text. Then question what your claim can\u2019t account for.\u201d",
-  slide:[["CLAIM","Your position?","\u201cI claim ___\u201d"],["SUPPORT","Your evidence?","\u201cI support it with ___\u201d"],["QUESTION","What\u2019s unexplained?","\u201cThis doesn\u2019t yet explain ___\u201d"]]},
- {name:"Circle of Viewpoints",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/thinking-routines",
-  engine:"Go-Around + Role",need:"think",group:"Team",time:"12\u201318 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
-  rounds:[{lab:"NAME",t:"the team brainstorms who has a stake in the issue"},{lab:"SPEAK",t:"each speaks in character from one viewpoint"},{lab:"WONDER",t:"each raises a question their viewpoint would ask"}],
-  how:"Brainstorm the stakeholders in an issue, then speak in character from one viewpoint. Cracks open false two-sided debates.",
-  best:"History, ethics, literature, any multi-stakeholder issue",
-  steps:["Team lists the viewpoints in the issue.","Assign one viewpoint per teammate.","SPEAK: \u201cFrom my point of view\u2026\u201d","WONDER: each poses a question their viewpoint would ask."],
-  tips:"Assigning viewpoints by seat keeps it from collapsing into the two loudest opinions.",
-  example:"\u201cWho has a stake in this decision? Take one viewpoint each and speak from it.\u201d",
-  slide:[["NAME","Who has a stake?","List the viewpoints"],["SPEAK","Speak in character","\u201cFrom my view, ___\u201d"],["WONDER","Ask in character","\u201cI\u2019d want to know ___\u201d"]]},
- {name:"I Used to Think\u2026 Now I Think\u2026",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/thinking-routines",
-  engine:"Go-Around + Reflect",need:"think",group:"Team",time:"5\u20138 min",diff:"Beginner",bloom:["Understand","Evaluate"],dok:[2,3],move:false,
-  rounds:[{lab:"BEFORE",t:"each names what they used to think"},{lab:"NOW",t:"each names what they think now, and why it changed"}],
-  how:"Two sentence stems that surface how and why a student\u2019s thinking changed \u2014 a strong unit closer.",
-  best:"End of a unit, after new evidence, metacognition",
-  steps:["Pose the topic the unit addressed.","BEFORE: \u201cI used to think\u2026\u201d","NOW: \u201cNow I think\u2026 because\u2026\u201d"],
-  tips:"The \u2018because\u2019 is the point \u2014 push students to name what changed their mind.",
-  example:"\u201cBefore this unit, what did you think? Now what do you think, and what changed it?\u201d",
-  slide:[["BEFORE","Where you started","\u201cI used to think ___\u201d"],["NOW","Where you are","\u201cNow I think ___ because ___\u201d"]]}
+
+/* ---- Original four (kept; URLs upgraded to their resource pages) ---- */
+{name:"See, Think, Wonder",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/see-think-wonder",
+ engine:"Go-Around + Observe",need:"think",group:"Team",time:"8\u201315 min",diff:"Beginner",bloom:["Understand","Analyze"],dok:[2,3],move:false,
+ rounds:[{lab:"SEE",t:"each person names one thing they observe \u2014 facts only"},{lab:"THINK",t:"each person gives an interpretation, \u201cI think\u2026 because I see\u2026\u201d"},{lab:"WONDER",t:"each person shares one open question, \u201cI wonder\u2026\u201d"}],
+ how:"A three-round observation routine that forces description before interpretation: students name what they see, then what they think, then what it makes them wonder.",
+ best:"Launching a unit, analyzing a source, slowing down snap judgments",
+ steps:["Put a stimulus in front of students; 30 seconds of silent looking.","SEE: observable facts only, \u201cI see\u2026\u201d","THINK: \u201cI think\u2026 because I see\u2026\u201d \u2014 claims point back to a See.","WONDER: open questions the stimulus raises."],
+ tips:"The hard part is keeping students in See \u2014 hold the line so interpretations stay evidence-based.",
+ example:"\u201cLook at this source for 30 seconds, silently. Round one: one thing you SEE. Round two: what you THINK, and why. Round three: one WONDER.\u201d",
+ slide:[["SEE","What do you observe?","\u201cI see ___\u201d  (facts only)"],["THINK","What\u2019s going on?","\u201cI think ___ because I see ___\u201d"],["WONDER","What does it make you wonder?","\u201cI wonder ___\u201d"]]},
+
+{name:"Claim, Support, Question",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/claim-support-question",
+ engine:"Go-Around + Reason",need:"think",group:"Team",time:"10\u201315 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
+ rounds:[{lab:"CLAIM",t:"each states a claim about the material"},{lab:"SUPPORT",t:"each backs the claim with specific evidence"},{lab:"QUESTION",t:"each raises what the claim doesn\u2019t yet explain"}],
+ how:"Make a claim, back it with evidence, then question what isn\u2019t explained \u2014 moves students past reflexive agree/disagree.",
+ best:"Argument from evidence, source analysis, debate prep",
+ steps:["Pose a claim-worthy prompt about the text or data.","CLAIM: each states a position.","SUPPORT: each cites specific evidence.","QUESTION: each names what the claim leaves unexplained."],
+ tips:"The Question round is where the thinking deepens \u2014 don\u2019t skip it to save time.",
+ example:"\u201cClaim: what drove this character\u2019s choice? Support it with a line from the text. Then question what your claim can\u2019t account for.\u201d",
+ slide:[["CLAIM","Your position?","\u201cI claim ___\u201d"],["SUPPORT","Your evidence?","\u201cI support it with ___\u201d"],["QUESTION","What\u2019s unexplained?","\u201cThis doesn\u2019t yet explain ___\u201d"]]},
+
+{name:"Circle of Viewpoints",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/circle-of-viewpoints",
+ engine:"Go-Around + Role",need:"think",group:"Team",time:"12\u201318 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
+ rounds:[{lab:"NAME",t:"the team brainstorms who has a stake in the issue"},{lab:"SPEAK",t:"each speaks in character from one viewpoint"},{lab:"WONDER",t:"each raises a question their viewpoint would ask"}],
+ how:"Brainstorm the stakeholders in an issue, then speak in character from one viewpoint. Cracks open false two-sided debates.",
+ best:"History, ethics, literature, any multi-stakeholder issue",
+ steps:["Team lists the viewpoints in the issue.","Assign one viewpoint per teammate.","SPEAK: \u201cFrom my point of view\u2026\u201d","WONDER: each poses a question their viewpoint would ask."],
+ tips:"Assigning viewpoints by seat keeps it from collapsing into the two loudest opinions.",
+ example:"\u201cWho has a stake in this decision? Take one viewpoint each and speak from it.\u201d",
+ slide:[["NAME","Who has a stake?","List the viewpoints"],["SPEAK","Speak in character","\u201cFrom my view, ___\u201d"],["WONDER","Ask in character","\u201cI\u2019d want to know ___\u201d"]]},
+
+{name:"I Used to Think\u2026 Now I Think\u2026",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/i-used-think-now-i-think",
+ engine:"Go-Around + Reflect",need:"think",group:"Team",time:"5\u20138 min",diff:"Beginner",bloom:["Understand","Evaluate"],dok:[2,3],move:false,
+ rounds:[{lab:"BEFORE",t:"each names what they used to think"},{lab:"NOW",t:"each names what they think now, and why it changed"}],
+ how:"Two sentence stems that surface how and why a student\u2019s thinking changed \u2014 a strong unit closer.",
+ best:"End of a unit, after new evidence, metacognition",
+ steps:["Pose the topic the unit addressed.","BEFORE: \u201cI used to think\u2026\u201d","NOW: \u201cNow I think\u2026 because\u2026\u201d"],
+ tips:"The \u2018because\u2019 is the point \u2014 push students to name what changed their mind.",
+ example:"\u201cBefore this unit, what did you think? Now what do you think, and what changed it?\u201d",
+ slide:[["BEFORE","Where you started","\u201cI used to think ___\u201d"],["NOW","Where you are","\u201cNow I think ___ because ___\u201d"]]},
+
+/* ---- Batch 1 ---- */
+{name:"Compass Points",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/compass-points",
+ engine:"Go-Around + Evaluate",need:"think",group:"Team",time:"10\u201315 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
+ rounds:[{lab:"EXCITED (E)",t:"each names what's promising about the idea \u2014 the upside"},{lab:"WORRISOME (W)",t:"each names a risk or downside"},{lab:"NEED TO KNOW (N)",t:"each names what they'd have to find out to judge it fairly"},{lab:"STANCE (S)",t:"each states where they land now and one next step"}],
+ how:"A four-point evaluation routine \u2014 Excited, Worrisome, Need to know, Stance \u2014 that walks a team around a proposal before anyone commits to a side. The compass keeps a hot topic from collapsing into for-vs-against.",
+ best:"Weighing a proposal or decision, a controversial claim, a character's choice, or pre-writing for argument",
+ steps:["Put a clear proposition in front of students \u2014 a 'should we\u2026' question or a character's choice.","E \u2014 Excited: go around the pod, each names an upside.","W \u2014 Worrisome: go around, each names a risk or downside.","N \u2014 Need to know: each names the information that would change their judgment.","S \u2014 Stance: each states where they stand now and one way to move forward."],
+ tips:"Start with E \u2014 leading with the upside lowers defenses and stops the room locking into positions before it has looked at all four points. Have students jot a private stance before and after so they can see their thinking move.",
+ example:"\u201cShould our school go phone-free? Go around your pod: one thing that excites you, one that worries you, what you'd need to know, then your stance.\u201d",
+ slide:[["E","Excited","What's the upside?"],["W","Worrisome","What's the risk?"],["N","Need to know","What would change your mind?"],["S","Stance","Where do you land \u2014 and your next step?"]]},
+
+/* ---- Batch 2 ---- */
+{name:"Connect, Extend, Challenge",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/connect-extend-challenge",
+ engine:"Go-Around + Reflect",need:"think",group:"Team",time:"8\u201312 min",diff:"Beginner",bloom:["Understand","Analyze"],dok:[2,3],move:false,
+ rounds:[{lab:"CONNECT",t:"each names how the new material links to something they already knew"},{lab:"EXTEND",t:"each names an idea that pushed or widened their thinking"},{lab:"CHALLENGE",t:"each names a puzzle or question still left open"}],
+ how:"A three-round closer that turns new material into durable understanding: link it to prior knowledge, name what stretched your thinking, then surface what\u2019s still unresolved.",
+ best:"Closing a reading, lecture, or unit; consolidating new information into what students already know",
+ steps:["After the reading or lesson, give students 30 seconds to look back over it.","CONNECT: go around \u2014 how does this connect to what you already knew?","EXTEND: each names a new idea that broadened or shifted their thinking.","CHALLENGE: each names a question or puzzle that\u2019s still open."],
+ tips:"The Challenge round is the most valuable and the most skipped \u2014 protect time for it; the open questions are where the next lesson starts.",
+ example:"\u201cLook back at the chapter. Round one: how does it connect to what you knew? Round two: what new idea extended your thinking? Round three: what still puzzles you?\u201d",
+ slide:[["CONNECT","Link to the known","\u201cThis connects to ___\u201d"],["EXTEND","What stretched you","\u201cA new idea was ___\u201d"],["CHALLENGE","What\u2019s still open","\u201cI\u2019m puzzled by ___\u201d"]]},
+
+{name:"3-2-1 Bridge",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/3-2-1-bridge",
+ engine:"Go-Around + Reflect",need:"think",group:"Team",time:"10\u201315 min (split before/after)",diff:"Intermediate",bloom:["Understand","Evaluate"],dok:[2,3],move:false,
+ rounds:[{lab:"BEFORE",t:"each writes 3 words, 2 questions, and 1 metaphor for the topic, then shares"},{lab:"AFTER",t:"after the lesson, each writes a fresh 3-2-1 on the same topic"},{lab:"BRIDGE",t:"each explains how the new 3-2-1 connects to or moved from the first"}],
+ how:"Students capture their starting thinking (3 words, 2 questions, 1 metaphor), learn, capture it again, then build the \u2018bridge\u2019 naming how and why their thinking shifted. Makes the learning itself visible.",
+ best:"Topics students already have some informal ideas about; bookending a lesson or unit to show growth",
+ steps:["BEFORE the lesson: each student privately writes 3 words, 2 questions, 1 metaphor about the topic.","Teach the lesson or do the reading.","AFTER: each writes a new 3 words, 2 questions, 1 metaphor.","BRIDGE: go around \u2014 each explains how their thinking connected or changed, and why."],
+ tips:"Tell students the first 3-2-1 can\u2019t be wrong \u2014 it\u2019s only a starting point. The learning shows up in the Bridge, so don\u2019t rush it.",
+ example:"\u201cBefore we start: 3 words, 2 questions, 1 metaphor for \u2018grace.\u2019 Keep it. After the lesson you\u2019ll write a new one, then tell your pod how your thinking moved.\u201d",
+ slide:[["3","Three words","first words that come to mind"],["2","Two questions","what you wonder"],["1","One metaphor","\u2018___ is like ___\u2019"]]},
+
+{name:"Headlines",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/headlines",
+ engine:"Go-Around + Synthesize",need:"think",group:"Team",time:"5\u20138 min",diff:"Beginner",bloom:["Understand","Evaluate"],dok:[2,3],move:false,
+ rounds:[{lab:"HEADLINE",t:"each writes a one-line newspaper headline capturing the core of the topic"},{lab:"SHARE & SHIFT",t:"each reads it and says how it differs from what they\u2019d have written before today"}],
+ how:"Each student boils the whole topic down to a single newspaper headline, then names how it differs from what they\u2019d have written yesterday. Forces synthesis and surfaces what changed.",
+ best:"Closing a discussion or class; checking what each student took as the central idea",
+ steps:["After the discussion, give 60 seconds: each writes a headline that captures the heart of the topic.","Go around the pod: each reads their headline aloud.","Each adds one line: how is this different from the headline you\u2019d have written before today?"],
+ tips:"It\u2019s not a contest for the cleverest headline \u2014 the point is hearing the range and the shifts. Push for the central idea, not a summary of everything.",
+ example:"\u201cIn one headline, capture what today\u2019s reading was really about. Then tell your pod how it\u2019s different from the one you\u2019d have written yesterday.\u201d",
+ slide:[["HEADLINE","Capture the essence","one line, like a newspaper"],["SHIFT","What changed","\u201cYesterday I\u2019d have said ___\u201d"]]},
+
+{name:"Think, Puzzle, Explore",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/think-puzzle-explore",
+ engine:"Go-Around + Inquire",need:"think",group:"Team",time:"8\u201312 min",diff:"Beginner",bloom:["Understand","Analyze"],dok:[2,3],move:false,
+ rounds:[{lab:"THINK",t:"each names what they think they already know about the topic"},{lab:"PUZZLE",t:"each names a question or something that puzzles them"},{lab:"EXPLORE",t:"each proposes a way the pod could investigate one puzzle"}],
+ how:"An opener that surfaces prior knowledge, then curiosity, then a plan: what you think you know, what puzzles you, how you could find out. Misconceptions surface early so they can be revisited.",
+ best:"Launching a new topic or unit; gauging where students actually start",
+ steps:["Name the topic. THINK: go around \u2014 what do you think you know?","Record it all, including shaky ideas \u2014 you\u2019ll revisit them later.","PUZZLE: each names a question or something that puzzles them.","EXPLORE: each suggests how the pod might investigate one of the puzzles."],
+ tips:"Write down the THINK answers even when they\u2019re wrong \u2014 returning to them after the unit is where the misconception correction happens.",
+ example:"\u201cNew topic: the Beatitudes. Round one: what do you think you already know? Round two: what puzzles you? Round three: how could we find out?\u201d",
+ slide:[["THINK","What you think you know","prior ideas \u2014 all welcome"],["PUZZLE","What puzzles you","an open question"],["EXPLORE","How to find out","a way to investigate"]]},
+
+{name:"The Explanation Game",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/explanation-game",
+ engine:"Go-Around + Reason",need:"think",group:"Team",time:"10\u201315 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
+ rounds:[{lab:"NOTICE",t:"each names one feature worth explaining \u2014 \u2018I notice that\u2026\u2019"},{lab:"WHY",t:"the same student attempts \u2018Why is it that way?\u2019 \u2014 cause or purpose"},{lab:"PUSH",t:"teammates add a follow-up \u2018why\u2019 or an alternative explanation"}],
+ how:"Start from \u2018I notice that\u2026\u2019 and chase the \u2018why\u2019 \u2014 cause or purpose \u2014 with teammates pushing each explanation further. Builds causal reasoning rather than surface description.",
+ best:"Digging into why something is the way it is \u2014 a text, a practice, a result, a design, an event",
+ steps:["Put the object of study in front of students (a passage, practice, image, or result).","NOTICE: each names a feature \u2014 \u2018I notice that\u2026\u2019","WHY: the same student offers \u2018Why is it that way?\u2019 \u2014 a cause or a purpose.","PUSH: teammates ask one more \u2018why,\u2019 or offer a competing explanation, until the reasoning holds."],
+ tips:"Model the first round yourself \u2014 the move students miss is following an answer with another \u2018why.\u2019 Keep explanations tied to evidence, not guesses.",
+ example:"\u201cTake the parable. \u2018I notice that\u2026\u2019 then \u2018Why is it that way?\u2019 Your pod keeps asking \u2018why\u2019 or offering another explanation until it holds up.\u201d",
+ slide:[["NOTICE","Something worth explaining","\u201cI notice that ___\u201d"],["WHY","Cause or purpose","\u201cWhy is it that way?\u201d"],["PUSH","Go deeper","another \u2018why\u2019 or an alternative"]]},
+
+{name:"The 4 C\u2019s",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/4-cs",
+ engine:"Go-Around + Discuss",need:"discuss",group:"Team",time:"15\u201320 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
+ rounds:[{lab:"CONNECTIONS",t:"each names a connection between the text and their life or other learning"},{lab:"CHALLENGE",t:"each names an idea or assumption in the text they want to challenge"},{lab:"CONCEPTS",t:"each names a key concept central to the text"},{lab:"CHANGES",t:"each names a change in attitude or action the text suggests"}],
+ how:"A four-round text-based discussion \u2014 Connections, Challenge, Concepts, Changes \u2014 moving a pod from personal links to argument to core ideas to implications. Keeps discussion grounded in the text.",
+ best:"Discussing a substantial reading; book or document study; argument from textual evidence",
+ steps:["Everyone has read the same text. CONNECTIONS: go around \u2014 a link to your life or other learning.","CHALLENGE: each names an idea or assumption they\u2019d push back on.","CONCEPTS: each names a key concept central to the text.","CHANGES: each names a change in attitude or action the text implies."],
+ tips:"Require students to point to the line behind each C \u2014 that\u2019s what keeps it argument-from-text instead of opinion.",
+ example:"\u201cWith the encyclical in front of you: a Connection, a Challenge, a key Concept, and a Change it calls for \u2014 each anchored to a line in the text.\u201d",
+ slide:[["CONNECTIONS","To you / your learning","\u201cThis connects to ___\u201d"],["CHALLENGE","Argue with it","\u201cI\u2019d push back on ___\u201d"],["CONCEPTS","The core idea","\u201cThe key concept is ___\u201d"],["CHANGES","What it calls for","\u201cThis suggests changing ___\u201d"]]},
+
+{name:"Step Inside",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/step-inside",
+ engine:"Go-Around + Role",need:"think",group:"Team",time:"10\u201315 min",diff:"Intermediate",bloom:["Understand","Analyze"],dok:[2,3],move:false,
+ rounds:[{lab:"PERCEIVE",t:"speaking as the person or thing: what can you perceive around you?"},{lab:"KNOW",t:"in character: what do you know about or believe?"},{lab:"CARE",t:"in character: what do you care about \u2014 what matters to you?"}],
+ how:"Students step into a person, object, or viewpoint and speak from inside it \u2014 what it perceives, knows or believes, and cares about. Turns an abstract perspective into something students can voice.",
+ best:"Perspective-taking in history, literature, ethics; bringing an abstract stakeholder to life",
+ steps:["List the viewpoints embodied in the text or situation; assign one per teammate.","PERCEIVE: in character \u2014 what can you sense around you?","KNOW: in character \u2014 what do you know about or believe?","CARE: in character \u2014 what matters most to you?"],
+ tips:"Push past the starter questions into a short first-person monologue \u2014 \u2018I see\u2026 I believe\u2026 I fear\u2026\u2019 \u2014 and have the pod stay in character with follow-up questions.",
+ example:"\u201cStep inside one of the figures in the parable. Speak as them: what do you perceive, what do you believe, what do you care about?\u201d",
+ slide:[["PERCEIVE","What you sense","\u201cFrom here I can see ___\u201d"],["KNOW","What you believe","\u201cI know / I believe ___\u201d"],["CARE","What matters to you","\u201cWhat I care about is ___\u201d"]]},
+
+{name:"Tug of War",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/tug-of-war",
+ engine:"Go-Around + Reason",need:"decide",group:"Team",time:"12\u201318 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
+ rounds:[{lab:"SIDE A",t:"each adds a \u2018tug\u2019 \u2014 a reason pulling toward one side of the dilemma"},{lab:"SIDE B",t:"each adds a \u2018tug\u2019 pulling toward the other side"},{lab:"WHAT IF",t:"each raises a \u2018what if?\u2019 that complicates the dilemma further"}],
+ how:"A fairness dilemma drawn as a rope: students name the \u2018tugs\u2019 pulling each side, then \u2018what if\u2019 questions that complicate it. Pushes past black-and-white takes into real complexity.",
+ best:"Ethical and fairness dilemmas, debatable claims, two-sided issues in theology, history, or civics",
+ steps:["Pose a genuine fairness dilemma as a tug-of-war rope with two sides.","SIDE A: go around \u2014 each adds a reason pulling one way; post it on that side.","SIDE B: each adds a reason pulling the other way.","WHAT IF: each raises a question that complicates it; reflect \u2014 did anyone\u2019s mind move?"],
+ tips:"Require each student to give at least one tug for the side they disagree with \u2014 that\u2019s the move that breaks tribal positions and builds real reasoning.",
+ example:"\u201cShould the landowner pay the late workers the same wage? Add tugs to each side of the rope, then a \u2018what if,\u2019 and see if your pod\u2019s thinking shifts.\u201d",
+ slide:[["TUGS","Reasons each side","factors pulling left / right"],["BALANCE","Weigh them","which pull is stronger?"],["WHAT IF","Complicate it","\u201cWhat if ___?\u201d"]]},
+
+/* ---- Batch 3 ---- */
+{name:"Think, Pair, Share",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/think-pair-share",
+ engine:"Volley + Verbal",need:"discuss",group:"Pairs",time:"3\u20136 min",diff:"Beginner",bloom:["Understand","Analyze"],dok:[2,3],move:false,
+ rounds:[{lab:"THINK",t:"each person thinks silently about the question on their own"},{lab:"PAIR",t:"partners share and reason through their thinking together"},{lab:"SHARE",t:"a few pairs report \u2014 ideally each explaining the partner\u2019s thinking, not their own"}],
+ how:"The simplest reasoning routine: think alone, talk it through with one partner, then a few share out. The quiet beat first means everyone has something to say before anyone speaks.",
+ best:"Any question worth processing aloud \u2014 before a task, mid-problem, or after a reading",
+ steps:["Pose a question worth thinking about.","THINK: 30\u201360 seconds of silent individual thinking.","PAIR: partners share and build on each other\u2019s reasoning.","SHARE: call on a few \u2014 ask them to explain their partner\u2019s thinking, which keeps everyone listening."],
+ tips:"Tell students up front that you may ask them to report their partner\u2019s idea, not their own \u2014 it turns the pairing into real listening and makes everyone accountable.",
+ example:"\u201cThink on your own for 30 seconds: why does this passage matter? Then share with your partner. I\u2019ll ask a few of you to tell me what your partner said.\u201d",
+ slide:[["THINK","On your own","silent, 30\u201360 sec"],["PAIR","With a partner","share and build"],["SHARE","Out loud","\u201cMy partner thought ___\u201d"]]},
+
+{name:"See, Think, Me, We",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/see-think-me-we",
+ engine:"Go-Around + Connect",need:"think",group:"Team",time:"12\u201318 min",diff:"Intermediate",bloom:["Understand","Analyze","Evaluate"],dok:[2,3],move:false,
+ rounds:[{lab:"SEE",t:"each names what they observe in the work \u2014 facts first"},{lab:"THINK",t:"each offers a thought or interpretation"},{lab:"ME",t:"each names a personal connection to the work"},{lab:"WE",t:"each links it to a bigger story about the world and our place in it"}],
+ how:"Builds from close looking to the big picture: observe, interpret, connect personally, then connect to something larger about us and the world. Strong for art, image, or any work that opens onto meaning.",
+ best:"Art and images, social and ethical themes, any work that invites personal and communal connection",
+ steps:["Choose a work or image. SEE: go around \u2014 careful observations, facts first.","THINK: each shares a thought about what\u2019s going on.","ME: each makes a personal connection.","WE: each links it to a larger story about the world and our place in it."],
+ tips:"The ME and WE rounds get personal \u2014 set a tone of trust first, and let students lean on a sentence stem if a full connection won\u2019t come.",
+ example:"\u201cLook at this image. What do you SEE? What do you THINK? What does it connect to for you \u2014 ME? And how does it connect to a bigger story about us \u2014 WE?\u201d",
+ slide:[["SEE","Observe","\u201cI see ___\u201d"],["THINK","Interpret","\u201cI think ___\u201d"],["ME","Connect personally","\u201cThis connects to me because ___\u201d"],["WE","The bigger story","\u201cThis connects to us because ___\u201d"]]},
+
+{name:"The 3 Whys",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/3-whys",
+ engine:"Go-Around + Reason",need:"think",group:"Team",time:"8\u201312 min",diff:"Beginner",bloom:["Understand","Evaluate"],dok:[2,3],move:false,
+ rounds:[{lab:"ME",t:"each says why this topic might matter to them personally"},{lab:"COMMUNITY",t:"each says why it might matter to the people and community around them"},{lab:"WORLD",t:"each says why it might matter to the world"}],
+ how:"Three widening circles of significance \u2014 why does this matter to me, to my community, to the world? Turns \u2018why do we have to learn this?\u2019 into the actual work.",
+ best:"Establishing relevance at the start of a topic; civics, ethics, and current-events framing",
+ steps:["Name the topic or question. ME: go around \u2014 why might this matter to you?","COMMUNITY: each names why it might matter to people around them.","WORLD: each names why it might matter globally."],
+ tips:"Use it to open a unit students think is irrelevant \u2014 making them argue its significance is more durable than you asserting it.",
+ example:"\u201cThe Beatitudes. Why might they matter to you? To the people around you? To the world? One of each, around the pod.\u201d",
+ slide:[["ME","To you","\u201cThis matters to me because ___\u201d"],["COMMUNITY","To those near you","\u201c\u2026 to my community because ___\u201d"],["WORLD","To everyone","\u201c\u2026 to the world because ___\u201d"]]},
+
+{name:"Color, Symbol, Image",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/color-symbol-image",
+ engine:"Go-Around + Synthesize",need:"think",group:"Team",time:"10\u201315 min",diff:"Beginner",bloom:["Understand","Evaluate"],dok:[2,3],move:false,
+ rounds:[{lab:"COLOR",t:"each picks a color that captures an important idea, and says why"},{lab:"SYMBOL",t:"each picks a symbol for another key idea, and says why"},{lab:"IMAGE",t:"each picks an image for a third idea, and says why"}],
+ how:"Students distill the essence of a reading or experience nonverbally \u2014 a color, a symbol, an image for three key ideas \u2014 then explain the choices. The explaining is where the synthesis happens.",
+ best:"After a reading, film, or event; a fresh way to check what students took as essential",
+ steps:["After the text or experience, list a few important ideas on the board.","Each student picks a COLOR for one idea, a SYMBOL for another, an IMAGE for a third.","Go around the pod: each explains why each choice fits the idea."],
+ tips:"The picture isn\u2019t the point \u2014 the justification is. Push \u2018why that color?\u2019 so it stays synthesis, not arts-and-crafts.",
+ example:"\u201cFor today\u2019s reading: choose a color, a symbol, and an image for three of its big ideas. Then tell your pod why each one fits.\u201d",
+ slide:[["COLOR","For an idea","\u201cI chose ___ because ___\u201d"],["SYMBOL","For an idea","\u201cThis symbol shows ___\u201d"],["IMAGE","For an idea","\u201cThis image captures ___\u201d"]]},
+
+{name:"What Makes You Say That?",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/what-makes-you-say",
+ engine:"Volley + Reason",need:"think",group:"Pairs",time:"5\u201310 min",diff:"Beginner",bloom:["Analyze","Evaluate"],dok:[2,3],move:false,
+ rounds:[{lab:"INTERPRET",t:"one partner gives an interpretation \u2014 what\u2019s going on here?"},{lab:"JUSTIFY",t:"the partner asks \u2018what makes you say that?\u2019 and the first cites the evidence"}],
+ how:"A two-line habit that turns opinions into evidence-based claims: say what you think is going on, then answer \u2018what makes you say that?\u2019 Build it into any discussion and reasoning becomes the default.",
+ best:"Any interpretation \u2014 a text, an image, a data result; building the habit of warranting claims",
+ steps:["Show the material. One partner interprets: \u2018What\u2019s going on here?\u2019","The other asks: \u2018What makes you say that?\u2019","First partner points to the specific evidence behind the claim, then swap."],
+ tips:"Make \u2018what makes you say that?\u2019 a standing class move, not a one-off \u2014 once students expect the question, they start including the evidence unprompted.",
+ example:"\u201cWhat do you think is happening in this passage? \u2026 What makes you say that? Point to the line.\u201d",
+ slide:[["INTERPRET","Your read","\u201cI think what\u2019s going on is ___\u201d"],["JUSTIFY","Your evidence","\u201c\u2026 because I see ___\u201d"]]},
+
+{name:"Word, Phrase, Sentence",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/word-phrase-sentence",
+ engine:"Go-Around + Synthesize",need:"discuss",group:"Team",time:"10\u201315 min",diff:"Beginner",bloom:["Analyze","Evaluate"],dok:[2,3],move:false,
+ rounds:[{lab:"WORD",t:"each picks one word from the text that grabbed them, and says why"},{lab:"PHRASE",t:"each picks a phrase that moved or engaged them, and says why"},{lab:"SENTENCE",t:"each picks a sentence that captured the core, and says why"}],
+ how:"Each student chooses a word, a phrase, and a sentence from a text that caught them, then explains the choices. The pattern of what the pod chose reveals the text\u2019s center of gravity.",
+ best:"Close reading of a rich short text \u2014 a poem, passage, primary source, or scripture",
+ steps:["Everyone has the same text. Each marks one WORD, one PHRASE, one SENTENCE that struck them.","Go around: each reads their WORD and why.","Then PHRASE and why; then SENTENCE and why.","Notice as a pod: what got chosen more than once, and what that says about the text."],
+ tips:"The \u2018why\u2019 is everything \u2014 \u2018because it stood out\u2019 isn\u2019t enough; push for what the choice reveals about the text\u2019s meaning.",
+ example:"\u201cFrom this passage, choose a word, a phrase, and a sentence that caught you. Share each with your pod and say why it mattered.\u201d",
+ slide:[["WORD","One word","\u201cI chose ___ because ___\u201d"],["PHRASE","One phrase","\u201cThis phrase ___\u201d"],["SENTENCE","One sentence","\u201cThis sentence captures ___\u201d"]]},
+
+{name:"Generate, Sort, Connect, Elaborate",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/generate-sort-connect-elaborate",
+ engine:"Go-Around + Map",need:"think",group:"Team",time:"15\u201320 min",diff:"Intermediate",bloom:["Analyze","Evaluate","Create"],dok:[3,4],move:false,
+ rounds:[{lab:"GENERATE",t:"each adds ideas/terms about the topic onto notes or the map"},{lab:"SORT",t:"the pod arranges ideas by how central they are \u2014 core in the middle"},{lab:"CONNECT",t:"the pod draws lines between related ideas and labels the link"},{lab:"ELABORATE",t:"the pod adds new ideas that extend the map further"}],
+ how:"A collaborative concept map built in four moves: generate ideas, sort them by importance, connect the related ones with labeled links, then elaborate. Makes a pod\u2019s whole mental model of a topic visible.",
+ best:"Synthesizing a unit, organizing a complex topic, surfacing how ideas relate",
+ steps:["GENERATE: each writes ideas/terms about the topic, one per note.","SORT: arrange them on the map by centrality \u2014 most important toward the middle.","CONNECT: draw and label lines between related ideas \u2014 say how they connect.","ELABORATE: add new ideas the connections sparked."],
+ tips:"The labeled connections are the thinking \u2014 don\u2019t accept a line without a reason for it. Revisit and add to the same map across the unit.",
+ example:"\u201cAs a pod, build a map of everything you know about grace: generate the ideas, sort them by importance, connect the related ones \u2014 and label why \u2014 then elaborate.\u201d",
+ slide:[["GENERATE","List ideas","one per note"],["SORT","By importance","central ideas in the middle"],["CONNECT","Link & label","\u201cthese connect because ___\u201d"],["ELABORATE","Extend","add new ideas"]]},
+
+{name:"Chalk Talk",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/chalk-talk",
+ engine:"Mix + Silent",need:"think",group:"Class",time:"10\u201315 min",diff:"Beginner",bloom:["Understand","Analyze","Evaluate"],dok:[2,3],move:true,
+ rounds:[{lab:"WRITE",t:"in silence, each writes a response to the prompt on the chart"},{lab:"BUILD",t:"in silence, each reads others\u2019 responses and adds, questions, or connects"}],
+ how:"A silent written discussion: prompts on charts around the room, students respond in writing only. The silence equalizes voice \u2014 the loudest student has no advantage.",
+ best:"Surfacing every voice, including the quiet ones; opening or processing a big question",
+ steps:["Post one or more prompts on charts around the room.","WRITE: in total silence, students write their responses.","BUILD: still silent, they circulate \u2014 reading, adding, drawing lines between ideas, posing questions.","Afterward, debrief aloud: what patterns or surprises showed up?"],
+ tips:"Protect the silence \u2014 it\u2019s what gives introverts equal footing. Model connecting to someone else\u2019s comment with an arrow and a question.",
+ example:"\u201cThree questions are posted around the room. In silence, write your response to any of them, then read and respond to what others wrote \u2014 all on paper, no talking.\u201d",
+ slide:[["WRITE","In silence","respond on the chart"],["READ","Others\u2019 ideas","circulate quietly"],["BUILD","Connect","add, question, link \u2014 no talking"]]},
+
+{name:"Question Starts",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/question-starts",
+ engine:"Go-Around + Generate",need:"think",group:"Team",time:"10\u201315 min",diff:"Beginner",bloom:["Understand","Create"],dok:[2,3],move:false,
+ rounds:[{lab:"BRAINSTORM",t:"using question stems, each adds questions about the topic \u2014 quantity first"},{lab:"CHOOSE",t:"the pod picks one or two questions worth pursuing, and says why"}],
+ how:"Students generate a flood of questions about a topic using question stems (Why\u2026? What if\u2026? How would it differ if\u2026?), then choose the most generative ones to explore. Builds the muscle of asking, not just answering.",
+ best:"Opening inquiry, building curiosity, teaching students to ask better questions",
+ steps:["Give the topic and a list of question stems (Why\u2026? What if\u2026? Suppose\u2026? What would change if\u2026?).","BRAINSTORM: go around \u2014 each adds a question using a stem; aim for quantity, no answering yet.","CHOOSE: the pod selects one or two questions most worth pursuing and explains the choice."],
+ tips:"Hold off all answering during the brainstorm \u2014 the goal is question fluency. Praise unusual questions to push past the obvious ones.",
+ example:"\u201cUsing these stems \u2014 Why\u2026? What if\u2026? How would it change if\u2026? \u2014 brainstorm as many questions about the Beatitudes as you can. Then pick the two most worth chasing.\u201d",
+ slide:[["BRAINSTORM","Ask, don\u2019t answer","use the question stems"],["QUANTITY","Many questions","unusual ones welcome"],["CHOOSE","The best","\u201cWorth pursuing because ___\u201d"]]},
+
+{name:"Zoom In",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/zoom-in",
+ engine:"Go-Around + Observe",need:"think",group:"Team",time:"10\u201315 min",diff:"Beginner",bloom:["Analyze","Evaluate"],dok:[2,3],move:false,
+ rounds:[{lab:"REVEAL 1",t:"seeing only a fragment: what do you observe, and what\u2019s your hypothesis?"},{lab:"REVEAL 2",t:"more is shown: what new things do you see, and how does your thinking change?"},{lab:"REVEAL 3",t:"the full image: what was confirmed or overturned, and what do you still wonder?"}],
+ how:"An image is revealed in stages. At each reveal students observe, form a hypothesis, then revise it as more appears. Makes interpretation visibly provisional \u2014 a model for revising thinking on new evidence.",
+ best:"Building careful observation and the willingness to revise a claim when evidence changes",
+ steps:["Show only a small part of an image. Each names what they see and a tentative hypothesis.","Reveal more. Each names what\u2019s new and how their interpretation shifts.","Reveal the whole. Each names what was confirmed, what was overturned, and a remaining wonder."],
+ tips:"Name the revising out loud \u2014 \u2018I thought ___, now I think ___\u2019 \u2014 so students see that changing your mind on new evidence is the skill, not a failure.",
+ example:"\u201cI\u2019m showing one corner of this image. What do you see, and what\u2019s your guess? \u2026 Here\u2019s more \u2014 what changes? \u2026 Now the whole thing \u2014 what held up?\u201d",
+ slide:[["REVEAL","See a fragment","\u201cI see ___; I think ___\u201d"],["REVISE","More appears","\u201cNow I think ___ because ___\u201d"],["WHOLE","Full picture","what held up / still wonder"]]},
+
+{name:"Red Light, Yellow Light",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/red-light-yellow-light",
+ engine:"Go-Around + Reason",need:"think",group:"Team",time:"10\u201315 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
+ rounds:[{lab:"RED LIGHTS",t:"each flags a claim that should make you stop \u2014 it seems untrue or misleading"},{lab:"YELLOW LIGHTS",t:"each flags a claim to slow down on \u2014 it needs checking before you accept it"}],
+ how:"Students read a source watching for \u2018red lights\u2019 (claims that look false or deceptive) and \u2018yellow lights\u2019 (claims to slow down and verify). Builds a healthy, evidence-minded skepticism toward sources.",
+ best:"Evaluating sources and arguments \u2014 media literacy, primary-source analysis, persuasive texts",
+ steps:["Give students a source or argument to examine.","RED LIGHTS: go around \u2014 each names a claim that should make a reader stop, and why.","YELLOW LIGHTS: each names a claim to slow down and check, and what they\u2019d verify."],
+ tips:"Insist on the \u2018why\u2019 behind each light \u2014 a red light without a reason is just disagreement. Follow up: how would you actually check the yellow lights?",
+ example:"\u201cRead this op-ed. Where are the red lights \u2014 claims that should make you stop? Where are the yellow lights \u2014 claims you\u2019d want to check first?\u201d",
+ slide:[["RED LIGHT","Stop","\u201cThis seems untrue because ___\u201d"],["YELLOW LIGHT","Slow down","\u201cI\u2019d want to check ___\u201d"]]},
+
+{name:"Step In, Step Out, Step Back",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/step-in-step-out-step-back",
+ engine:"Go-Around + Role",need:"think",group:"Team",time:"12\u201318 min",diff:"Advanced",bloom:["Analyze","Evaluate"],dok:[3,4],move:false,
+ rounds:[{lab:"STEP IN",t:"speaking as the person: what might they think, feel, and experience?"},{lab:"STEP OUT",t:"each names what they\u2019d still need to know to understand this person fairly"},{lab:"STEP BACK",t:"each reflects on their own position and the act of perspective-taking itself"}],
+ how:"A disciplined perspective-taking routine: step into a viewpoint, step out to acknowledge the limits of what you can know, then step back to reflect on your own stance. Guards against assuming you can fully speak for someone else.",
+ best:"Responsible perspective-taking in history, ethics, and current issues \u2014 where humility matters",
+ steps:["Choose a person or group connected to the issue.","STEP IN: in their voice \u2014 what might they think, feel, experience?","STEP OUT: each names what they\u2019d still need to know to understand this person fairly.","STEP BACK: each reflects \u2014 what\u2019s my own position, and what does it mean to speak for someone else?"],
+ tips:"The Step Out and Step Back rounds are what make this responsible rather than presumptuous \u2014 don\u2019t skip them; they teach intellectual humility.",
+ example:"\u201cStep into someone affected by this decision \u2014 what do they think and feel? Now step out: what would you still need to know? Then step back: what\u2019s your own view, and what does it mean to speak for them?\u201d",
+ slide:[["STEP IN","Their view","\u201cAs them, I think/feel ___\u201d"],["STEP OUT","Its limits","\u201cI\u2019d still need to know ___\u201d"],["STEP BACK","Your view","\u201cMy own stance is ___\u201d"]]},
+
+{name:"Take a Stand",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/take-stand",
+ engine:"Mix + Reason",need:"think",group:"Class",time:"10\u201315 min",diff:"Beginner",bloom:["Evaluate"],dok:[3],move:true,
+ rounds:[{lab:"STAND",t:"each moves to the spot on the line that matches how strongly they agree"},{lab:"DEFEND",t:"each gives the reason they\u2019re standing where they are"},{lab:"RECONSIDER",t:"after hearing others, each may move \u2014 and says what changed their mind"}],
+ how:"Students physically position themselves along an agree\u2013disagree line on a provocative claim, defend their spot, hear opposing reasons, then may move. Makes a position public and revisable.",
+ best:"Debatable claims and dilemmas; getting every student to commit to a stance and a reason for it",
+ steps:["Pose a genuinely arguable statement. Mark a line from \u2018strongly agree\u2019 to \u2018strongly disagree.\u2019","STAND: each student moves to the spot that matches their view.","DEFEND: call on students across the line to give their reason.","RECONSIDER: anyone may move after hearing others \u2014 and names what changed their mind."],
+ tips:"The moving is the formative data \u2014 watch who shifts and ask them why. Require a reason for the spot, so it\u2019s reasoning, not just a vote with your feet.",
+ example:"\u201c\u2018The meek really do inherit the earth.\u2019 Stand on the line by how much you agree. \u2026 Why are you standing there? \u2026 After hearing others, move if your thinking changed \u2014 and tell us why.\u201d",
+ slide:[["STAND","Pick your spot","agree \u2194 disagree"],["DEFEND","Your reason","\u201cI\u2019m here because ___\u201d"],["RECONSIDER","Move if you shift","\u201cI moved because ___\u201d"]]}
+
 ];
 for(var _m=0;_m<METHODS.length;_m++){METHODS[_m].isMethod=true;}
 S=S.concat(METHODS);
@@ -744,6 +978,45 @@ function rAll(){
 var DISCSTIM={hum:"a primary source or text",stem:"a graph, model, or result",lang:"an image (describe in the target language)",arts:"a work or design"};
 var DISCNAME={hum:"Theology / Social Studies / English",stem:"Math / Science / Health",lang:"World Languages",arts:"Fine Arts & Media"};
 var DISCTOPIC={hum:"a text, source, or ethical question",stem:"a problem, dataset, or phenomenon",lang:"a target-language prompt",arts:"a work, technique, or critique"};
+var DISCLENS={
+ hum:{label:"Theology \u00b7 Social Studies \u00b7 English",
+   spine:"dialogue, sourcing, and argument from text",
+   cite:"Wineburg \u00b7 Reisman 2012 \u00b7 Graham & Perin 2007",
+   recall:"Retrieve sources, terms, and textual detail \u2014 then push one step: ask who said it and why (sourcing) before the claim is accepted.",
+   reason:"Run it as your sourcing/argument engine: every claim cites the text or source, weigh a second source against it, name what it can\u2019t yet explain. Skip isolated grammar drills.",
+   build:"Low-stakes talk lowers the social risk real discussion needs \u2014 let students rehearse a position aloud before they defend it."},
+ stem:{label:"Math \u00b7 Science \u00b7 Health",
+   spine:"worked examples, misconception-surfacing, argument from evidence",
+   cite:"Sweller (CLT) \u00b7 Posner/Chi \u00b7 Bandura",
+   recall:"Math: retrieve facts, but show a worked example first so working memory stays free. Science: don\u2019t just recall \u2014 have students predict, then check, so the misconception surfaces.",
+   reason:"Science: feed it a discrepant result and run claim\u2013evidence\u2013reasoning. Math: students justify which strategy and why, interleaving problem types. Keep anxiety low \u2014 it eats the working memory problem-solving needs.",
+   build:"Normalize struggle and use graded success; in Health/PE build self-efficacy through specific, reachable goals."},
+ lang:{label:"World Languages",
+   spine:"comprehensible input, low affective filter, sound\u2013spelling mapping",
+   cite:"Krashen \u00b7 Beilock \u00b7 science of reading",
+   recall:"Give comprehensible input before demanding output, and build many spaced encounters with each target item rather than one-shot recall.",
+   reason:"Keep the task in the target language but scaffolded \u2014 students reason about meaning from input they can actually understand; map sound to spelling explicitly.",
+   build:"The big one for languages: keep social risk low so students will actually speak \u2014 the affective filter suppresses the output acquisition depends on."},
+ arts:{label:"Fine Arts & Media",
+   spine:"varied/interleaved practice + structured peer critique",
+   cite:"contextual interference (Battig; Shea & Morgan)",
+   recall:"Recall vocabulary and technique, then immediately apply it in a varied context \u2014 using the technique beats naming it.",
+   reason:"Run structured, reciprocal critique with domain vocabulary \u2014 specific glow/grow against criteria, not vague praise \u2014 and interleave skills rather than blocking one drill.",
+   build:"Critique is socially risky; set criteria and sentence frames so feedback stays specific and safe."}
+};
+function discFunc(s){
+  var b=(s.bloom||[]).join(" "),d=(s.dok||[]);
+  var hi=/Analyze|Evaluate|Create/.test(b)||d.indexOf(3)>-1||d.indexOf(4)>-1;
+  var build=(s.need==="team"||s.need==="community"||s.move===true);
+  return build?"build":(hi?"reason":"recall");
+}
+function disciplineLens(s){
+  var L=DISCLENS[dynSel.disc];if(!L)return"";
+  var body=L[discFunc(s)]||L.recall;
+  return '<div class="disc-lens"><div class="disc-lens-h">\ud83c\udfaf Targeted for '+L.label+'</div>'+
+         '<p>'+body+'</p>'+
+         '<div class="disc-lens-cite">Evidence spine: '+L.spine+' \u00b7 <span>'+L.cite+'</span></div></div>';
+}
 function shareVerb(){return dynSel.grp==="pod"?"go around the pod":"take turns with your partner";}
 function dynInit(s){var v=validDyn(s);
   if(dynSel.grp===null||!v.grp[dynSel.grp])dynSel.grp=v.grp[defGrp(s)]?defGrp(s):(v.grp.pair?"pair":"pod");
@@ -808,6 +1081,7 @@ function rCard(s){
     dynInit(s);
     h+=dynRow(s);
     h+='<div class="delivery">'+deliveryNote(s)+'</div>';
+    h+=disciplineLens(s);
     h+='<div class="steps"><div class="step-label">Step-by-Step'+(s.rounds&&dynSel.mv==="stand"?" \u2014 posture-paced":"")+'</div>';
     var steps=buildSteps(s);
     for(var j=0;j<steps.length;j++)h+='<div class="step"><div class="step-num">'+(j+1)+'</div><div class="step-text">'+steps[j]+'</div></div>';
