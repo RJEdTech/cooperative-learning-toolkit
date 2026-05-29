@@ -214,6 +214,9 @@ body.light .src-card{background:rgba(0,0,0,.02);border-color:rgba(0,0,0,.08)}
 .disc-lens p{margin:0;font-size:13px;line-height:1.6;color:#ddd}
 .disc-lens-cite{margin-top:7px;font-size:11px;color:#888}
 .disc-lens-cite span{color:#aaa}
+body.light .disc-lens p{color:#333}
+body.light .disc-lens-cite{color:#777}
+body.light .disc-lens-cite span{color:#555}
 </style>
 </head>
 <body>
@@ -926,9 +929,9 @@ var METHODS=[
 {name:"Conversation Caf\u00e9",origin:"open",src:"Liberating Structures (Lipmanowicz & McCandless)",url:"https://www.liberatingstructures.com/17-conversation-cafe/",
  engine:"Go-Around + Dialogue",need:"discuss",group:"Team",time:"20\u201340 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
  rounds:[{lab:"ROUND 1",t:"with a talking object, each person speaks once \u2014 first thoughts, no cross-talk"},{lab:"ROUND 2",t:"talking object again, each speaks once more after hearing everyone"},{lab:"OPEN",t:"free dialogue, still one voice at a time"},{lab:"CLOSING",t:"a final go-around: each names a takeaway"}],
- how:"A structured talking-circle for a charged or complex topic: a talking object enforces one voice at a time through two go-around rounds, then open dialogue, then a closing round. Slows things down so everyone is heard.",
+ how:"A structured talking-circle for a charged or complex topic: a talking object (any object only the current speaker holds) enforces one voice at a time through two go-around rounds, then open dialogue, then a closing round. Slows things down so everyone is heard.",
  best:"Sensitive, complex, or emotional topics where listening matters as much as talking",
- steps:["Agree on norms: listen to understand, respect all views, one voice at a time, share airtime.","ROUND 1: talking object goes around \u2014 each shares first thoughts, no responses yet.","ROUND 2: object goes around again \u2014 each speaks after having heard everyone.","OPEN: free dialogue, still one at a time. CLOSING: a go-around of takeaways."],
+ steps:["Agree on norms: listen to understand, respect all views, one voice at a time, share airtime.","ROUND 1: pass a talking object \u2014 any object, like a pen, that only the current speaker holds \u2014 around the pod; each shares first thoughts, no responses yet.","ROUND 2: object goes around again \u2014 each speaks after having heard everyone.","OPEN: free dialogue, still one at a time. CLOSING: a go-around of takeaways."],
  tips:"The talking object is the whole game \u2014 only the holder speaks. The two structured rounds before open dialogue are what keep the loudest voices from running it.",
  example:"\u201cOur theme: what do we owe a stranger? Norms first. Round one with the talking stone \u2014 first thoughts only, no replies. Then a second round, then open.\u201d",
  slide:[["NORMS","Agree first","listen, respect, share airtime"],["ROUND 1","Each speaks","talking object, no cross-talk"],["ROUND 2","Each again","after hearing all"],["CLOSE","Takeaways","one each"]]},
@@ -1164,22 +1167,13 @@ function deliveryNote(s){
   if(dynSel.mv==="walk")return "<b>This configuration:</b> turn it into a station rotation for a movement layer.";
   if(dynSel.mv==="stand")return "<b>This configuration:</b> on your feet \u2014 a quick energy lift.";
   return "<b>This configuration:</b> seated and focused.";}
-function buildSteps(s){if(!s.rounds)return s.steps;
-  var sv=shareVerb(),out=[],stim=DISCSTIM[dynSel.disc];
-  out.push(dynSel.mv==="walk"?"Set up stations, one "+stim+" at each; "+(dynSel.grp==="pod"?"pods":"pairs")+" rotate and run the rounds at each station.":"Put "+stim+" in front of students; 30 seconds of silent looking, then run the rounds.");
-  for(var i=0;i<s.rounds.length;i++){var r=s.rounds[i],body;
-    if(dynSel.mv==="stand"){var p='<span class="posture">'+(i%2===0?"Stand":"Sit")+'</span>';body=p+'<b>'+r.lab+'</b> (round '+(i+1)+'): '+sv+', '+r.t+'.';
-      if(i===s.rounds.length-1)body+=' <b>'+(dynSel.grp==="pod"?"Everyone sits when the pod finishes.":"Both sit when you finish.")+'</b>';}
-    else body='<b>'+r.lab+'</b> (round '+(i+1)+'): '+sv+', '+r.t+'.';
-    out.push(body);}return out;}
-function buildExample(s){var sv=shareVerb(),tgt=(dynSel.disc==="lang"?" \u2014 in the target language":"");
-  if(s.rounds){var d=DISCSTIM[dynSel.disc],labs=s.rounds.map(function(r){return r.lab;}).join(", ");
-    if(dynSel.mv==="stand")return "\u201cStand for the odd rounds and sit for the even ones so you can see each group\u2019s progress. "+sv.charAt(0).toUpperCase()+sv.slice(1)+" through "+labs+", everyone seated when done"+tgt+".\u201d";
-    if(dynSel.mv==="walk")return "\u201cSet up stations with a different "+d+" at each. "+(dynSel.grp==="pod"?"Pods":"Pairs")+" rotate; at each, "+sv+" through "+labs+tgt+".\u201d";
-    return "\u201cAt your seats, look at "+d+" for 30 seconds. Then "+sv+" through one round each of "+labs+tgt+".\u201d";}
+function buildSteps(s){return s.steps;}
+
+function buildExample(s){
+  if(s.rounds)return s.example;
   var pre=dynSel.mv==="stand"?"On your feet: ":dynSel.mv==="walk"?"As a station rotation: ":"";
-  var note=(dynSel.disc!=="hum"?" \u2014 in "+DISCNAME[dynSel.disc]+", swap the topic to "+DISCTOPIC[dynSel.disc]+".":"");
-  return pre+s.example+note;}
+  return pre+s.example;}
+
 function slideBox(s){var h='<div class="slide-box"><div class="slide-label">\ud83d\udcfd Put this on a slide</div>';
   for(var i=0;i<s.slide.length;i++){var r=s.slide[i];h+='<div class="slide-line"><span class="slide-k">'+r[0]+'</span>'+r[1]+' <span class="slide-h">'+r[2]+'</span></div>';}
   h+='</div>';return h;}
@@ -1211,7 +1205,7 @@ function rCard(s){
     h+=dynRow(s);
     h+='<div class="delivery">'+deliveryNote(s)+'</div>';
     h+=disciplineLens(s);
-    h+='<div class="steps"><div class="step-label">Step-by-Step'+(s.rounds&&dynSel.mv==="stand"?" \u2014 posture-paced":"")+'</div>';
+    h+='<div class="steps"><div class="step-label">Step-by-Step'+""+'</div>';
     var steps=buildSteps(s);
     for(var j=0;j<steps.length;j++)h+='<div class="step"><div class="step-num">'+(j+1)+'</div><div class="step-text">'+steps[j]+'</div></div>';
     h+='<div class="tip-box"><div class="tip-label">\ud83d\udca1 Teacher Tip</div><p>'+s.tips+'</p></div>';
