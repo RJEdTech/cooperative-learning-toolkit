@@ -345,6 +345,7 @@ var SIG={
 var DISCNAME={lang:"World Languages",ela:"English / Language Arts",math:"Math",sci:"Science",ss:"Social Studies / History",theo:"Theology / Philosophy",arts:"Fine & Performing Arts",hpe:"Health & PE",cs:"Computer Science / Tech",other:"your subject"};
 
 var sel=document.getElementById("struct"),byNeed={};
+var _autoOpt=document.createElement("option");_autoOpt.value="__auto__";_autoOpt.textContent="\ud83e\udd14 Not sure \u2014 recommend one for me";sel.appendChild(_autoOpt);
 S.forEach(function(s){(byNeed[s[1]]=byNeed[s[1]]||[]).push(s);});
 Object.keys(NEED).forEach(function(nd){
   if(!byNeed[nd])return;
@@ -382,7 +383,9 @@ var els={struct:sel,disc:document.getElementById("disc"),lang:document.getElemen
  topic:document.getElementById("topic"),level:document.getElementById("level")};
 
 function showStruct(){
-  var s=find(els.struct.value),box=document.getElementById("sInfo");
+  var box=document.getElementById("sInfo");
+  if(els.struct.value==="__auto__"){box.classList.add("show");document.getElementById("sMech").textContent="The AI will choose a structure that fits your objective and subject, and tell you which it picked and why.";document.getElementById("sMeta").textContent="Goal-first \u2014 no need to know the structures";document.getElementById("sChips").innerHTML="";return;}
+  var s=find(els.struct.value);
   if(!s){box.classList.remove("show");return;}
   box.classList.add("show");
   document.getElementById("sMech").textContent=s[4];
@@ -417,7 +420,7 @@ function showDisc(){
   } else sb.classList.remove("show");
 }
 function buildPrompt(){
-  var s=find(els.struct.value),d=els.disc.value;
+  var s=find(els.struct.value),d=els.disc.value,auto=els.struct.value==="__auto__";
   var subject=d?DISCNAME[d]:"your subject",isLang=(d==="lang");
   if(isLang){var L=els.lang.value==="other"?"the target language":els.lang.value;subject=L;}
   var topic=els.topic.value.trim()||"[your topic or learning objective]";
@@ -429,13 +432,15 @@ function buildPrompt(){
       : ["comprehensible input","sound\u2013spelling (phonological) processing","low-anxiety output"];
     addP.forEach(function(p){if(principles.indexOf(p)<0)principles.push(p);});
   }
-  var pl=principles.join("; ");
+  var pl=auto?"retrieval, elaboration, low-anxiety output, and individual accountability":principles.join("; ");
+  var task=auto
+   ? "I want to run a cooperative learning activity on this topic/objective:\n\""+topic+"\"\n\nI'm not sure which structure fits best. Choose an appropriate cooperative learning structure for this objective and subject \u2014 one where every student is talking and individually accountable, not just the confident few. Name the structure you pick and say in one line why it fits, then design the activity.\n\n"
+   : "I want to run a specific cooperative learning structure on this topic/objective:\n\""+topic+"\"\n\nThe structure is one I call \""+struct+"\". You may not recognize this name \u2014 it's our own label \u2014 so don't assume from the name; use this description.\nHow it works: "+mech+"\n\n";
   var subjGuide=(d&&SIG[d])?SIG[d].i:"";
   var p=
 "You are an instructional coach in evidence-based, collaborative learning for "+subject+". I teach "+subject+
 (level!=="Any"?" to a "+level+" class":"")+".\n\n"+
-"I want to run the cooperative learning structure \""+struct+"\" on this topic/objective:\n\""+topic+"\"\n\n"+
-"How the structure works: "+mech+"\n\n"+
+task+
 "Design 4 ready-to-run versions of this activity for my lesson. Rules:\n"+
 "1. Not fun for fun's sake. Every version must make students actively retrieve, produce, or reason — not just receive or play.\n"+
 "2. Honor these learning principles, and name which one(s) each idea serves: "+pl+".\n"+
