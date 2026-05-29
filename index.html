@@ -1051,6 +1051,7 @@ var SOURCES=[
  {name:"Total Participation Techniques",org:"P\u00e9rsida & William Himmele (ASCD)",lic:"prop",url:"https://www.ascd.org/books/total-participation-techniques-2nd-edition",what:"A published collection of whole-class engagement techniques \u2014 a good further-reading purchase.",train:"The book (ASCD)"}
 ];
 var ORIGIN_LABEL={ours:"Ours \u00b7 free to use",free:"Free \u00b7 attribute",open:"Open \u00b7 CC",public:"Public method",prop:"Proprietary"};
+var DIFF_LABEL={Beginner:"Easy to run",Intermediate:"Moderate",Advanced:"Advanced"};
 var DYAD={"Partner Coach":1,"Explain & Record":1,"Blind Match":1,"Teach-Back Pairs":1,"Running Dictation":1};
 function isRound(s){return !!(s.rounds&&s.rounds.length)|| /Go-Around/.test(s.engine||"");}
 function validDyn(s){var v={grp:{pair:true,pod:true},mv:{seat:true,stand:true,walk:true},disc:{hum:true,stem:true,lang:true,arts:true},best:{}};
@@ -1092,15 +1093,17 @@ function rNeed(){
   return h;
 }
 
+function srcFamily(s){var x=s.src||"";if(/Project Zero/.test(x))return "pz";if(/Liberating/.test(x))return "ls";if(/Right Question/.test(x))return "rqi";return "ours";}
+
 function rAll(){
   var h='<div class="search-wrap"><input type="text" id="si" placeholder="Search structures, uses, or keywords…" value="'+esc(searchText)+'"></div>';
   h+='<div class="filters"><select id="fg"><option value="All">All Groupings</option><option value="Pairs"'+(filterGroup==="Pairs"?" selected":"")+'>Pairs</option><option value="Team"'+(filterGroup==="Team"?" selected":"")+'>Team of 4</option><option value="Class"'+(filterGroup==="Class"?" selected":"")+'>Whole Class</option></select>';
-  h+='<select id="fd"><option value="All">All Levels</option><option value="Beginner"'+(filterDiff==="Beginner"?" selected":"")+'>Beginner</option><option value="Intermediate"'+(filterDiff==="Intermediate"?" selected":"")+'>Intermediate</option><option value="Advanced"'+(filterDiff==="Advanced"?" selected":"")+'>Advanced</option></select>';
+  h+='<select id="fd"><option value="All">Any complexity</option><option value="Beginner"'+(filterDiff==="Beginner"?" selected":"")+'>Easy to run</option><option value="Intermediate"'+(filterDiff==="Intermediate"?" selected":"")+'>Moderate</option><option value="Advanced"'+(filterDiff==="Advanced"?" selected":"")+'>Advanced</option></select>';
   h+='<select id="fb"><option value="All">All Bloom\'s</option><option value="Remember"'+(filterBloom==="Remember"?" selected":"")+'>Remember</option><option value="Understand"'+(filterBloom==="Understand"?" selected":"")+'>Understand</option><option value="Apply"'+(filterBloom==="Apply"?" selected":"")+'>Apply</option><option value="Analyze"'+(filterBloom==="Analyze"?" selected":"")+'>Analyze</option><option value="Evaluate"'+(filterBloom==="Evaluate"?" selected":"")+'>Evaluate</option><option value="Create"'+(filterBloom==="Create"?" selected":"")+'>Create</option></select>';
-  h+='<select id="fo"><option value="All">All Origins</option><option value="ours"'+(filterOrigin==="ours"?" selected":"")+'>Ours</option><option value="free"'+(filterOrigin==="free"?" selected":"")+'>Free / attribute</option><option value="open"'+(filterOrigin==="open"?" selected":"")+'>Open / CC</option><option value="prop"'+(filterOrigin==="prop"?" selected":"")+'>Proprietary</option></select>';
+  h+='<select id="fo"><option value="All">All Sources</option><option value="ours"'+(filterOrigin==="ours"?" selected":"")+'>Original (RJ)</option><option value="pz"'+(filterOrigin==="pz"?" selected":"")+'>Project Zero</option><option value="ls"'+(filterOrigin==="ls"?" selected":"")+'>Liberating Structures</option><option value="rqi"'+(filterOrigin==="rqi"?" selected":"")+'>Right Question Institute</option></select>';
   h+='<select id="fk"><option value="All">All DOK</option><option value="1"'+(filterDok==="1"?" selected":"")+'>DOK 1 — Recall</option><option value="2"'+(filterDok==="2"?" selected":"")+'>DOK 2 — Skill/Concept</option><option value="3"'+(filterDok==="3"?" selected":"")+'>DOK 3 — Strategic</option><option value="4"'+(filterDok==="4"?" selected":"")+'>DOK 4 — Extended</option></select>';
   h+='</div>';
-  var f=S.filter(function(s){if(filterOrigin!=="All"&&(s.origin||"ours")!==filterOrigin)return false;if(filterGroup!=="All"&&s.group!==filterGroup)return false;if(filterDiff!=="All"&&s.diff!==filterDiff)return false;if(filterBloom!=="All"&&(!s.bloom||s.bloom.indexOf(filterBloom)===-1))return false;if(filterDok!=="All"&&(!s.dok||s.dok.indexOf(parseInt(filterDok))===-1))return false;if(searchText){var q=searchText.toLowerCase();if(s.name.toLowerCase().indexOf(q)===-1&&s.best.toLowerCase().indexOf(q)===-1&&s.how.toLowerCase().indexOf(q)===-1&&s.engine.toLowerCase().indexOf(q)===-1)return false;}return true;});
+  var f=S.filter(function(s){if(filterOrigin!=="All"&&srcFamily(s)!==filterOrigin)return false;if(filterGroup!=="All"&&s.group!==filterGroup)return false;if(filterDiff!=="All"&&s.diff!==filterDiff)return false;if(filterBloom!=="All"&&(!s.bloom||s.bloom.indexOf(filterBloom)===-1))return false;if(filterDok!=="All"&&(!s.dok||s.dok.indexOf(parseInt(filterDok))===-1))return false;if(searchText){var q=searchText.toLowerCase();if(s.name.toLowerCase().indexOf(q)===-1&&s.best.toLowerCase().indexOf(q)===-1&&s.how.toLowerCase().indexOf(q)===-1&&s.engine.toLowerCase().indexOf(q)===-1)return false;}return true;});
   h+='<div class="count">'+f.length+' structure'+(f.length!==1?'s':'')+'</div>';
   for(var i=0;i<f.length;i++)h+=rCard(f[i]);return h;
 }
@@ -1192,7 +1195,7 @@ function rCard(s){
   if(s.kref)h+='<div class="kref">\u2248 Kagan\u2019s '+s.kref+' \u2014 <a href="https://www.kaganonline.com/" target="_blank" rel="noopener">official version & training</a></div>';
   h+='<div class="s-badges">';
   h+='<span class="badge b-group">'+(s.group==="Pairs"?"\ud83d\udc6b Pairs":s.group==="Team"?"\ud83d\udc65 Team of 4":"\ud83c\udfeb Whole Class")+'</span>';
-  h+='<span class="badge b-time">\u23f1 '+s.time+'</span><span class="badge b-diff">'+s.diff+'</span>';
+  h+='<span class="badge b-time">\u23f1 '+s.time+'</span><span class="badge b-diff">\ud83c\udf9a '+(DIFF_LABEL[s.diff]||s.diff)+'</span>';
   if(s.move)h+='<span class="badge b-move">\ud83d\udeb6 Movement</span>';
   h+='<span class="badge b-engine">'+s.engine+'</span>';
   if(s.bloom)h+='<span class="badge b-bloom">Bloom\'s: '+s.bloom.join(", ")+'</span>';
