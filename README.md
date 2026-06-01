@@ -11,11 +11,12 @@ An interactive reference for teachers who want every student talking, thinking, 
 One place to find a structure, see exactly how to run it, and know where it comes from. It merges what used to be separate pages into a single searchable library with three kinds of entries:
 
 - **Structures** — 50 original cooperative learning structures, browsable by what you need students to do, with step-by-step instructions, the Volley / Go-Around / Mix engine system, teacher tips, and ready-to-use examples.
-- **Methods** — 54 runnable thinking and reasoning routines, each described in our own words with its source linked. They span:
+- **Methods** — 67 runnable thinking and reasoning routines, each described in our own words with its source linked. They span:
   - **Project Zero thinking routines** (30) — See-Think-Wonder, Claim-Support-Question, Tug of War, the Ladder of Feedback, Parts-Purposes-Complexities, the Story Routine, and more.
   - **Liberating Structures** (13) — 1-2-4-All, Troika Consulting, Wicked Questions, and others.
-  - **NSRF & SRI/CLEE protocols** (5) — Save the Last Word for Me, Block Party, the Tuning Protocol, the 4 A's Text Protocol, Peeling the Onion.
-  - **Facing History strategies** (2) — Surprising/Interesting/Troubling, Café Conversations.
+  - **NSRF protocols** (6) — Save the Last Word for Me, Block Party, the Microlab Protocol, Affinity Mapping, Three Levels of Text, Text Rendering.
+  - **SRI / CLEE protocols** (7) — the Tuning Protocol, the 4 A's, Peeling the Onion, the Consultancy Protocol, the Charrette Protocol, Pruning the Tree, the Future Protocol.
+  - **Facing History strategies** (7) — Surprising/Interesting/Troubling, Café Conversations, Levels of Questions, Identity Charts, the Iceberg Diagram, Head/Heart/Conscience, Two-Minute Interviews.
   - **The Question Formulation Technique** (1) — the Right Question Institute's QFT.
   - **Original to this toolkit** (3) — Six Lenses, Map the Thinking, and Bounce It (parallels to de Bono, Thinking Maps, and Total Participation Techniques).
 - **Sources** — a directory of the systems behind the structures (Kagan, Project Zero, Liberating Structures, QFT, NSRF, SRI/CLEE, Facing History, Six Thinking Hats, Thinking Maps, Total Participation Techniques), each with a plain-language description, a license badge, and a link to the source for the official version and training.
