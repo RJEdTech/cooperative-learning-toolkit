@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Activity Designer · Cooperative Learning Toolkit</title>
+<title>Question Designer · Cooperative Learning Toolkit</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -102,6 +102,25 @@ body.light .le .le-when{color:#666}
 .le-struct{display:inline-block;cursor:pointer;font-size:11px;padding:2px 8px;margin:0 4px 2px 0;border-radius:12px;background:rgba(46,204,113,.10);color:#2ecc71}
 .le.soc .le-struct{background:rgba(230,126,34,.12);color:#e67e22}
 .le-struct:hover{filter:brightness(1.25);text-decoration:underline}
+
+.rung{padding:12px 14px;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);margin-bottom:8px}
+body.light .rung{background:rgba(0,0,0,.02);border-color:rgba(0,0,0,.08)}
+.rung-top{border-color:rgba(193,20,48,.35);background:rgba(193,20,48,.05)}
+.rung-head{display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap}
+.rung-lvl{font-size:13px;font-weight:800;color:#C11430}
+.rung-dokb{font-size:9px;font-weight:700;letter-spacing:.5px;color:#95a5a6;background:rgba(52,73,94,.2);padding:2px 7px;border-radius:10px;cursor:help}
+.rung-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#fff;background:#C11430;padding:2px 7px;border-radius:10px}
+.rung-move{font-size:12px;color:#bbb;line-height:1.5;margin-bottom:7px}
+body.light .rung-move{color:#555}
+.rung-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#777;margin-right:6px}
+.rung-stems,.rung-run{margin-top:5px;line-height:1.9}
+.stem{display:inline-block;font-size:11px;padding:2px 8px;margin:0 4px 2px 0;border-radius:6px;background:rgba(255,255,255,.05);color:#bbb}
+body.light .stem{background:rgba(0,0,0,.04);color:#555}
+.run-in{display:inline-block;font-size:11px;padding:2px 8px;margin:0 4px 2px 0;border-radius:12px;background:rgba(46,204,113,.10);color:#2ecc71}
+.depth-arc{font-size:12px;font-weight:700;color:#3498db;line-height:1.6;padding:9px 12px;margin-bottom:10px;border-radius:9px;background:rgba(52,152,219,.07);border:1px solid rgba(52,152,219,.2)}
+.rung-note{margin-top:10px;font-size:11.5px;color:#9a9a9a;line-height:1.6;padding:10px 12px;border-radius:9px;background:rgba(255,255,255,.02)}
+body.light .rung-note{color:#666;background:rgba(0,0,0,.02)}
+.rung-note b{color:#bbb}body.light .rung-note b{color:#444}
 </style>
 </head>
 <body>
@@ -111,7 +130,7 @@ body.light .le .le-when{color:#666}
     <img class="rj-mark" src="data:image/png;base64,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" alt="Regis Jesuit">
     <div class="header-text">
       <div class="brand">Cooperative Learning <span class="accent">Toolkit</span></div>
-      <div class="tagline">Activity Designer — build an evidence-based activity, then generate more with AI</div>
+      <div class="tagline">Question Designer — turn a learning target into a question ladder, then run each rung in a structure</div>
     </div>
   </div>
   <button class="icon-btn theme-toggle" id="themeBtn" type="button" aria-label="Toggle dark mode">
@@ -119,27 +138,19 @@ body.light .le .le-when{color:#666}
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
   </button>
 </header>
-
 <nav class="xnav">
   <a href="index.html">Library</a>
-  <a href="designer.html" class="a">Activity Designer</a>
-  <a href="questions.html">Question Designer</a>
+  <a href="designer.html">Activity Designer</a>
+  <a href="questions.html" class="a">Question Designer</a>
 </nav>
-
 <div class="wrap">
-  <p class="intro">Pick a structure, your subject, and your topic. You'll get the <b>evidence basis</b> for that structure, the <b>research signature of your discipline</b> (what matters most in your subject), a worked example, and a ready-to-paste prompt for Claude or ChatGPT that generates more activities for your exact lesson. The prompt keeps the AI honest: <b>every idea has to make students retrieve, produce, or reason — not just have fun.</b></p>
+  <p class="intro">Drop in a learning target and get a <b>question ladder</b> — a connected climb that shows the <b>full movement</b> of your questions: the <i>type</i> of thinking rises (Bloom's) while the <i>depth</i> of thinking deepens (DOK), so you can see and plan the whole progression. You'll get the <b>research signature of your discipline</b>, sample stems at each rung, and a <b>ready-to-paste prompt for Claude or ChatGPT</b> that writes the questions for your exact target — kept honest, so <b>every question truly demands the thinking it claims.</b></p>
 
   <div class="panel">
     <div class="field">
-      <label><span class="step">1</span>Structure</label>
-      <select id="struct"><option value="">Choose a structure…</option></select>
-      <div class="info" id="sInfo">
-        <div class="mech" id="sMech"></div>
-        <div class="meta" id="sMeta"></div>
-        <div class="chips" id="sChips"></div>
-      </div>
+      <label><span class="step">1</span>Learning target or objective</label>
+      <input type="text" id="target" placeholder="e.g., students can evaluate whether the New Deal expanded or limited federal power · the causes of cellular respiration · the preterite vs. imperfect">
     </div>
-
     <div class="field">
       <label><span class="step">2</span>Subject</label>
       <div class="row">
@@ -164,24 +175,42 @@ body.light .le .le-when{color:#666}
         </select>
       </div>
       <div class="langnote" id="langNote" style="display:none"></div>
-      <div class="seed" id="seed"></div>
       <div class="sig" id="sigBox">
         <div class="sl">What the research says matters most in this subject</div>
         <div class="st" id="sigText"></div>
         <div class="cite" id="sigCite"></div>
-        <div class="reclabel">Structures the evidence points to (tap to load one):</div>
-        <div class="recs" id="sigRecs"></div>
       </div>
     </div>
+    <div class="row">
+      <div class="field">
+        <label><span class="step">3</span>Climb up to (Bloom's)</label>
+        <select id="ceiling">
+          <option value="understand">Understand</option>
+          <option value="apply">Apply</option>
+          <option value="analyze" selected>Analyze</option>
+          <option value="evaluate">Evaluate</option>
+          <option value="create">Create</option>
+        </select>
+      </div>
+      <div class="field">
+        <label><span class="step">4</span>Deepen through (DOK)</label>
+        <select id="dok">
+          <option value="2">up to DOK 2 · skills &amp; concepts</option>
+          <option value="3">up to DOK 3 · strategic thinking</option>
+          <option value="4" selected>up to DOK 4 · extended (full cycle)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label><span class="step">5</span>Level</label>
+        <select id="level"><option>Any</option><option>Grade 9</option><option>Grade 10</option><option>Grade 11</option><option>Grade 12</option><option>Mixed grades</option><option>Level 1</option><option>Level 2</option><option>Level 3</option><option>Level 4</option></select>
+      </div>
+    </div>
+  </div>
 
-    <div class="field">
-      <label><span class="step">3</span>Your topic or objective</label>
-      <input type="text" id="topic" placeholder="e.g., preterite vs. imperfect · causes of WWI · the Beatitudes · factoring quadratics">
-    </div>
-    <div class="field">
-      <label><span class="step">4</span>Level</label>
-      <select id="level"><option>Any</option><option>Grade 9</option><option>Grade 10</option><option>Grade 11</option><option>Grade 12</option><option>Mixed grades</option><option>Level 1</option><option>Level 2</option><option>Level 3</option><option>Level 4</option></select>
-    </div>
+  <div class="panel">
+    <div class="legend-title">Your question ladder</div>
+    <div style="font-size:12px;color:#888;margin-bottom:4px;line-height:1.6">Read it as a <b>progression</b>: each rung is a different <i>kind</i> of thinking (Bloom's), and the <i>depth</i> (DOK) deepens as you climb. Lower rungs warm students up and surface what they know; the top rung is your target. The AI prompt below fills these in for your exact objective.</div>
+    <div id="ladder"></div>
   </div>
 
   <div class="panel">
@@ -193,114 +222,22 @@ body.light .le .le-when{color:#666}
   </div>
 
   <div class="panel">
-    <div class="legend-title">The evidence this is built on</div>
-    <div style="font-size:12px;color:#888;margin-bottom:10px;line-height:1.6">A structure is just a delivery vehicle. It only helps learning if it makes students do one of these. Fun that doesn't do one of these is fun, not learning.</div>
-    <div style="font-size:11px;font-weight:700;color:#2ecc71;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">How learning sticks</div>
-    <div class="legend-grid" id="legCog"></div>
-    <div style="font-size:11px;font-weight:700;color:#e67e22;text-transform:uppercase;letter-spacing:.5px;margin:14px 0 6px">How the group makes it happen <span style="font-weight:400;text-transform:none;color:#888">(the cooperative/social side Kagan emphasizes)</span></div>
-    <div class="legend-grid" id="legSoc"></div>
+    <div class="legend-title">Two dials, moving together: Bloom's &amp; DOK</div>
+    <div class="legend-grid">
+      <div class="le"><b>Bloom's = the type of thinking</b><div class="le-when">Remember → Understand → Apply → Analyze → Evaluate → Create. It names the cognitive operation a question asks for. It's the rung you stand on.</div></div>
+      <div class="le"><b>DOK = the depth of the thinking</b><div class="le-when">DOK 1 recall · 2 a step of reasoning · 3 reason from evidence · 4 sustained investigation. It names how deep and complex the engagement is. It's how far down the rung goes.</div></div>
+      <div class="le soc"><b>They move together — but they're not the same axis</b><div class="le-when">A good sequence usually climbs both at once. But you can hold a Bloom rung and deepen DOK (ask three "evaluate" questions, each deeper), or sit shallow at a high rung. The ladder shows the planned movement; flex it for your lesson.</div></div>
+      <div class="le soc"><b>The structure is the delivery vehicle</b><div class="le-when">A question only works if every student has to answer it. Each rung suggests a cooperative structure from the Library to run it in. <a href="index.html" style="color:#2ecc71">Browse the full Library →</a></div></div>
+    </div>
   </div>
 </div>
-
 <footer class="site-footer">
   Built for Regis Jesuit High School &middot; No data leaves your browser &middot;
   <a href="https://github.com/RJEdTech/Cooperative-Learning-Toolkit" target="_blank" rel="noopener">View on GitHub</a> &middot;
   <a href="https://forms.microsoft.com/r/sKU9sHY45r" target="_blank" rel="noopener">Report a bug or request a tool</a>
 </footer>
-
 <script>
 (function(){
-var EV={
- RET:["Retrieval practice","Students pull the answer from memory instead of rereading it.","cog","Reach for it when students get it in the moment but forget by next week \u2014 close a lesson by making them recall with notes closed."],
- SPA:["Spaced practice","The material comes back days later, not just once.","cog","Reach for it when a topic is one-and-done in your plan \u2014 bring it back 2\u20133 days later so the memory is rebuilt, not just refreshed."],
- INT:["Interleaving","Topics are mixed and old units resurface alongside new ones.","cog","Reach for it when a unit blocks one problem type all week \u2014 mix old and new types so students practice choosing a strategy, not just running one."],
- DUAL:["Dual coding","Words are paired with images or visuals.","cog","Reach for it when content is all text \u2014 have students pair it with a sketch, diagram, or organizer they build themselves."],
- ELAB:["Elaboration","Students explain how/why and connect to what they know.","cog","Reach for it when answers are correct but thin \u2014 push the 'because\u2026' and tie the idea back to something students already know."],
- GEN:["Generation","Students produce an answer before being shown one.","cog","Reach for it before you teach, not after \u2014 have students predict or attempt first; even a wrong guess primes the correct one."],
- CI:["Comprehensible input","Lots of understandable exposure before output (key for languages).","cog","Reach for it in world languages before demanding speech \u2014 flood students with understandable target-language input first; production follows comprehension."],
- PHON:["Sound\u2013spelling mapping","Multisensory phonological processing \u2014 say it as you build it.","cog","Reach for it for vocabulary, spelling, and decoding \u2014 have students say it as they build it so sound and symbol lock together."],
- MOVE:["Embodied practice","Movement that carries the content (modest but real \u2014 must be content-bound).","cog","Reach for it only when the motion encodes the idea \u2014 line up by chronology, move to the corner that matches your stance. Decorative movement doesn't count."],
- OUT:["Low-anxiety output","Lower the social risk first so students will actually speak.","soc","Reach for it before any high-stakes share \u2014 let students rehearse with one partner first; the social risk, not the content, is what silences them."],
- TEACH:["Peer teaching","Explaining to a peer is itself deep retrieval.","soc","Reach for it when you want the explainer to learn, not just the listener \u2014 assign someone to teach a piece back to the group."],
- ACC:["Individual accountability","Everyone answers \u2014 no hiding behind the group.","soc","Reach for it whenever group work lets some students coast \u2014 make any single member answerable for the whole, e.g. a random call."],
- SOC:["Belonging & teambuilding","Safety and connection that make participation possible.","soc","Reach for it early and when trust is low \u2014 a short, safe teambuilder buys the psychological safety academic risk-taking needs later."]
-};
-
-var NEED={review:"Review & Remember",think:"Think Deeper",discuss:"Discuss & Communicate",practice:"Practice Skills",
- community:"Build Class Community",team:"Build Team Trust",share:"Share & Present",decide:"Make Decisions"};
-var MOVERS={"Stand & Find":1,"Mingle & Discuss":1,"Freeze & Group":1,"Card Swap":1,"Double Ring":1,"Corner Choice":1,
- "Opinion Line":1,"Expert Hunt":1,"Gallery Walk Feedback":1,"Ambassador Visit":1,"Scout & Report":1,"Table Hop":1,"Speed Consult":1,
- "Stand Up, Sit Down":1,"Line-Up":1,"Running Dictation":1,"Find Someone Who":1,"Give One, Get One":1,"Stretch & Recall":1};
-var S=[
- ["Ping-Pong Share","review","Pairs","2–4m","Partners rapidly alternate answers back and forth.",["RET","ACC","OUT"]],
- ["Listen & Switch","discuss","Pairs","4–6m","One speaks for a set time while the other only listens, then swap.",["OUT","ELAB"]],
- ["Partner Coach","practice","Pairs","10–15m","One solves aloud while the partner coaches (not solves), then swap.",["RET","TEACH","OUT"]],
- ["Explain & Record","practice","Pairs","10–15m","One dictates each step of a solution; the other writes exactly that.",["ELAB","GEN","TEACH"]],
- ["Blind Match","discuss","Pairs","10–15m","Partners describe without showing, to match or recreate something.",["OUT","ELAB"]],
- ["Go-Around Share","review","Team","5–8m","Each teammate contributes in turn around the table.",["RET","ACC","OUT"]],
- ["Pass the Pen","review","Team","5–8m","One paper goes around; each person adds a written contribution.",["RET","GEN","ACC"]],
- ["All Write, All Pass","review","Team","5–8m","Everyone writes at once, then passes to build on each other.",["GEN","RET","ACC"]],
- ["Share & Record","review","Team","5–8m","Each shares aloud while a rotating scribe records for the team.",["RET","ELAB"]],
- ["Write First, Then Share","think","Team","6–10m","Silent writing before any talking, then a round of sharing.",["GEN","ELAB","OUT"]],
- ["Heads Up","review","Team","5–8m","Team prepares everyone; teacher calls a random number to answer.",["RET","TEACH","ACC"]],
- ["Reveal Together","review","Team","3–6m","Everyone shows their answer at the same moment on whiteboards.",["RET","ACC"]],
- ["Deal & Roles","review","Team","8–12m","Rotating role cards (reader, checker, recorder) structure the task.",["ACC","ELAB"]],
- ["Stand & Find","community","Class","5–8m","Stand up, move, and pair with a new classmate to talk.",["OUT","SOC","MOVE"]],
- ["Mingle & Discuss","community","Class","5–8m","Circulate to music; pair with whoever's nearest when it stops.",["OUT","SOC","MOVE"]],
- ["Freeze & Group","community","Class","5–8m","Mill around, then freeze and form groups of a called number.",["SOC","MOVE"]],
- ["Card Swap","review","Class","8–12m","Quiz a partner from a card, trade cards, find a new partner.",["RET","SPA","MOVE"]],
- ["Double Ring","community","Class","8–12m","Two facing circles rotate to give each student many partners.",["RET","OUT","MOVE"]],
- ["Corner Choice","community","Class","5–8m","Move to the corner that matches your answer or stance.",["ACC","MOVE","OUT"]],
- ["Opinion Line","think","Class","5–8m","Stand along a line by how strongly you agree.",["ELAB","OUT","MOVE"]],
- ["Expert Hunt","community","Class","8–12m","Find the classmate who can teach you a needed piece.",["TEACH","RET","MOVE"]],
- ["Find the Expert","review","Class","8–12m","Designated 'sages' teach circulating peers a sub-topic.",["TEACH","RET"]],
- ["Pair & Verify","practice","Team","8–12m","Solve, then check against a partner before the team confirms.",["RET","ACC","TEACH"]],
- ["Teach-Back Puzzle","think","Team","12–18m","Each learns one piece, then teaches it to assemble the whole.",["TEACH","ELAB","ACC"]],
- ["Gallery Walk Feedback","share","Team","12–18m","Teams post work; others rotate to read and leave feedback.",["ELAB","MOVE"]],
- ["Stand & Report","share","Team","5–8m","A member stands to report the team's thinking to the class.",["OUT","ACC"]],
- ["Ambassador Visit","share","Team","8–12m","One member visits another team to share and bring ideas back.",["ELAB","TEACH","MOVE"]],
- ["Scout & Report","share","Team","8–12m","A scout roves to gather ideas from other teams and reports back.",["ELAB","MOVE"]],
- ["Budget Vote","decide","Team","8–12m","Allocate limited 'points' to prioritize options together.",["ELAB","ACC"]],
- ["Agree & Write","decide","Team","8–12m","Reach consensus, then record a single agreed answer.",["ELAB","ACC"]],
- ["Spot the Bluff","team","Team","8–12m","Share statements; teammates guess which is the bluff.",["SOC","OUT"]],
- ["Hot Seat Interview","team","Team","8–12m","One teammate answers rapid questions from the others.",["SOC","RET","OUT"]],
- ["Interview Relay","discuss","Team","10–15m","Pair-interview, then report your partner's answers to the team.",["OUT","ELAB","SOC"]],
- ["Reflect-Discuss-Share","think","Pairs","5–8m","Think silently, rehearse with a partner, then a few share out.",["OUT","ELAB","GEN"]],
- ["Silent Storm","think","Team","6–10m","Brainstorm in writing in silence, building on each other.",["GEN","ELAB","OUT"]],
- ["Compare & Combine","think","Team","8–12m","Pairs compare answers, then merge into a stronger team answer.",["ELAB","GEN"]],
- ["Table Hop","review","Class","10–15m","Rotate small groups through stations, each a different task.",["RET","INT","MOVE"]],
- ["Problem Swap","review","Team","10–15m","Teams write problems, then swap and solve another team's.",["GEN","RET"]],
- ["Perspective Swap","think","Pairs","8–12m","Argue a position, then switch and argue the opposite.",["ELAB","OUT"]],
- ["Snowball Build","think","Class","10–15m","Idea grows from individual to pair to team to class.",["GEN","ELAB","OUT"]],
- ["Role Rotate Discussion","discuss","Team","12–18m","Assigned discussion roles rotate each round.",["ELAB","ACC","OUT"]],
- ["Teach-Back Pairs","review","Pairs","8–12m","Partners take turns teaching each other a chunk.",["TEACH","RET","ELAB"]],
- ["Fishbowl Focus","discuss","Class","12–18m","An inner circle discusses while the outer observes, then swap.",["ELAB","OUT","TEACH"]],
- ["Speed Consult","share","Class","8–12m","Timed one-on-one consults, then rotate to a new partner.",["RET","SPA","OUT","MOVE"]],
- ["Stand Up, Sit Down","review","Class","3–6m","Stand for yes/true/agree, sit for no/false — everyone at once.",["RET","ACC","MOVE","OUT"]],
- ["Line-Up","review","Class","5–10m","Each holds a card; the class arranges itself into the right order.",["ELAB","MOVE","ACC"]],
- ["Running Dictation","practice","Pairs","10–15m","Run to read/memorize, return and dictate; partner writes.",["RET","PHON","MOVE","OUT"]],
- ["Find Someone Who","community","Class","8–12m","Circulate with a grid, asking questions to find matches.",["RET","OUT","SOC","MOVE"]],
- ["Give One, Get One","review","Class","6–10m","Brain-dump, then trade one idea for one with many peers.",["RET","ELAB","INT","MOVE"]],
- ["Stretch & Recall","review","Class","3–5m","A movement break fused with rapid recall prompts.",["RET","MOVE"]]
-];
-var SEED={
- lang:{
-  Spanish:["Running Dictation","Post six Spanish sentences in the preterite around the room. Runners memorize a sentence, race back, and dictate it; writers transcribe with correct accents. Drives sound–spelling accuracy and output."],
-  French:["Stand Up, Sit Down","'Levez-vous si la liaison se prononce.' Read a phrase; students stand if the liaison is pronounced, sit if not, then one explains. Targets phonological processing of liaison."],
-  Latin:["Line-Up","Each student holds one word of a Latin sentence with its case ending. Arrange yourselves into a correct sentence — word order is free, so the endings decide the meaning. Drives case/morphology retrieval."],
-  Mandarin:["Find Someone Who","Grid in pinyin + characters: 'find someone who can say a 4th-tone word… who can write 水…' Students ask in Mandarin and sign. Low-stakes tone production and character recall."],
-  other:["Running Dictation","Post target sentences around the room; runners memorize and dictate while partners transcribe exactly. Sound–spelling, retrieval, and accurate output in one loop."]
- },
- ela:["Fishbowl Focus","Inner circle debates whether the narrator is reliable, citing the text; outer circle tracks who grounds claims in evidence, then they swap. Authentic discussion plus argument from textual evidence."],
- math:["Stand Up, Sit Down","Show a worked equation; students stand if it's solved correctly, sit if not. A stander and a sitter justify. Error analysis under retrieval — and worked examples lower the load for anxious students."],
- sci:["Stand Up, Sit Down","Before the demo: 'Stand if you think the heavier ball lands first.' The split surfaces the misconception; run the discrepant event; then re-vote and explain. Cognitive conflict in 4 minutes."],
- ss:["Line-Up","Each student holds one Cold War event; line up chronologically by negotiating with neighbors, then read the timeline and argue the causes. Sequencing plus claims warranted by evidence."],
- theo:["Fishbowl Focus","Inner circle reasons through a moral dilemma against a Beatitude; outer circle notes the strongest reasoning, then swap, then a written reflection. Community of inquiry plus Examen-style reflection."],
- arts:["Gallery Walk Feedback","Post sketches or score excerpts; teams rotate and leave one 'glow' and one 'grow' using arts vocabulary against the rubric. Builds the language of critique."],
- hpe:["Stretch & Recall","Stand and act it out: demonstrate the recovery position; take one step for each component of fitness you can name. Recall through embodied practice."],
- cs:["Pair & Verify","Each writes a function, then traces a partner's code by hand and predicts the output before running it. Predict-then-check drives retrieval and surfaces bugs."],
- other:["Give One, Get One","Brain-dump what you remember, then trade one idea for one with several classmates. Retrieval plus peer elaboration."]
-};
 var SIG={
  lang:{s:"Languages are acquired through understandable input before output, with the social risk of speaking kept low (the affective filter) and — for reading and spelling — explicit sound–spelling (phonological) mapping. Anxiety measurably suppresses the willingness to speak that acquisition needs.",
   c:"Krashen (comprehensible input); Beilock (anxiety & working memory); science of reading",
@@ -345,124 +282,123 @@ var SIG={
 };
 var DISCNAME={lang:"World Languages",ela:"English / Language Arts",math:"Math",sci:"Science",ss:"Social Studies / History",theo:"Theology / Philosophy",arts:"Fine & Performing Arts",hpe:"Health & PE",cs:"Computer Science / Tech",other:"your subject"};
 
-var sel=document.getElementById("struct"),byNeed={};
-var _autoOpt=document.createElement("option");_autoOpt.value="__auto__";_autoOpt.textContent="\ud83e\udd14 Not sure \u2014 recommend one for me";sel.appendChild(_autoOpt);
-S.forEach(function(s){(byNeed[s[1]]=byNeed[s[1]]||[]).push(s);});
-Object.keys(NEED).forEach(function(nd){
-  if(!byNeed[nd])return;
-  var og=document.createElement("optgroup");og.label=NEED[nd];
-  byNeed[nd].forEach(function(s){var o=document.createElement("option");o.value=s[0];o.textContent=(MOVERS[s[0]]?"🚶 ":"")+s[0];og.appendChild(o);});
-  sel.appendChild(og);
-});
-function find(n){for(var i=0;i<S.length;i++)if(S[i][0]===n)return S[i];return null;}
-function evPhrase(c){return EV[c]?EV[c][0].toLowerCase():c;}
+var BLOOM=[
+ {k:"remember",name:"Remember",move:"recall and recognize facts, terms, and steps",
+  stems:["What is \u2026?","List / name \u2026","Define \u2026","When / where / who \u2026?"],
+  structs:["Ping-Pong Share","Stand Up, Sit Down","Give One, Get One"]},
+ {k:"understand",name:"Understand",move:"explain, summarize, and interpret in their own words",
+  stems:["Explain ___ in your own words","Summarize \u2026","Why does \u2026?","What does ___ mean \u2026?"],
+  structs:["Reflect-Discuss-Share","Teach-Back Pairs","See, Think, Wonder"]},
+ {k:"apply",name:"Apply",move:"use the idea in a new situation or problem",
+  stems:["How would you use ___ to \u2026?","Solve \u2026","Show how ___ works when \u2026","What happens if you apply \u2026?"],
+  structs:["Partner Coach","Pair & Verify","Problem Swap"]},
+ {k:"analyze",name:"Analyze",move:"break apart, compare, and find relationships and evidence",
+  stems:["How does ___ relate to ___?","What's the difference between \u2026?","What evidence supports \u2026?","Why is ___ the way it is?"],
+  structs:["Compare & Combine","Parts, Purposes, Complexities","Tug of War"]},
+ {k:"evaluate",name:"Evaluate",move:"judge, defend a position, and critique against criteria",
+  stems:["Do you agree that \u2026? Why?","Which is stronger, and why?","Was ___ justified?","Critique ___ against \u2026"],
+  structs:["Take a Stand","Fishbowl Focus","Compass Points","Opinion Line"]},
+ {k:"create",name:"Create",move:"design, compose, or propose something new",
+  stems:["Design a \u2026","Propose a solution to \u2026","What if you combined ___ and ___?","Create a ___ that \u2026"],
+  structs:["Snowball Build","Generate, Sort, Connect, Elaborate","Silent Storm"]}
+];
+var BIDX={remember:0,understand:1,apply:2,analyze:3,evaluate:4,create:5};
+var DOKINFO={
+ 1:["DOK 1","recall & reproduce \u2014 one right answer, retrieved directly"],
+ 2:["DOK 2","skills & concepts \u2014 decide how to approach it; a step or two of reasoning"],
+ 3:["DOK 3","strategic thinking \u2014 reason from evidence and justify; more than one defensible path"],
+ 4:["DOK 4","extended thinking \u2014 sustained investigation; synthesis across sources, cases, or time"]
+};
 
-(function legend(){
-  var byP={};
-  S.forEach(function(row){(row[5]||[]).forEach(function(c){(byP[c]=byP[c]||[]).push(row[0]);});});
-  function card(k){
-    var e=EV[k],isSoc=(e[2]==="soc");
-    var structs=(byP[k]||[]).slice(0,6).map(function(n){
-      return '<span class="le-struct" data-load="'+n.replace(/"/g,"&quot;")+'">'+n+'</span>';}).join("");
-    return '<div class="le'+(isSoc?" soc":"")+'"><b>'+e[0]+'</b> \u2014 '+e[1]+
-      '<div class="le-when">'+e[3]+'</div>'+
-      (structs?'<div class="le-structs"><span class="le-structs-lbl">In this toolkit:</span> '+structs+'</div>':'')+
-      '</div>';
-  }
-  var c="",so="";
-  Object.keys(EV).forEach(function(k){if(EV[k][2]==="soc")so+=card(k);else c+=card(k);});
-  var cg=document.getElementById("legCog"),sg=document.getElementById("legSoc");
-  cg.innerHTML=c;sg.innerHTML=so;
-  [cg,sg].forEach(function(g){g.addEventListener("click",function(ev){
-    var t=ev.target.closest&&ev.target.closest(".le-struct");if(!t)return;
-    els.struct.value=t.getAttribute("data-load");showStruct();
-    var box=document.getElementById("sInfo");if(box)box.scrollIntoView({behavior:"smooth",block:"center"});
-  });});
-})();
+// distribute DOK as an ascending progression across the rungs, topping out at the chosen ceiling
+function dokFor(i,n,ceil){return n<=1?ceil:Math.round(1+(ceil-1)*i/(n-1));}
 
-var els={struct:sel,disc:document.getElementById("disc"),lang:document.getElementById("lang"),
- topic:document.getElementById("topic"),level:document.getElementById("level")};
+var els={target:document.getElementById("target"),disc:document.getElementById("disc"),lang:document.getElementById("lang"),
+ ceiling:document.getElementById("ceiling"),dok:document.getElementById("dok"),level:document.getElementById("level")};
 
-function showStruct(){
-  var box=document.getElementById("sInfo");
-  if(els.struct.value==="__auto__"){box.classList.add("show");document.getElementById("sMech").textContent="The AI will choose a structure that fits your objective and subject, and tell you which it picked and why.";document.getElementById("sMeta").textContent="Goal-first \u2014 no need to know the structures";document.getElementById("sChips").innerHTML="";return;}
-  var s=find(els.struct.value);
-  if(!s){box.classList.remove("show");return;}
-  box.classList.add("show");
-  document.getElementById("sMech").textContent=s[4];
-  document.getElementById("sMeta").textContent=s[2]+" · "+s[3]+(MOVERS[s[0]]?" · involves movement":"");
-  document.getElementById("sChips").innerHTML=s[5].map(function(c){
-    return '<span class="chip'+(EV[c]&&EV[c][2]==="soc"?" soc":"")+'">'+(EV[c]?EV[c][0]:c)+'</span>';}).join("");
-}
 function showDisc(){
   var d=els.disc.value;
   els.lang.style.display=d==="lang"?"":"none";
   var ln=document.getElementById("langNote");
   ln.style.display=d==="lang"?"":"none";
   if(d==="lang"){
-    ln.innerHTML = (els.lang.value==="Latin")
-      ? "For <b>Latin</b>, this leans on <b>morphology and case</b> (the ending signals meaning, not word order), <b>comprehensible input</b>, and <b>reading/translation fluency</b> — the prompt builds those in."
-      : "For modern languages, this also leans on <b>sound\u2013spelling (phonological) processing</b>, <b>comprehensible input</b>, and <b>low-anxiety output</b> — the prompt builds those in.";
+    ln.innerHTML=(els.lang.value==="Latin")
+      ? "For <b>Latin</b>, lean the questions on <b>morphology and case</b> (the ending signals meaning, not word order), reading, and translation \u2014 the prompt builds that in."
+      : "For modern languages, lean on <b>comprehensible input</b> before output, <b>sound\u2013spelling mapping</b>, and <b>low-anxiety</b> production \u2014 the prompt builds that in.";
   }
-  var seed=document.getElementById("seed"),pick=null;
-  if(d==="lang")pick=SEED.lang[els.lang.value]||SEED.lang.other;
-  else if(SEED[d])pick=SEED[d];
-  if(pick){seed.classList.add("show");seed.innerHTML='<b>Try this ('+pick[0]+'):</b> '+pick[1];}
-  else seed.classList.remove("show");
   var sb=document.getElementById("sigBox");
   if(d&&SIG[d]){
     sb.classList.add("show");
     document.getElementById("sigText").textContent=SIG[d].s;
     document.getElementById("sigCite").textContent="Evidence: "+SIG[d].c;
-    document.getElementById("sigRecs").innerHTML=SIG[d].r.map(function(n){
-      return '<span class="rec" data-s="'+n.replace(/"/g,"&quot;")+'">'+n+'</span>';}).join("");
-    Array.prototype.forEach.call(document.querySelectorAll("#sigRecs .rec"),function(el){
-      el.addEventListener("click",function(){els.struct.value=this.getAttribute("data-s");update();});});
   } else sb.classList.remove("show");
 }
-function buildPrompt(){
-  var s=find(els.struct.value),d=els.disc.value,auto=els.struct.value==="__auto__";
-  var subject=d?DISCNAME[d]:"your subject",isLang=(d==="lang");
-  if(isLang){var L=els.lang.value==="other"?"the target language":els.lang.value;subject=L;}
-  var topic=els.topic.value.trim()||"[your topic or learning objective]";
-  var level=els.level.value,struct=s?s[0]:"[choose a structure]",mech=s?s[4]:"";
-  var principles=s?s[5].map(evPhrase):["retrieval","accountability"];
-  if(isLang){
-    var addP = (els.lang.value==="Latin")
-      ? ["comprehensible input","morphology and case (form signals meaning)","reading and translation fluency"]
-      : ["comprehensible input","sound\u2013spelling (phonological) processing","low-anxiety output"];
-    addP.forEach(function(p){if(principles.indexOf(p)<0)principles.push(p);});
+
+function renderLadder(){
+  var top=BIDX[els.ceiling.value],ceil=parseInt(els.dok.value),n=top+1,box=document.getElementById("ladder"),h="";
+  var arc=[];for(var i=0;i<=top;i++)arc.push(dokFor(i,n,ceil));
+  var uniq=[];arc.forEach(function(x){if(uniq[uniq.length-1]!==x)uniq.push(x);});
+  h+='<div class="depth-arc"><span class="rung-lbl">Depth moves</span>'+uniq.map(function(x){return "DOK "+x;}).join(" \u2192 ")+
+     ' <span style="color:#888">\u2014 the thinking deepens as it climbs</span></div>';
+  for(var i=0;i<=top;i++){
+    var b=BLOOM[i],isTop=(i===top),dk=arc[i];
+    var stems=b.stems.map(function(s){return '<span class="stem">'+s+'</span>';}).join("");
+    var runs=b.structs.map(function(nm){return '<span class="run-in">'+nm+'</span>';}).join("");
+    h+='<div class="rung'+(isTop?" rung-top":"")+'">'+
+       '<div class="rung-head"><span class="rung-lvl">'+b.name+'</span>'+
+         '<span class="rung-dokb" title="'+DOKINFO[dk][1]+'">DOK '+dk+'</span>'+
+         (isTop?'<span class="rung-tag">your target</span>':'')+'</div>'+
+       '<div class="rung-move">'+b.move+'</div>'+
+       '<div class="rung-stems"><span class="rung-lbl">Stems</span>'+stems+'</div>'+
+       '<div class="rung-run"><span class="rung-lbl">Run it in</span>'+runs+'</div>'+
+       '</div>';
   }
-  var pl=auto?"retrieval, elaboration, low-anxiety output, and individual accountability":principles.join("; ");
-  var task=auto
-   ? "I want to run a cooperative learning activity on this topic/objective:\n\""+topic+"\"\n\nI'm not sure which structure fits best. Choose an appropriate cooperative learning structure for this objective and subject \u2014 one where every student is talking and individually accountable, not just the confident few. Name the structure you pick and say in one line why it fits, then design the activity.\n\n"
-   : "I want to run a specific cooperative learning structure on this topic/objective:\n\""+topic+"\"\n\nThe structure is one I call \""+struct+"\". You may not recognize this name \u2014 it's our own label \u2014 so don't assume from the name; use this description.\nHow it works: "+mech+"\n\n";
+  h+='<div class="rung-note">The rung names are <b>Bloom\u2019s</b> (type of thinking); the DOK badges are <b>depth</b> \u2014 a separate axis. Here they climb together, but you can hold a rung and deepen DOK, or stay shallow at a high rung.</div>';
+  box.innerHTML=h;
+}
+
+function buildPrompt(){
+  var d=els.disc.value,isLang=(d==="lang");
+  var subject=d?DISCNAME[d]:"your subject";
+  if(isLang){subject=els.lang.value==="other"?"the target language":els.lang.value;}
+  var target=els.target.value.trim()||"[your learning target or objective]";
+  var level=els.level.value,top=BIDX[els.ceiling.value],topName=BLOOM[top].name,ceil=parseInt(els.dok.value),n=top+1;
+  var arc=[];for(var i=0;i<=top;i++)arc.push(dokFor(i,n,ceil));
+  var uniq=[];arc.forEach(function(x){if(uniq[uniq.length-1]!==x)uniq.push(x);});
+  var arcStr=uniq.map(function(x){return "DOK "+x;}).join(" \u2192 ");
   var subjGuide=(d&&SIG[d])?SIG[d].i:"";
+  var structMenu="Ping-Pong Share, Stand Up Sit Down, Reflect-Discuss-Share, Partner Coach, Compare & Combine, Take a Stand, Fishbowl Focus, Tug of War, Snowball Build";
+
   var p=
-"You are an instructional coach in evidence-based, collaborative learning for "+subject+". I teach "+subject+
+"You are an instructional coach in question design and formative assessment for "+subject+". I teach "+subject+
 (level!=="Any"?" to a "+level+" class":"")+".\n\n"+
-task+
-"Design 4 ready-to-run versions of this activity for my lesson. Rules:\n"+
-"1. Not fun for fun's sake. Every version must make students actively retrieve, produce, or reason — not just receive or play.\n"+
-"2. Honor these learning principles, and name which one(s) each idea serves: "+pl+".\n"+
-(isLang?(els.lang.value==="Latin"?"3. Because this is Latin, build the activity around reading, parsing, and translation — focus on morphology and case (where the ending, not word order, signals meaning) and on understandable input, rather than spoken conversation.\n":"3. Because this is a modern language, make sure students get understandable input before producing, map sound to spelling, and speak with low social risk.\n"):"3. Make sure every student is individually accountable and talking — not just the confident few.\n")+
-"4. Keep my prep low and give me the exact words I would say to launch it.\n"+
-(subjGuide?"\nWhat matters most in this subject — honor it: "+subjGuide+"\n":"")+
-"\nFor each of the 4 ideas, give me:\n"+
-"  • The teacher script (what I say)\n"+
-"  • The student task (what they do)\n"+
-"  • The specific learning it targets and why\n"+
-"  • One quick way to check it worked\n\n"+
-"Then show me how to bring this same activity back 3\u20135 days later so it isn\u2019t one-and-done, and how to fold it into a later review that mixes it in with earlier material \u2014 so students have to figure out which idea applies, not just recall one.";
+"Here is my learning target:\n\""+target+"\"\n\n"+
+"Design a QUESTION LADDER for this target \u2014 a connected sequence of questions where each rung uses the thinking the previous question produced as its raw material, so the whole thing reads as one climb, not a list of disconnected questions. I want to see the full progression.\n\n"+
+"Two dials that move together but are NOT the same thing:\n"+
+"\u2022 Bloom\u2019s = the TYPE of thinking. Climb it from Remember up to "+topName+".\n"+
+"\u2022 Depth of Knowledge (DOK) = how DEEP and complex the thinking is. Deepen it across the sequence from DOK 1 up to DOK "+ceil+" (roughly "+arcStr+"), so the questions get richer as they climb \u2014 show me the whole movement of depth, not one fixed level.\n"+
+"These are independent axes: a question can be high on Bloom\u2019s but shallow in DOK, or hold a Bloom level while deepening DOK. Label BOTH for every question and never conflate them.\n\n"+
+"Rules that keep the questions honest:\n"+
+"1. Every question must be answerable from THIS target\u2019s material \u2014 nothing off-topic or needing knowledge I haven\u2019t taught.\n"+
+"2. Each question must actually demand the level you assign it. The classic failure is an \u2018analyze/evaluate\u2019 question that is really recall in disguise (\u2018What did the author say about X?\u2019 is not analysis). If a question doesn\u2019t truly require its level, rewrite it or flag it.\n"+
+"3. Make each rung depend on the one before \u2014 the climb should be cumulative in both type and depth.\n"+
+(subjGuide?"4. What matters most in this subject \u2014 honor it when writing the questions: "+subjGuide+"\n":"")+
+"\nFor EACH question in the ladder, give me:\n"+
+"  \u2022 The question, worded exactly as I\u2019d ask it\n"+
+"  \u2022 Its Bloom\u2019s level AND its DOK level \u2014 both, labeled separately\n"+
+"  \u2022 One line on what makes it that level (the warrant)\n"+
+"  \u2022 One cooperative structure to run it in \u2014 pick from names like "+structMenu+" \u2014 and a few words on why it fits that rung\n\n"+
+"Show the depth progression explicitly across the set (e.g., "+arcStr+") so I can see and plan how the thinking deepens. End with which one or two rungs are the \u2018money\u2019 questions worth the most class time, and why.";
   document.getElementById("prompt").value=p;
 }
-function update(){showStruct();showDisc();buildPrompt();}
+
+function update(){showDisc();renderLadder();buildPrompt();}
 Object.keys(els).forEach(function(k){els[k].addEventListener("input",update);els[k].addEventListener("change",update);});
 update();
 
 document.getElementById("copyBtn").addEventListener("click",function(){
   var t=document.getElementById("prompt"),b=this;t.select();
-  function ok(){b.textContent="Copied ✓";setTimeout(function(){b.textContent="Copy";},1500);}
+  function ok(){b.textContent="Copied \u2713";setTimeout(function(){b.textContent="Copy";},1500);}
   if(navigator.clipboard){navigator.clipboard.writeText(t.value).then(ok).catch(function(){document.execCommand("copy");ok();});}
   else{document.execCommand("copy");ok();}
 });
@@ -475,5 +411,6 @@ document.getElementById("themeBtn").addEventListener("click",function(){
 });
 })();
 </script>
+
 </body>
 </html>

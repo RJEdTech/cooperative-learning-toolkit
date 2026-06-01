@@ -239,6 +239,7 @@ body.light .disc-lens-cite span{color:#555}
 <nav class="xnav">
   <a href="index.html" class="a">Library</a>
   <a href="designer.html">Activity Designer</a>
+  <a href="questions.html">Question Designer</a>
 </nav>
 <div class="wrap" id="app"></div>
 <footer class="site-footer">
@@ -1034,7 +1035,115 @@ var METHODS=[
  steps:["Present a QFocus \u2014 a statement, image, or prompt (not a question) tied to the topic.","PRODUCE by the four rules: ask as many as you can; don\u2019t stop to judge, discuss, or answer; write each exactly as said; change statements into questions (4\u20136 min).","IMPROVE: label each question Open or Closed; pick one of each and switch its type \u2014 notice how the question changes.","PRIORITIZE: choose the three most important by your criteria, and say why.","PLAN how you\u2019ll use them; REFLECT on what you learned about asking questions."],
  tips:"The four rules are the engine \u2014 especially \u2018don\u2019t stop to answer.\u2019 Pick a QFocus that provokes (a bold claim, a strange image), and let students, not you, do the recording.",
  example:"\u201cQFocus: \u2018The meek will inherit the earth.\u2019 In your pod, produce every question you can \u2014 no judging, no answering. Then sort open vs. closed, and pick your three best.\u201d",
- slide:[["PRODUCE","Ask many","4 rules \u2014 no judging"],["IMPROVE","Open vs. closed","switch one of each"],["PRIORITIZE","Pick three","\u201cmost important because ___\u201d"],["PLAN","Use them","next steps + reflect"]]}
+ slide:[["PRODUCE","Ask many","4 rules \u2014 no judging"],["IMPROVE","Open vs. closed","switch one of each"],["PRIORITIZE","Pick three","\u201cmost important because ___\u201d"],["PLAN","Use them","next steps + reflect"]]},
+
+/* ---- Batch 4: feedback, text protocols, systems, paradox, retrieval, parallel-thinking, Facing History ---- */
+/* ---- Batch 4: Peer feedback ---- */
+{name:"Ladder of Feedback",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/ladder-of-feedback",
+ engine:"Go-Around + Coach",need:"share",group:"Team",time:"12\u201318 min",diff:"Intermediate",bloom:["Evaluate","Create"],dok:[3],move:false,
+ rounds:[{lab:"CLARIFY",t:"reviewers ask honest questions about anything unclear \u2014 no opinions yet"},{lab:"VALUE",t:"each names a specific strength in the work and why it works"},{lab:"CONCERNS",t:"each raises a concern as a question or \u201cI wonder if\u2026\u201d \u2014 not a verdict"},{lab:"SUGGEST",t:"each offers one concrete next step the author could try"}],
+ how:"A four-rung feedback routine \u2014 Clarify, Value, Concerns, Suggest \u2014 that makes peer critique safe and useful by leading with questions and strengths before any concern is raised.",
+ best:"Peer critique of drafts, projects, or presentations; building a feedback culture where criticism lands as help",
+ steps:["The author briefly shares the work and what they\u2019d most like feedback on.","CLARIFY: reviewers ask honest questions about anything unclear \u2014 no opinions yet.","VALUE: each names a specific strength and why it works.","CONCERNS: each raises a concern as a question or \u201cI wonder if\u2026\u201d \u2014 not a pronouncement.","SUGGEST: each offers one concrete next step; the author keeps notes and decides what to use."],
+ tips:"The order is the whole point \u2014 clarifying and valuing first lowers defenses so the concerns actually get heard. Hold the line on phrasing concerns as questions.",
+ example:"\u201cA student shares the thesis of her Great Gatsby essay \u2014 that Gatsby\u2019s dream was doomed from the first page \u2014 and asks if it\u2019s arguable. Clarifying questions first, then what\u2019s working, then concerns as questions, then one concrete revision each.\u201d",
+ slide:[["CLARIFY","Ask, don\u2019t judge","\u201cWhat did you mean by ___?\u201d"],["VALUE","Name a strength","\u201cWhat works is ___ because ___\u201d"],["CONCERNS","As a question","\u201cI wonder if ___\u201d"],["SUGGEST","One next step","\u201cYou might try ___\u201d"]]},
+
+{name:"Tuning Protocol",origin:"free",src:"School Reform Initiative / CLEE",url:"https://www.schoolreforminitiative.org/protocols/",
+ engine:"Go-Around + Coach",need:"share",group:"Team",time:"20\u201330 min",diff:"Advanced",bloom:["Evaluate","Create"],dok:[3,4],move:false,
+ rounds:[{lab:"PRESENT",t:"the author presents the work and a focusing question; reviewers stay silent"},{lab:"CLARIFY",t:"reviewers ask brief factual questions only"},{lab:"WARM & COOL",t:"reviewers give warm feedback (strengths), then cool feedback (gaps), while the author listens silently"},{lab:"REFLECT",t:"the author responds aloud to what was useful; the pod debriefs the process"}],
+ how:"A structured peer-review protocol for a real piece of work: the author presents and then goes silent while reviewers offer warm and cool feedback, so the author hears the response without rushing to defend it.",
+ best:"Refining a substantial draft or project against a standard; deep, honest critique that stays collegial",
+ steps:["PRESENT: the author shares the work and a focusing question (3\u20134 min); reviewers listen only.","CLARIFY: reviewers ask factual questions \u2014 quick answers, no discussion.","WARM: reviewers name strengths against the goal while the author stays silent and takes notes.","COOL: reviewers raise gaps and questions, still with the author silent.","REFLECT: the author responds aloud to what landed; debrief how the protocol went."],
+ tips:"The author\u2019s silence during feedback is the hard, essential move \u2014 it stops the session collapsing into a debate and lets the author actually hear. Keep cool feedback specific and tied to the focusing question.",
+ example:"\u201cA student presents his thesis and evidence for a DBQ on the causes of World War I and asks, \u2018Does my evidence actually prove my claim?\u2019 The pod clarifies, warms up on his strongest document, then goes cool on the weakest link \u2014 he just listens \u2014 then names his fix.\u201d",
+ slide:[["PRESENT","Share + a question","author speaks, others listen"],["CLARIFY","Facts only","quick questions"],["WARM \u2192 COOL","Strengths, then gaps","author stays silent"],["REFLECT","Author responds","\u201cWhat I\u2019ll change is ___\u201d"]]},
+
+/* ---- Batch 4: Text-based discussion ---- */
+{name:"Save the Last Word for Me",origin:"free",src:"National School Reform Faculty",url:"https://nsrfharmony.org/protocols-for-all/",
+ engine:"Go-Around + Discuss",need:"discuss",group:"Team",time:"15\u201320 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
+ rounds:[{lab:"CHOOSE",t:"each privately picks a passage that struck them \u2014 no reason given yet"},{lab:"RESPOND",t:"one reads their passage aloud; the rest of the pod responds to it first"},{lab:"LAST WORD",t:"the chooser speaks last, explaining why they picked it \u2014 then rotate"}],
+ how:"Each student picks a passage and reads it aloud, but stays quiet while the pod responds to it \u2014 then gets the last word to explain their choice. Forces real listening and keeps quiet students\u2019 picks at the center.",
+ best:"Close discussion of a rich text \u2014 a primary source, scripture, essay, or chapter; equalizing voice",
+ steps:["Everyone has read the same text and marked one passage that struck them.","CHOOSE: the first student reads their passage aloud \u2014 and says nothing about why.","RESPOND: each teammate reacts to the passage \u2014 what it means, why it matters.","LAST WORD: the chooser now explains why they picked it. Rotate until everyone has had the last word."],
+ tips:"The chooser\u2019s silence while others respond is what makes it work \u2014 protect it. The \u2018last word\u2019 often reframes the whole pod\u2019s read, so don\u2019t let the round get cut for time.",
+ example:"\u201cEach student marks the line from Laudato Si\u2019 that struck them. One reads her passage aloud \u2014 and stays silent while the pod responds to it. Only then does she get the last word on why she chose it.\u201d",
+ slide:[["CHOOSE","Read it aloud","no reason yet"],["RESPOND","Pod reacts first","\u201cTo me this says ___\u201d"],["LAST WORD","Chooser explains","\u201cI picked it because ___\u201d"]]},
+
+{name:"The 4 A\u2019s Text Protocol",origin:"free",src:"School Reform Initiative / CLEE",url:"https://www.schoolreforminitiative.org/protocols/",
+ engine:"Go-Around + Discuss",need:"discuss",group:"Team",time:"15\u201320 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
+ rounds:[{lab:"ASSUMPTIONS",t:"each names an assumption the author seems to be making"},{lab:"AGREE",t:"each names a point in the text they agree with"},{lab:"ARGUE",t:"each names a point they\u2019d argue with or against"},{lab:"ASPIRE",t:"each names what the text aspires to \u2014 for us, or for the world"}],
+ how:"A four-lens reading of a demanding text \u2014 what the author Assumes, what you Agree with, what you\u2019d Argue, and what the text Aspires to. Keeps discussion anchored to the text instead of drifting to opinion.",
+ best:"A document, encyclical, manifesto, or argument-driven essay; surfacing an author\u2019s assumptions and aims",
+ steps:["Everyone has read the same text. ASSUMPTIONS: go around \u2014 each names an assumption the author makes.","AGREE: each names a point they agree with, and the line behind it.","ARGUE: each names a point they\u2019d push back on, with the line.","ASPIRE: each names what the text is ultimately reaching for."],
+ tips:"Require a line of the text behind each A \u2014 that\u2019s what keeps it argument-from-text, not reaction. The Assumptions round is the one students skip; it\u2019s also the most revealing.",
+ example:"\u201cReading King\u2019s Letter from Birmingham Jail: name an assumption he makes about just and unjust laws, a point you agree with, a point you\u2019d argue, and what the letter ultimately aspires to \u2014 each tied to a line.\u201d",
+ slide:[["ASSUMPTIONS","What\u2019s taken for granted","\u201cThe author assumes ___\u201d"],["AGREE","Where you\u2019re with it","\u201cI agree that ___\u201d"],["ARGUE","Where you\u2019re not","\u201cI\u2019d argue ___\u201d"],["ASPIRE","What it reaches for","\u201cIt aspires to ___\u201d"]]},
+
+/* ---- Batch 4: Systems & causal reasoning ---- */
+{name:"Parts, Purposes, Complexities",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/parts-purposes-complexities",
+ engine:"Go-Around + Analyze",need:"think",group:"Team",time:"12\u201318 min",diff:"Intermediate",bloom:["Analyze"],dok:[2,3],move:false,
+ rounds:[{lab:"PARTS",t:"the pod lists the parts or pieces of the thing \u2014 what are its components?"},{lab:"PURPOSES",t:"for each part, each names what it\u2019s for \u2014 the job it does"},{lab:"COMPLEXITIES",t:"each names a complication \u2014 how parts interact, or where it\u2019s harder than it looks"}],
+ how:"A systems-analysis routine: name the parts of a thing, what each is for, and the complexities in how they fit together. Turns \u2018what is this?\u2019 into \u2018how does this work?\u2019",
+ best:"Taking apart a system, mechanism, text, artwork, or process \u2014 science, design, history, close reading",
+ steps:["Put the object or system in front of students (a device, a poem, an institution, a biological process).","PARTS: go around \u2014 each names a component.","PURPOSES: for the parts listed, each names what that part is for.","COMPLEXITIES: each names a complication \u2014 an interaction, a hidden dependency, a way it\u2019s trickier than it seems."],
+ tips:"The Complexities round is where it becomes systems thinking rather than a parts list \u2014 push for how the parts depend on each other, not just what they are.",
+ example:"\u201cTake the circulatory system: name the parts (heart, arteries, veins, capillaries), what each one is for, then the complexities \u2014 how a single valve failing starves tissue somewhere far downstream.\u201d",
+ slide:[["PARTS","Name the pieces","\u201cOne part is ___\u201d"],["PURPOSES","What each is for","\u201cThis part\u2019s job is ___\u201d"],["COMPLEXITIES","How it\u2019s tricky","\u201cIt\u2019s complicated because ___\u201d"]]},
+
+{name:"The Story Routine: Main\u2013Side\u2013Hidden",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/the-story-routine-main-side-and-hidden",
+ engine:"Go-Around + Analyze",need:"think",group:"Team",time:"12\u201318 min",diff:"Intermediate",bloom:["Analyze","Evaluate"],dok:[3],move:false,
+ rounds:[{lab:"MAIN STORY",t:"each names the main story being told \u2014 the obvious one on the surface"},{lab:"SIDE STORY",t:"each names a side story \u2014 a secondary thread that\u2019s also present"},{lab:"HIDDEN STORY",t:"each names a hidden story \u2014 a perspective or truth being left out or obscured"}],
+ how:"Three layers of any account \u2014 the main story, the side stories, and the hidden story that isn\u2019t being told. Trains students to ask whose story is centered and whose is missing.",
+ best:"Sourcing and bias in history and media; narrative analysis; whose voice is centered in a text or event",
+ steps:["Give students a source, account, image, or event.","MAIN STORY: go around \u2014 each names the story being told on the surface.","SIDE STORY: each names a secondary thread also present.","HIDDEN STORY: each names a perspective or truth being left out \u2014 and who it belongs to."],
+ tips:"The Hidden Story round is the disciplinary move \u2014 it turns reading into sourcing. Ask \u2018who benefits from the main story?\u2019 to crack it open.",
+ example:"\u201cRead your textbook\u2019s account of westward expansion: the main story (settlers, opportunity), a side story (railroads and land speculation), and the hidden story \u2014 the Indigenous nations displaced, and whose voice the page leaves out.\u201d",
+ slide:[["MAIN","On the surface","\u201cThe main story is ___\u201d"],["SIDE","A secondary thread","\u201cThere\u2019s also ___\u201d"],["HIDDEN","Whose is missing","\u201cThe hidden story is ___\u201d"]]},
+
+/* ---- Batch 4: Paradox / dialectic ---- */
+{name:"Wicked Questions",origin:"open",src:"Liberating Structures (Lipmanowicz & McCandless)",url:"https://www.liberatingstructures.com/4-wicked-questions/",
+ engine:"Go-Around + Reason",need:"think",group:"Team",time:"12\u201320 min",diff:"Advanced",bloom:["Analyze","Evaluate"],dok:[3,4],move:false,
+ rounds:[{lab:"NAME THE PULL",t:"each names two things that are both true and seem to oppose each other"},{lab:"PHRASE IT",t:"the pod writes one \u2018How is it that\u2026 and at the same time\u2026?\u2019 question"},{lab:"HOLD IT",t:"each offers a way to honor both sides at once \u2014 not pick a winner"}],
+ how:"Students surface a genuine paradox \u2014 two things that are both true and pull against each other \u2014 and phrase it as a single \u2018how is it that\u2026 and at the same time\u2026?\u2019 question. Builds comfort with tension instead of forcing a false resolution.",
+ best:"Theology and philosophy paradoxes, ethical tensions, any topic where the honest answer is \u2018both at once\u2019",
+ steps:["Name a topic with real tension in it (mercy and justice, freedom and responsibility, the already and the not-yet).","NAME THE PULL: each names two things that are both true yet seem opposed.","PHRASE IT: the pod crafts one \u2018How is it that we are ___ and at the same time ___?\u2019 question.","HOLD IT: each offers a way to honor both at once \u2014 the goal is to hold the tension, not resolve it away."],
+ tips:"Resist the urge to solve it \u2014 the learning is in holding both truths at once. A good wicked question should feel uncomfortable and have no clean answer.",
+ example:"\u201cHow is it that the Kingdom of God is already here \u2014 and at the same time not yet? Don\u2019t resolve it. Find a way to hold both as true at once.\u201d",
+ slide:[["THE PULL","Two true, opposed","\u201c___ but also ___\u201d"],["PHRASE","One paradox question","\u201cHow is it that ___ and ___?\u201d"],["HOLD","Honor both","not a winner \u2014 a tension"]]},
+
+/* ---- Batch 4: Retrieval-grade card ---- */
+{name:"The +1 Routine",origin:"free",src:"Project Zero, Harvard GSE",url:"https://pz.harvard.edu/resources/plus-1-routine",
+ engine:"Go-Around + Written",need:"review",group:"Team",time:"8\u201312 min",diff:"Beginner",bloom:["Remember","Understand"],dok:[1,2],move:false,
+ rounds:[{lab:"RECALL",t:"from memory, each writes everything they can about the topic \u2014 no notes"},{lab:"PASS & ADD",t:"papers rotate; each reads the one they receive and adds at least one thing that\u2019s missing"},{lab:"PASS AGAIN",t:"rotate again and add once more; return papers and review what grew"}],
+ how:"Students write down everything they can recall from memory, then pass their page and add to a teammate\u2019s \u2014 collaborative retrieval practice that surfaces gaps and fills them. The recall comes first, with no notes, which is what makes it stick.",
+ best:"Consolidating after a lesson or reading; low-stakes retrieval that doubles as a study sheet",
+ steps:["RECALL: closed notes \u2014 each writes everything they remember about the topic (3\u20134 min).","PASS & ADD: pages rotate one seat; each reads the new page and adds at least one thing it\u2019s missing.","PASS AGAIN: rotate and add once more.","Return each page to its owner; the pod reviews what the group recalled together."],
+ tips:"The closed-notes recall is the active ingredient \u2014 don\u2019t let students peek; struggling to remember is what builds the memory. The added items become a built-in correction of what each student forgot.",
+ example:"\u201cClosed notes: write everything you remember about the events of Holy Week. Pass your page \u2014 a teammate adds what you left out (Gethsemane? the denial?). Pass again, then get back a study sheet your whole pod built.\u201d",
+ slide:[["RECALL","From memory","closed notes \u2014 write it all"],["+1","Pass & add","\u201cone thing missing is ___\u201d"],["+1 AGAIN","Pass once more","build the group recall"]]},
+
+/* ---- Batch 4: Flagship original (parallel thinking) ---- */
+{name:"Six Lenses",origin:"ours",src:"Original \u2014 Cooperative Learning Toolkit",url:"https://www.debono.com/",
+ engine:"Go-Around + Role",need:"decide",group:"Team",time:"15\u201325 min",diff:"Intermediate",bloom:["Analyze","Evaluate","Create"],dok:[3,4],move:false,
+ rounds:[{lab:"FACTS",t:"the whole pod thinks only about what\u2019s known and what\u2019s missing"},{lab:"FEELINGS",t:"each says their gut reaction \u2014 no justification required"},{lab:"CAUTIONS",t:"the pod names risks and what could go wrong"},{lab:"BENEFITS",t:"the pod names upsides and what could go right"},{lab:"NEW IDEAS",t:"the pod generates fresh possibilities and alternatives"},{lab:"PROCESS",t:"the pod steps back: where are we, and what\u2019s the decision?"}],
+ how:"The whole pod looks through one \u2018lens\u2019 at a time \u2014 facts, feelings, cautions, benefits, new ideas, process \u2014 so everyone thinks the same way at once instead of arguing across modes. Parallel thinking that keeps a decision from fracturing into sides. (In the tradition of de Bono\u2019s Six Thinking Hats \u2014 learn the original at debono.com.)",
+ best:"Weighing a decision or proposal from every angle; replacing a debate that\u2019s talking past itself",
+ steps:["Frame the decision or proposal. The pod will move through six lenses together \u2014 one at a time.","FACTS: only what\u2019s known and what\u2019s missing.","FEELINGS: gut reactions, no defense needed.","CAUTIONS: risks and downsides. Then BENEFITS: upsides and what could go right.","NEW IDEAS: fresh alternatives. Then PROCESS: step back \u2014 where do we land?"],
+ tips:"The power is everyone wearing the same lens at the same time \u2014 don\u2019t let one student be \u2018the skeptic\u2019 while another is \u2018the optimist.\u2019 Keep the Feelings round short and judgment-free so it doesn\u2019t become an argument.",
+ example:"\u201c\u2018Should Truman have dropped the atomic bomb?\u2019 As a pod, move through the lenses together: just the facts of August 1945, then gut feelings, then the cautions, then the claimed benefits, then the alternatives that existed \u2014 then where you each land.\u201d",
+ slide:[["FACTS","What\u2019s known","information + gaps"],["FEELINGS","Gut reaction","no defense needed"],["CAUTION / BENEFIT","Risks, then upsides","one lens at a time"],["NEW IDEAS \u2192 PROCESS","Alternatives, then decide","\u201cWe land at ___\u201d"]]},
+
+/* ---- Batch 4: Facing History seed ---- */
+{name:"Surprising, Interesting, Troubling",origin:"free",src:"Facing History & Ourselves",url:"https://www.facinghistory.org/resource-library",
+ engine:"Go-Around + Reflect",need:"think",group:"Team",time:"5\u201310 min",diff:"Beginner",bloom:["Understand","Evaluate"],dok:[2,3],move:false,
+ rounds:[{lab:"SURPRISING",t:"each names something that surprised them \u2014 it challenged what they expected"},{lab:"INTERESTING",t:"each names something that drew them in or they\u2019d want to know more about"},{lab:"TROUBLING",t:"each names something that unsettled them \u2014 ethically, emotionally, or intellectually"}],
+ how:"A three-word reflection \u2014 Surprising, Interesting, Troubling \u2014 for processing difficult or emotionally weighty material. The Troubling round gives students permission to name discomfort instead of swallowing it.",
+ best:"Closing a hard reading, film, or topic in history or ethics; making space for an honest emotional response",
+ steps:["After the reading, film, or discussion, give students a minute to look back.","SURPRISING: go around \u2014 each names something that challenged what they expected.","INTERESTING: each names something they were drawn to or want to pursue.","TROUBLING: each names something that unsettled them, and why."],
+ tips:"Set a tone of trust before the Troubling round \u2014 it\u2019s the most valuable and the most vulnerable. Let students pass or use a sentence stem if naming the trouble is hard.",
+ example:"\u201cAfter watching survivor testimony in the Holocaust unit: one thing that surprised you, one that interested you, and one that troubled you \u2014 and say why it troubled you.\u201d",
+ slide:[["SURPRISING","Challenged you","\u201cI didn\u2019t expect ___\u201d"],["INTERESTING","Drew you in","\u201cI want to know more about ___\u201d"],["TROUBLING","Unsettled you","\u201cWhat troubles me is ___\u201d"]]}
 ];
 for(var _m=0;_m<METHODS.length;_m++){METHODS[_m].isMethod=true;}
 S=S.concat(METHODS);
@@ -1198,8 +1307,8 @@ function rCard(s){
   h+='<span class="badge b-time">\u23f1 '+s.time+'</span><span class="badge b-diff">\ud83c\udf9a '+(DIFF_LABEL[s.diff]||s.diff)+'</span>';
   if(s.move)h+='<span class="badge b-move">\ud83d\udeb6 Movement</span>';
   h+='<span class="badge b-engine">'+s.engine+'</span>';
-  if(s.bloom)h+='<span class="badge b-bloom">Bloom\'s: '+s.bloom.join(", ")+'</span>';
-  if(s.dok)h+='<span class="badge b-dok">DOK '+s.dok.join("\u2013")+'</span>';
+  if(s.isMethod&&s.bloom)h+='<span class="badge b-bloom">Bloom\'s: '+s.bloom.join(", ")+'</span>';
+  if(s.isMethod&&s.dok)h+='<span class="badge b-dok">DOK '+s.dok.join("\u2013")+'</span>';
   h+='</div>';
   h+='<div class="s-how">'+s.how+'</div>';
   h+='<div class="s-best"><strong>Best for:</strong> '+s.best+'</div>';
