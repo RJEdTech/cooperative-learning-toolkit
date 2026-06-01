@@ -173,6 +173,16 @@ body{position:relative}
 body.light .xnav a{background:rgba(0,0,0,.03);color:#888}
 body.light .xnav a.a{background:rgba(193,20,48,.08);color:#C11430;border-color:rgba(193,20,48,.2)}
 
+.aa-card{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between;max-width:760px;margin:24px auto 4px;padding:14px 18px;border-radius:10px;border:1px solid rgba(193,20,48,.25);background:rgba(193,20,48,.05)}
+.aa-text{flex:1;min-width:240px;font-size:12.5px;line-height:1.5;color:#bbb}
+.aa-lead{font-weight:700;color:#C11430}
+.aa-fine{color:#777}
+.aa-card .aa-cta{flex:none;display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:8px;background:#C11430;color:#fff;font-size:12.5px;font-weight:700;text-decoration:none;white-space:nowrap;transition:all .15s}
+.aa-card .aa-cta:hover{background:#a8112a}
+body.light .aa-card{background:rgba(193,20,48,.04);border-color:rgba(193,20,48,.18)}
+body.light .aa-text{color:#555}
+body.light .aa-fine{color:#999}
+
 /* --- unified library additions --- */
 .s-src{font-size:11px;color:#888;margin:2px 0 4px}.s-src a{color:#C11430;text-decoration:none;font-weight:600}
 body.light .s-src{color:#777}
@@ -240,10 +250,11 @@ body.light .disc-lens-cite span{color:#555}
   <a href="index.html" class="a">Library</a>
   <a href="designer.html">Activity Designer</a>
   <a href="questions.html">Question Designer</a>
+  <a href="https://chatgpt.com/g/g-6a1dfce581a88191a4409a0f859b2dc9-raider-activity-architect" target="_blank" rel="noopener">Activity Architect ↗</a>
 </nav>
 <div class="wrap" id="app"></div>
 <footer class="site-footer">
-  Built for Regis Jesuit High School &middot; No data leaves your browser &middot;
+  Built for Regis Jesuit High School &middot; These tools run entirely in your browser &middot;
   <a href="https://github.com/RJEdTech/Cooperative-Learning-Toolkit" target="_blank" rel="noopener">View on GitHub</a> &middot;
   <a href="https://forms.microsoft.com/r/sKU9sHY45r" target="_blank" rel="noopener">Report a bug or request a tool</a>
 </footer>
@@ -1379,7 +1390,9 @@ function rHome(){
   var h='<div style="text-align:center;margin-bottom:16px"><div style="font-size:15px;font-weight:700;color:#eee">What do you need students to do?</div><div style="font-size:12px;color:#777;margin-top:4px">Pick a goal — we\'ll show you the right structures with step-by-step instructions.</div></div>';
   h+='<div class="needs">';
   for(var i=0;i<NEEDS.length;i++){var n=NEEDS[i];h+='<button class="need-btn" data-need="'+n.id+'"><div class="icon">'+n.icon+'</div><div class="label">'+n.label+'</div><div class="desc">'+n.desc+'</div></button>';}
-  h+='</div>';return h;
+  h+='</div>';
+  h+='<div class="aa-card"><div class="aa-text"><span class="aa-lead">Don&rsquo;t want to browse?</span> Have <b>Activity Architect</b> build a plan for your exact lesson &mdash; a ready-to-run activity or a Bloom&rsquo;s/DOK question ladder, with a new structure invented when one fits better, and coaching on how to run it. <span class="aa-fine">Opens in ChatGPT; for planning only.</span></div><a class="aa-cta" href="https://chatgpt.com/g/g-6a1dfce581a88191a4409a0f859b2dc9-raider-activity-architect" target="_blank" rel="noopener">Open Activity Architect &#8599;</a></div>';
+  return h;
 }
 
 function rNeed(){
