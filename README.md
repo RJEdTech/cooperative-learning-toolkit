@@ -11,13 +11,13 @@ An interactive reference for teachers who want every student talking, thinking, 
 One place to find a structure, see exactly how to run it, and know where it comes from. It merges what used to be separate pages into a single searchable library with three kinds of entries:
 
 - **Structures** — 50 original cooperative learning structures, browsable by what you need students to do, with step-by-step instructions, the Volley / Go-Around / Mix engine system, teacher tips, and ready-to-use examples.
-- **Methods** — 49 runnable thinking and reasoning routines, each described in our own words with its source linked. They span:
+- **Methods** — 54 runnable thinking and reasoning routines, each described in our own words with its source linked. They span:
   - **Project Zero thinking routines** (30) — See-Think-Wonder, Claim-Support-Question, Tug of War, the Ladder of Feedback, Parts-Purposes-Complexities, the Story Routine, and more.
   - **Liberating Structures** (13) — 1-2-4-All, Troika Consulting, Wicked Questions, and others.
-  - **NSRF and SRI/CLEE protocols** (3) — Save the Last Word for Me, the Tuning Protocol, the 4 A's Text Protocol.
-  - **Facing History strategies** (1) — Surprising, Interesting, Troubling.
+  - **NSRF & SRI/CLEE protocols** (5) — Save the Last Word for Me, Block Party, the Tuning Protocol, the 4 A's Text Protocol, Peeling the Onion.
+  - **Facing History strategies** (2) — Surprising/Interesting/Troubling, Café Conversations.
   - **The Question Formulation Technique** (1) — the Right Question Institute's QFT.
-  - **Original to this toolkit** (1) — Six Lenses, a parallel-thinking routine.
+  - **Original to this toolkit** (3) — Six Lenses, Map the Thinking, and Bounce It (parallels to de Bono, Thinking Maps, and Total Participation Techniques).
 - **Sources** — a directory of the systems behind the structures (Kagan, Project Zero, Liberating Structures, QFT, NSRF, SRI/CLEE, Facing History, Six Thinking Hats, Thinking Maps, Total Participation Techniques), each with a plain-language description, a license badge, and a link to the source for the official version and training.
 
 #### Adapt-on-the-fly toggles
@@ -49,7 +49,7 @@ The **routines** are different: they script a cognitive arc (See-Think-Wonder re
 
 #### Naming and copyright
 
-All structure names and descriptions are original. The underlying interaction patterns are general pedagogical techniques owned by no one. Where one of our entries parallels a trademarked one — a Kagan structure, or de Bono's Six Thinking Hats (our **Six Lenses**) — the card carries a cross-reference line that points teachers to the source rather than reproducing the trademarked name or materials. We never reproduce copyrighted text from any source.
+All structure names and descriptions are original. The underlying interaction patterns are general pedagogical techniques owned by no one. Where one of our entries parallels a trademarked one — a Kagan structure, de Bono's Six Thinking Hats (**Six Lenses**), Hyerle's Thinking Maps (**Map the Thinking**), or Himmele's Total Participation Techniques (**Bounce It**) — the card carries a cross-reference line that points teachers to the source rather than reproducing the trademarked name or materials. We never reproduce copyrighted text from any source.
 
 ### 2. Activity Designer (`designer.html`)
 
