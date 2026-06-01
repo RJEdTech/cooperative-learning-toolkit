@@ -1258,14 +1258,19 @@ function rNeed(){
   return h;
 }
 
-function srcFamily(s){var x=s.src||"";if(/Project Zero/.test(x))return "pz";if(/Liberating/.test(x))return "ls";if(/Right Question/.test(x))return "rqi";return "ours";}
+function srcFamily(s){var x=s.src||"";if(/Project Zero/.test(x))return "pz";if(/Liberating/.test(x))return "ls";if(/Right Question/.test(x))return "rqi";if(/National School Reform|NSRF/.test(x))return "nsrf";if(/School Reform Initiative|CLEE/.test(x))return "sri";if(/Facing History/.test(x))return "fh";return "ours";}
+var SRCLABEL={ours:"Original (RJ)",pz:"Project Zero",ls:"Liberating Structures",rqi:"Right Question Institute",nsrf:"NSRF Protocols",sri:"SRI / CLEE Protocols",fh:"Facing History"};
+var SRCORDER=["ours","pz","ls","rqi","nsrf","sri","fh"];
 
 function rAll(){
   var h='<div class="search-wrap"><input type="text" id="si" placeholder="Search structures, uses, or keywords…" value="'+esc(searchText)+'"></div>';
   h+='<div class="filters"><select id="fg"><option value="All">All Groupings</option><option value="Pairs"'+(filterGroup==="Pairs"?" selected":"")+'>Pairs</option><option value="Team"'+(filterGroup==="Team"?" selected":"")+'>Team of 4</option><option value="Class"'+(filterGroup==="Class"?" selected":"")+'>Whole Class</option></select>';
   h+='<select id="fd"><option value="All">Any complexity</option><option value="Beginner"'+(filterDiff==="Beginner"?" selected":"")+'>Easy to run</option><option value="Intermediate"'+(filterDiff==="Intermediate"?" selected":"")+'>Moderate</option><option value="Advanced"'+(filterDiff==="Advanced"?" selected":"")+'>Advanced</option></select>';
   h+='<select id="fb"><option value="All">All Bloom\'s</option><option value="Remember"'+(filterBloom==="Remember"?" selected":"")+'>Remember</option><option value="Understand"'+(filterBloom==="Understand"?" selected":"")+'>Understand</option><option value="Apply"'+(filterBloom==="Apply"?" selected":"")+'>Apply</option><option value="Analyze"'+(filterBloom==="Analyze"?" selected":"")+'>Analyze</option><option value="Evaluate"'+(filterBloom==="Evaluate"?" selected":"")+'>Evaluate</option><option value="Create"'+(filterBloom==="Create"?" selected":"")+'>Create</option></select>';
-  h+='<select id="fo"><option value="All">All Sources</option><option value="ours"'+(filterOrigin==="ours"?" selected":"")+'>Original (RJ)</option><option value="pz"'+(filterOrigin==="pz"?" selected":"")+'>Project Zero</option><option value="ls"'+(filterOrigin==="ls"?" selected":"")+'>Liberating Structures</option><option value="rqi"'+(filterOrigin==="rqi"?" selected":"")+'>Right Question Institute</option></select>';
+  var fam={};S.forEach(function(s){fam[srcFamily(s)]=1;});
+  h+='<select id="fo"><option value="All">All Sources</option>';
+  SRCORDER.forEach(function(k){if(fam[k])h+='<option value="'+k+'"'+(filterOrigin===k?" selected":"")+'>'+SRCLABEL[k]+'</option>';});
+  h+='</select>';
   h+='<select id="fk"><option value="All">All DOK</option><option value="1"'+(filterDok==="1"?" selected":"")+'>DOK 1 — Recall</option><option value="2"'+(filterDok==="2"?" selected":"")+'>DOK 2 — Skill/Concept</option><option value="3"'+(filterDok==="3"?" selected":"")+'>DOK 3 — Strategic</option><option value="4"'+(filterDok==="4"?" selected":"")+'>DOK 4 — Extended</option></select>';
   h+='</div>';
   var f=S.filter(function(s){if(filterOrigin!=="All"&&srcFamily(s)!==filterOrigin)return false;if(filterGroup!=="All"&&s.group!==filterGroup)return false;if(filterDiff!=="All"&&s.diff!==filterDiff)return false;if(filterBloom!=="All"&&(!s.bloom||s.bloom.indexOf(filterBloom)===-1))return false;if(filterDok!=="All"&&(!s.dok||s.dok.indexOf(parseInt(filterDok))===-1))return false;if(searchText){var q=searchText.toLowerCase();if(s.name.toLowerCase().indexOf(q)===-1&&s.best.toLowerCase().indexOf(q)===-1&&s.how.toLowerCase().indexOf(q)===-1&&s.engine.toLowerCase().indexOf(q)===-1)return false;}return true;});
