@@ -29,7 +29,7 @@ Open any structure and three toggles let you reshape how it runs without leaving
 - **Movement** — Seated, Standing, or Walking. Round-based structures offer **posture-paced standing**, where students stand and sit by round so the room's posture *is* the progress signal. Movement-native structures (Gallery Walk, Line-Up, mixers) grey out Seated.
 - **Discipline** — Theology/SS/English, Math/Science/Health, World Languages, or Fine Arts & Media. Swaps the stimulus or topic framing to fit your subject.
 
-The step-by-step and example rewrite themselves to match the configuration.
+The worked example and the discipline guidance rewrite themselves to match the configuration; the step-by-step shows the core mechanic.
 
 #### Origin & license badges
 
