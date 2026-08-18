@@ -167,6 +167,16 @@ body.light .watermark{opacity:.05}
 body{position:relative}
 .wrap{position:relative;z-index:1}
 .xnav{display:flex;gap:6px;justify-content:center;margin:16px auto 4px;max-width:1100px;flex-wrap:wrap}
+.pod-banner{max-width:1100px;margin:14px auto 0;padding:14px 18px;border-radius:12px;border:1px solid rgba(193,20,48,.28);background:linear-gradient(135deg,rgba(193,20,48,.10),rgba(193,20,48,.035));display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.pod-banner-t{font-size:13.5px;font-weight:700;color:#eee;margin-bottom:4px}
+.pod-banner-p{font-size:12px;color:#9a9a9a;line-height:1.6;max-width:720px}
+.pod-banner-p b{color:#ddd}
+.pod-banner-btn{margin-left:auto;flex-shrink:0;padding:9px 18px;border-radius:8px;background:linear-gradient(135deg,#C11430,#D4243B);color:#fff;font-weight:700;font-size:12.5px;text-decoration:none;white-space:nowrap}
+.pod-banner-btn:hover{opacity:.9}
+body.light .pod-banner-t{color:#1a1a1a}
+body.light .pod-banner-p{color:#5a5a5a}
+body.light .pod-banner-p b{color:#222}
+@media(max-width:700px){.pod-banner-btn{margin-left:0}}
 .xnav a{padding:7px 18px;border-radius:8px;border:1px solid transparent;font-size:12px;font-weight:700;background:rgba(255,255,255,.04);color:#888;text-decoration:none;transition:all .15s}
 .xnav a:hover{background:rgba(255,255,255,.06)}
 .xnav a.a{background:rgba(193,20,48,.15);color:#C11430;border-color:rgba(193,20,48,.3)}
@@ -251,7 +261,15 @@ body.light .disc-lens-cite span{color:#555}
   <a href="designer.html">Activity Designer</a>
   <a href="questions.html">Question Designer</a>
   <a href="https://chatgpt.com/g/g-6a1dfce581a88191a4409a0f859b2dc9-raider-activity-architect" target="_blank" rel="noopener">Activity Architect ↗</a>
+  <a href="https://rjedtech.github.io/Raider-Pods/" target="_blank" rel="noopener">Make Your Groups ↗</a>
 </nav>
+<div class="pod-banner">
+  <div>
+    <div class="pod-banner-t">Don't have your students grouped yet?</div>
+    <div class="pod-banner-p">Almost every structure here assumes students are already sitting in <b>pairs or teams of four</b>. If yours aren't, the <b>Raider Pod Generator</b> builds them from your class list in about a minute: you split the class into quarters by how well students understand the material, and it makes teams of four with one student from each quarter — then seats them so <b>shoulder partners</b> and <b>face partners</b> are close enough in understanding that explaining actually works. That's the pairing these structures run on.</div>
+  </div>
+  <a class="pod-banner-btn" href="https://rjedtech.github.io/Raider-Pods/" target="_blank" rel="noopener">Make your groups &rarr;</a>
+</div>
 <div class="wrap" id="app"></div>
 <footer class="site-footer">
   Built for Regis Jesuit High School &middot; These tools run entirely in your browser &middot;
@@ -1717,9 +1735,9 @@ render();
     <a class="rj-tool" href="https://rjedtech.github.io/Raider-Quiz-Builder/"><div class="rj-t">Raider Quiz Builder <span class="rj-arrow">&rarr;</span></div><div class="rj-d">Build, expand, and convert Canvas quizzes from plain text.</div></a>
     <a class="rj-tool" href="https://rjedtech.github.io/Raider-Randomizer/"><div class="rj-t">Raider Randomizer <span class="rj-arrow">&rarr;</span></div><div class="rj-d">Fair student picking, grouping, and seating shuffles.</div></a>
     <a class="rj-tool" href="https://rjedtech.github.io/Raider-Timer/"><div class="rj-t">Raider Timer <span class="rj-arrow">&rarr;</span></div><div class="rj-d">Countdown, stopwatch, and station rotation for class.</div></a>
-    <a class="rj-tool" href="https://rjedtech.github.io/Raider-Pods/"><div class="rj-t">Raider Pod Generator <span class="rj-arrow">&rarr;</span></div><div class="rj-d">Heterogeneous Kagan cooperative-learning pods.</div></a>
+    <a class="rj-tool" href="https://rjedtech.github.io/Raider-Pods/"><div class="rj-t">Raider Pod Generator <span class="rj-arrow">&rarr;</span></div><div class="rj-d">Mixed teams of four, seated so partners can actually help each other.</div></a>
     <a class="rj-tool" href="https://rjedtech.github.io/MyRJScheduleCleaner/"><div class="rj-t">MyRJ Schedule Cleaner <span class="rj-arrow">&rarr;</span></div><div class="rj-d">Import your MyRJ schedule into Outlook without looking busy all day.</div></a>
-    <div class="rj-tool is-here"><div class="rj-t">Cooperative Learning Toolkit<span class="rj-here">You&rsquo;re here</span></div><div class="rj-d">Every Kagan structure, method, and source in one place.</div></div>
+    <div class="rj-tool is-here"><div class="rj-t">Cooperative Learning Toolkit<span class="rj-here">You&rsquo;re here</span></div><div class="rj-d">Every structure, method, and source in one place.</div></div>
     <a class="rj-tool" href="https://rjedtech.github.io/EdTech-Status/"><div class="rj-t">EdTech Status <span class="rj-arrow">&rarr;</span></div><div class="rj-d">Live status of Regis Jesuit's ed-tech systems.</div></a>
     <a class="rj-tool" href="https://rjedtech.github.io/Incoming-Raider-FAQ/"><div class="rj-t">Incoming Raider FAQ <span class="rj-arrow">&rarr;</span></div><div class="rj-d">A searchable guide for new and incoming Regis Jesuit students.</div></a>
     <a class="rj-tool" href="https://rjedtech.github.io/New-Ignatian-Educator-FAQ/"><div class="rj-t">New Ignatian Educator FAQ <span class="rj-arrow">&rarr;</span></div><div class="rj-d">A searchable onboarding guide for teachers new to Ignatian education.</div></a>
