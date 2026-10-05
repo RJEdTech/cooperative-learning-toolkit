@@ -127,5 +127,4 @@ This toolkit draws on the broader cooperative learning research tradition, inclu
 
 The Library references external work with attribution and does not reproduce it: Thinking Routines developed by **Project Zero**, Harvard Graduate School of Education (CC BY-NC-ND 4.0); the **Question Formulation Technique** by Dan Rothstein & Luz Santana, **Right Question Institute** (CC ShareAlike, noncommercial); **Liberating Structures** by Henri Lipmanowicz & Keith McCandless (Creative Commons); protocols from the **National School Reform Faculty** and the **School Reform Initiative / CLEE**; teaching strategies from **Facing History & Ourselves**. **Kagan Structures**, **Six Thinking Hats** (de Bono), **Thinking Maps**, and **Total Participation Techniques** are trademarks/works of their respective owners. Cognitive taxonomies after Benjamin Bloom (and the Anderson & Krathwohl revision) and Norman Webb's Depth of Knowledge.
 
-## Built By
-Jason Beyer, Director of Educational Technology — Regis Jesuit High School
+
