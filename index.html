@@ -270,6 +270,31 @@ body.fs .rj-masthead::before{display:none}
 @media(max-width:600px){.rj-masthead .brand,.rj-masthead h1{font-size:17px!important}.rj-masthead>label{flex-basis:100%}}
 @media print{.rj-masthead::before{display:none}.rj-masthead,.rj-masthead .brand,.rj-masthead h1{color:#000!important;-webkit-text-fill-color:#000!important}}
 /*/RJMASTHEAD*/
+
+/*RJCONTRAST*/
+/* Readability: text colours lifted to WCAG AA contrast (4.5:1) in each theme */
+:where(body.light) .tab{color:#666666}
+:where(body.light) .need-btn .desc{color:#686868}
+body.light .tab{color:#666666}
+body.light .need-btn .desc{color:#686868}
+body.light .ftr{color:#6b6b6b}
+body.light .site-footer{color:#6b6b6b}
+:where(body.light) .xnav a{color:#666666}
+body.light .xnav a{color:#666666}
+body.light .aa-fine{color:#666666}
+:where(body:not(.light)) .tab.a{color:#ee5c74}
+:where(body:not(.light)) .ftr{color:#888888}
+:where(body:not(.light)) .ftr a{color:#ed516a}
+:where(body:not(.light)) .site-footer{color:#888888}
+:where(body:not(.light)) .xnav a.a{color:#ee5c74}
+:where(body:not(.light)) .aa-lead{color:#ed536c}
+:where(body:not(.light)) .aa-fine{color:#8a8a8a}
+body:not(.light) .rj-tools h2{color:#ed516a}
+body:not(.light) .rj-here{color:#ee5870}
+body.light [style*="color:#2ecc71"]{color:#1a733f!important}
+body.light [style*="color:#e67e22"]{color:#9b5211!important}
+body:not(.light) [style*="color:#C11430"]{color:#ee5c74!important}
+/*/RJCONTRAST*/
 </style>
 </head>
 <body>

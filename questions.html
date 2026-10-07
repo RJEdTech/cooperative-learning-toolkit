@@ -164,6 +164,29 @@ body.fs .rj-masthead::before{display:none}
 @media(max-width:600px){.rj-masthead .brand,.rj-masthead h1{font-size:17px!important}.rj-masthead>label{flex-basis:100%}}
 @media print{.rj-masthead::before{display:none}.rj-masthead,.rj-masthead .brand,.rj-masthead h1{color:#000!important;-webkit-text-fill-color:#000!important}}
 /*/RJMASTHEAD*/
+
+/*RJCONTRAST*/
+/* Readability: text colours lifted to WCAG AA contrast (4.5:1) in each theme */
+:where(body.light) .xnav a{color:#666666}
+body.light .xnav a{color:#666666}
+:where(body.light) .copy{color:#ac122b}
+:where(body.light) .le b{color:#1a733f}
+:where(body.light) .le.soc b{color:#9b5211}
+body.light .site-footer{color:#6b6b6b}
+:where(body.light) .rung-dokb{color:#455253}
+:where(body.light) .rung-lbl{color:#636363}
+:where(body.light) .run-in{color:#196e3d}
+:where(body.light) .depth-arc{color:#1b679a}
+:where(body:not(.light)) .xnav a.a{color:#ee5c74}
+:where(body:not(.light)) .field label{color:#ee5c74}
+:where(body:not(.light)) .copy{color:#ef687e}
+:where(body:not(.light)) .site-footer{color:#888888}
+:where(body:not(.light)) .rung-lvl{color:#ef637a}
+:where(body:not(.light)) .rung-lbl{color:#969696}
+body.light [style*="color:#2ecc71"]{color:#1a733f!important}
+body.light [style*="color:#e67e22"]{color:#9b5211!important}
+body:not(.light) [style*="color:#C11430"]{color:#ee5c74!important}
+/*/RJCONTRAST*/
 </style>
 </head>
 <body>
